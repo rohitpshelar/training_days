@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="com.genuitec.eclipse.j2eedt.core.J2EE14_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/KETKEE hcl/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/ROHIT SHELAR/Downloads/javax.servlet-3.0.0.v201112011016-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ROHIT SHELAR/Downloads/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ROHIT SHELAR/Downloads/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ROHIT SHELAR/Downloads/commons-io-2.4/commons-io-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ROHIT SHELAR/Downloads/commons-io-2.4/commons-io-2.4-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ROHIT SHELAR/Downloads/commons-io-2.4/commons-io-2.4-test-sources.jar"/>
+	<classpathentry kind="lib" path="D:/ec/apache-tomcat-6.0.35/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="D:/ec/apache-tomcat-6.0.35/lib/servlet-api.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

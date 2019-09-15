@@ -1,0 +1,20 @@
+#
+#Sat Oct 03 04:04:55 GMT 2015
+genBasicCompId=false
+sessionFactoryName=com.depu.shwetu.HibernateSessionFactory
+profile=
+daoSFId=
+version=3.1
+jndiPath=
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=lib
+addLibs2Project=false
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=
+configFile=/Hibern/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=false

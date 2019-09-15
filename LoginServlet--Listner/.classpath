@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="com.genuitec.eclipse.j2eedt.core.J2EE14_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/eclipse/plugins/javax.servlet.jsp.source_2.2.0.v201112011158.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/plugins/javax.servlet.jsp_2.2.0.v201112011158.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/plugins/javax.servlet.source_3.0.0.v201112011016.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/plugins/javax.servlet_3.0.0.v201112011016.jar"/>
+	<classpathentry kind="lib" path="D:/KETKEE hcl/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="D:/KETKEE hcl/jdbc-oracle.jar"/>
+	<classpathentry kind="lib" path="D:/KETKEE hcl/ojdbc6.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+<bean id="x" class="com.spring.learn.Qracle"></bean>
+
+<bean id="stu" class="com.spring.learn.Student">
+<property name="rollno" value="5"></property>
+<property name="name" value="depu"></property>
+</bean>
+</beans>
