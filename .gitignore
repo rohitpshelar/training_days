@@ -2,3 +2,5 @@
 /.recommenders/
 
 /.gitignore
+*/.gitignore
+/*.class
