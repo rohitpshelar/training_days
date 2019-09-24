@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import javax.swing.ButtonGroup;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -167,7 +169,7 @@ static	int noOfLineb ;
 				tf2s.setMaxWidth(80);
 				layout2.getChildren().add(tf2s);
 
-				Button close2 = new Button("Submit");
+				Button close2 = new ButtonGroup("Submit");
 				// close.setOnAction(e -> window.close());
 				close2.setOnAction(e -> {
 

@@ -23,11 +23,17 @@ public class a extends Abstrac implements I  {
 		
 	}
 
-	@Override
-	 abstract public void m5() ;}
+	//@Override
+	// abstract public void m5();
 
 	@Override
 	protected void m6() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void m5() {
 		// TODO Auto-generated method stub
 		
 	}

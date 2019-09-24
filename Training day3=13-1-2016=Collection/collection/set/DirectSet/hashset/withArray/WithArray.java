@@ -1,4 +1,4 @@
-package collection.set.hashset.withArray;
+package collection.set.DirectSet.hashset.withArray;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

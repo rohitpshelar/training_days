@@ -1,14 +1,6 @@
 package com.pro;
 
-import sun.security.krb5.Confounder;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import java.awt.*;
 
 public class Alert {
 	 static String inputedText;
@@ -19,7 +11,7 @@ public class Alert {
 
 	static void display(String title, String msg) {
 		Stage window = new Stage();
-		window.initModality(Modality.APPLICATION_MODAL);
+		window.initModality(ModalityType.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(300);
 		window.setMinHeight(150);
@@ -29,8 +21,7 @@ public class Alert {
 
 		// input
 		TextField input = new TextField();
-		input.setPromptText("eg:1");
-		input.setMaxWidth(80);
+		input.setText("eg:1");
 
 		Button close = new Button("Submit");
 		// close.setOnAction(e -> window.close());

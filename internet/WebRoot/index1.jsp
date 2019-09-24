@@ -26,7 +26,7 @@
 			String lname = request.getParameter("lname");
 			String email = request.getParameter("email");
 			String photo = request.getParameter("photo");
-Part
+
 			System.out.println(fname);
 			System.out.println(lname);
 			System.out.println(email);

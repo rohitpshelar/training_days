@@ -12,7 +12,6 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
-import sun.net.www.content.image.gif;
 
 public class Login implements ActionListener,KeyListener {
 	public static void main(String[] args) {

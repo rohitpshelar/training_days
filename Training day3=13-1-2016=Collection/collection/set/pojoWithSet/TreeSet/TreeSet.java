@@ -1,4 +1,4 @@
-package collection.set.TreeSet;
+package collection.set.pojoWithSet.TreeSet;
 
 import java.util.ArrayList;
 import java.util.Iterator;

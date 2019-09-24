@@ -3,9 +3,9 @@ package learn.statics;
 public class B extends A {
 
 	
-	private static void m1() {
-		System.out.println("m1===B");
-			}
+//	private static void m1() {
+//		System.out.println("m1===B");
+//			}
 
 	@Override
 	public void m2() {
