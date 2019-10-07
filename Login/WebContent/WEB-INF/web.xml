@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>ss</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	
+	
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+	<servlet-name>a</servlet-name>
+	<servlet-class>com.cjc.RegServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>a</servlet-name>
+	<url-pattern>/reg</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>ab</servlet-name>
+	<servlet-class>com.cjc.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>ab</servlet-name>
+	<url-pattern>/log</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>db</servlet-name>
+	<servlet-class>com.cjc.DatabaseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>db</servlet-name>
+	<url-pattern>/db</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

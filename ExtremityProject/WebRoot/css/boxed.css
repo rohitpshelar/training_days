@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.boxed{
+max-width:1210px;
+margin:50px auto;
+box-shadow:0px 0px 10px 0px rgba(0,0,0,0.5);
+-moz-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.5);
+-webkitbox-shadow:0px 0px 10px 0px rgba(0,0,0,0.5);
+float:none !important;
+}
+
+
+.boxed .banner ul li{
+height:710px;
+}
+.boxed .banner .caption{
+width:100%;
+padding:10px 50px;
+}
+
+
+.boxed .navigation{
+background-image:none;
+background-color:#fff;
+box-shadow:0 11px 5px -7px rgba(0, 0, 0, 0.8);
+-moz-box-shadow:0 11px 5px -7px rgba(0, 0, 0, 0.8);
+-webkit-box-shadow:0 11px 5px -7px rgba(0, 0, 0, 0.8);
+}
+.boxed .logo{
+margin:0px;
+padding:20px 0px 20px 20px;
+text-align:left;
+}
+.boxed .navigation ul{
+margin:0px;
+border:none;
+float:right;
+width:auto !important;
+left:auto;
+padding:0px;
+}
+.boxed .navigation ul li a{
+border-top:solid 3px;
+border-color:transparent;
+color:#292929;
+font-size:14px;
+font-weight:normal;
+padding:40px 20px;
+}
+.boxed .navigation ul li a:hover,  .navigation ul li:hover > a{
+background-color:#F5E8E8 !important;
+color:#AE0054;
+border-color:#AE0054;
+}
+.boxed .navigation ul ul{
+background-color:#FFFFFF;
+padding:4px;
+box-shadow:0px 0px 5px 0px rgba(0,0,0,0.5);
+-mozbox-shadow:0px 0px 5px 0px rgba(0,0,0,0.5);
+-webkit-box-shadow:0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+.boxed .header .nav-collapse ul li li{
+	width:100%;
+}
+.boxed .navigation ul ul li a{
+padding:10px 10px;
+border:none;
+}
+.boxed .navigation ul ul li a:hover{
+padding:10px 10px;
+border:none;
+color:#FFFFFF !important;
+background-color:#AE0054 !important;
+}
+.boxed .bg{
+background-image:none;
+}
+.boxed .banner{
+margin:0px;
+padding:0 20px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+.boxed .call-us{
+right:20px;
+}
+.boxed .header .navbar{
+	position:static;
+	margin:0px;
+}
+.boxed .header .navbar-inner{
+	box-shadow:none;
+	padding:0px;
+}
+.boxed .header .nav-collapse{
+	margin:0px;
+	background-color: transparent;
+}
+.boxed .header .nav-collapse ul li{
+	width:auto;
+	border:none;
+}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	
+	<definition name="baseLayout" template="/common/BaseLayout.jsp">
+		<put-attribute name="title" value="" /><!--
+		<put-attribute name="header" value="/common/Header.jsp" />
+		--><put-attribute name="menuheader" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/common/Footer.jsp" />
+	</definition>
+	<!--
+	
+for Popup -->
+
+  <definition name="popUp" template="/common/PopUpLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" />
+	</definition>
+	
+	
+	
+	
+	<definition name="adminMenu" extends="baseLayout">
+		<put-attribute name="menuDropDown"
+			value="/admin/adminMenuDropDown.jsp" />
+	</definition>
+
+	<definition name="/adminHome.tiles" extends="adminMenu">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/admin/adminHome.jsp" />
+	</definition>
+	
+	<definition name="/registerByJavaScript.tiles" extends="adminMenu">
+		<put-attribute name="title" value="Reister" />
+		<put-attribute name="body" value="/admin/addEmployee.jsp" />
+	</definition>
+	
+	<definition name="/registerByJquery.tiles" extends="adminMenu">
+		<put-attribute name="title" value="Reister" />
+		<put-attribute name="body" value="/admin/newForm.jsp" />
+	</definition>
+	
+	<definition name="/bootsnipp.tiles" extends="adminMenu">
+		<put-attribute name="title" value="Reister" />
+		<put-attribute name="body" value="/admin/formBuilder.jsp" />
+	</definition>
+
+
+<definition name="/jmessa.tiles" extends="adminMenu">
+		<put-attribute name="title" value="Jmessa" />
+		<put-attribute name="body" value="/admin/view.jsp" />
+	</definition>
+
+	<definition name="/addProduct.tiles" extends="popUp">
+		<put-attribute name="title" value="Jmessa" />
+		<put-attribute name="body" value="/admin/addProduct.jsp" />
+	</definition>
+
+
+	<definition name="/updateProduct.tiles" extends="popUp">
+		<put-attribute name="title" value="update Product" />
+		<put-attribute name="body" value="/admin/updateProduct.jsp" />
+	</definition>
+	
+	
+	<definition name="/deleteProduct.tiles" extends="popUp">
+		<put-attribute name="title" value="update Product" />
+		<put-attribute name="body" value="/admin/deleteProduct.jsp" />
+	</definition>
+
+
+	<definition name="employeeMenu" extends="baseLayout">
+		<put-attribute name="menuDropDown"
+			value="/employee/employeeMenuDropDown.jsp" />
+	</definition>
+
+	<definition name="/employeeHome.tiles"
+		extends="employeeMenu">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/employee/employeeHome.jsp" />
+	</definition>
+
+
+
+
+	<definition name="customerMenu" extends="baseLayout">
+		<put-attribute name="menuDropDown"
+			value="/customer/customerMenuDropDown.jsp" />
+	</definition>
+
+	
+	<definition name="/customerHome.tiles" extends="customerMenu">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/customer/customerHome.jsp" />
+	</definition>
+
+
+
+<!-- customer tiles-->
+
+
+
+<definition name="/customerjmessa.tiles" extends="adminMenu">
+		<put-attribute name="title" value="Customer Jmessa" />
+		<put-attribute name="body" value="/admin/customerView.jsp" />
+	</definition>
+
+
+
+
+	<definition name="/addCustomer.tiles" extends="popUp">
+		<put-attribute name="title" value="Jmessa" />
+		<put-attribute name="body" value="/admin/addCustomer.jsp" />
+	</definition>
+
+
+
+
+</tiles-definitions>

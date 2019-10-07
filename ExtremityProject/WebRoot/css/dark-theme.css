@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*
+===================================================
+				OTHER COLORS
+===================================================
+*/
+body{
+color:#c7c7c7 !important;
+}
+
+.bg{
+background-color:#181818;
+background-image:none;
+border-color:#252525;
+}
+.free-shipping {
+background-color:#000000;
+border-color:#252525;
+}
+.whats-new, .love-it, .our-products{
+background-color:#151515;
+}
+.testimonials {
+    background-color: #151515;
+    border-color:#252525;
+}
+.flexslider{
+background-color:#1A1A1A !important;
+}
+#carousel.flexslider .flex-active-slide:before{
+border-color:#1A1A1A transparent transparent !important;
+opacity:1;
+}
+.off{
+color:#000000;
+}
+
+.products h2{
+color:#000000 !important;
+}
+.experts{
+background-color:#1a1a1a;
+}
+
+.content h2{
+color:#FFFFFF;
+}
+.header h3{
+color:#b1b1b1;
+}
+.williams p{
+color:#FFFFFF;
+}
+.our-products .nav-tabs > li > a{
+color:#FFFFFF;
+}
+.our-products .nav-tabs > li > a:hover{
+color:#000000;
+}
+.long-looking{
+border:none;
+}
+.long-looking ul li{
+background-color:#212121;
+}
+.long-looking ul li:hover{
+background-color:#0b0b0b;
+}
+.long-looking .see-more, .long-looking p{
+color:#d6d6d6;
+}

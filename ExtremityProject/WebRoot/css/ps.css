@@ -1,0 +1,36 @@
+#Layer1 {
+	position:absolute;
+	left:1px;
+	top:0px;
+	width:1174px;
+	height:130px;
+	z-index:1;
+	background-color: #CC3300;
+}
+#Layer2 {
+	position:absolute;
+	left:2px;
+	top:130px;
+	width:1172px;
+	height:63px;
+	z-index:2;
+	background-color: #333366;
+}
+#Layer3 {
+	position:absolute;
+	left:2px;
+	top:194px;
+	width:1171px;
+	height:703px;
+	z-index:3;
+	background-color: #66FF00;
+}
+#Layer4 {
+	position:absolute;
+	left:1px;
+	top:895px;
+	width:1172px;
+	height:88px;
+	z-index:4;
+	background-color: #CC3300;
+}

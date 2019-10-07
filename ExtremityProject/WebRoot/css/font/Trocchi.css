@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Trocchi';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../css/font/Trocchi.eot);
+	src: local('Trocchi'), url(../css/font/Trocchi.eot) format('embedded-opentype'),
+		url(../css/font/Trocchi01.woff)
+		format('woff');
+}

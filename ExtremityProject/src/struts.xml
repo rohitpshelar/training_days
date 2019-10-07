@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<include file="struts-default.xml" />
+	<package name="default" extends="struts-default,json-default"
+		namespace="/">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+
+		</result-types>
+
+		<interceptors>
+
+			<interceptor name="nonTransactionInterceptor"
+				class="com.extremityIndia.interceptor.NonTransactionInterceptor" />
+		</interceptors>
+
+		<action name="login" class="user" method="loginCheck">
+			<interceptor-ref name="nonTransactionInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="admin" type="tiles">/adminHome.tiles</result>
+			<result name="employee" type="tiles">/employeeHome.tiles</result>
+			<result name="customer" type="tiles">/customerHome.tiles</result>
+			<result name="error">index.jsp</result>
+		</action>
+
+		<action name="register">
+
+			<result type="tiles">/registerByJavaScript.tiles</result>
+		</action>
+
+		<action name="newRegister">
+
+			<result type="tiles">/registerByJquery.tiles</result>
+		</action>
+
+		<action name="bootsnipp">
+
+			<result type="tiles">/bootsnipp.tiles</result>
+		</action>
+
+		<action name="jmessa" class="com.extremityIndia.action.LoginAction"
+			method="fetchProduct">
+
+			<result type="tiles">/jmessa.tiles</result>
+		</action>
+
+		<action name="addProduct">
+			<result type="tiles">/addProduct.tiles</result>
+		</action>
+
+		<action name="saveProduct" class="com.extremityIndia.action.LoginAction"
+			method="saveProduct">
+			<result type="tiles">/addProduct.tiles</result>
+		</action>
+
+		<action name="updateProduct" class="com.extremityIndia.action.LoginAction"
+			method="selectProduct">
+			<result type="tiles">/updateProduct.tiles</result>
+		</action>
+
+		<action name="submitProduct" class="com.extremityIndia.action.LoginAction"
+			method="updateProduct">
+			<result type="tiles">/updateProduct.tiles</result>
+		</action>
+
+		<action name="deleteProduct" class="com.extremityIndia.action.LoginAction"
+			method="deleteProduct12">
+			<result type="tiles">/deleteProduct.tiles</result>
+		</action>
+
+		<action name="deleteProductConfirm" class="com.extremityIndia.action.LoginAction"
+			method="deleteProduct">
+			<result type="tiles">/deleteProduct.tiles</result>
+		</action>
+
+		<!--Customer action -->
+
+		<action name="customer" class="customer" method="fetchCustomerList">
+
+			<interceptor-ref name="nonTransactionInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+
+			<result name="success" type="tiles">/customerjmessa.tiles</result>
+		</action>
+
+		<action name="addCustomer" class="com.extremityIndia.action.CustomerAction"
+			method="loadState">
+
+			<interceptor-ref name="nonTransactionInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result type="tiles">/addCustomer.tiles</result>
+		</action>
+
+		<action name="ajaxAction" class="com.extremityIndia.action.CustomerAction"
+			method="fetchState">
+			<result name="success" type="json"></result>
+		</action>
+
+		<action name="stateAction" class="com.extremityIndia.action.CustomerAction"
+			method="selectCity">
+
+			<interceptor-ref name="nonTransactionInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="json"></result>
+		</action>
+
+	</package>
+</struts>
+
+

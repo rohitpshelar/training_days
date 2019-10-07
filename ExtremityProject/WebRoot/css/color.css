@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+.color, 
+.banner .caption small, .top-caption .pink, 
+.next-day, 
+.magazine h6, .magazine a, .salon a, 
+.magazine a:hover, .salon a:hover, 
+.pink, .signature, .products p, .products p small, 
+.navigation ul ul li a:hover, 
+.language .dropdown-menu > li > a:hover, .long-looking  h4, .long-looking .date ul li, .long-looking .date ul li a, 
+input[type="text"]:focus, .modal-header h3, .thumbs-facilities .text a, .thumbs-facilities:hover .thumb h4, 
+.our-specials ul li:hover a, .our-specials ul li:hover h3, .team h5, .timing-section p span, .our-team ul li .header h2, .our-team ul li .header h4, 
+.form textarea:focus, .blog-listing ul li:hover h3, 
+.twitter-feeds .time-ago, .archives-widget ul li a:hover, 
+.blog .heading h3, .comments h3, 
+.continue-shopping, .products-page .breadcrumb > .active, .more-detail .nav-tabs > .active > a, .more-detail .nav-tabs > .active > a:hover, .more-detail .nav-tabs > .active > a:focus, 
+.you-like ul li:hover h5, .pagination ul li a:hover, .project-thumb:hover .caption h5, .latest-article .read-more:hover{
+color:#AE0054 !important;
+}
+
+
+.right-banner .carousel-indicators .active, .love-it-thumb:hover .price, 
+.experts .caption a, 
+.shop-now, 
+.our-products .nav-tabs > .active > a, .our-products .nav-tabs > .active > a:hover, .our-products .nav-tabs > .active > a:focus, 
+
+.our-products1 .nav-tabs > .active > a, .our-products1 .nav-tabs > .active > a:hover, .our-products1 .nav-tabs > .active > a:focus, 
+
+
+.news-letters, 
+.footer .carousel-indicators .active, 
+.go-top, 
+.top-strip, 
+.navigation ul li a:hover, .navigation ul li:hover > a, 
+.navigation ul ul, 
+.language .dropdown li a, 
+.modal-footer button,  .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active, 
+.appointment-btn,  
+.header .nav-collapse, .header .navbar .btn-navbar, .header .navbar .btn-navbar:hover, 
+.form-btn, 
+.blog-listing .thumb .tags, .category-widget ul li a:hover, 
+.tags-widget ul li a, .title, .comments ul li:after, .product-list .nav-tabs > .active > a, .product-list .nav-tabs > .active > a:hover, .product-list .nav-tabs > .active > a:focus, .hot-favorites ul li:hover a.more, .hot-favorites .accordion-heading .accordion-toggle:hover, .hot-favorites .accordion-heading .accordion-toggle:focus, .jspDrag, .more-data, .latest-article ul li:hover{
+background-color:#ae0054;
+/*background-color:#9B0548;*/
+}
+
+.social ul li a:hover{
+	background-color:#FC4272;
+	
+}
+
+
+.bx-wrapper .bx-pager, input[type="text"]:focus, .category-banner, .form textarea:focus, .slider-whats .thumb{
+border-color:#ae0054 !important;
+}
+
+/*
+===================================================
+				OTHER COLORS
+===================================================
+*/
+
+
+.bg, .free-shipping{
+background-color:#ffffff;
+}
+.whats-new, .love-it, .our-products{
+background-color:#f9f9f8;
+}
+.testimonials {
+    background-color: #f9f9f8;
+}
+
+.experts{
+background-color:#f0f0f0;
+}

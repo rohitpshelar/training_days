@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+ 
+  
+  <welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>generatePDF</servlet-name>
+		<servlet-class>com.cjc.servlet.ReportGeneratorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>generatePDF</servlet-name>
+		<url-pattern>/generatePDF</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>a</servlet-name>
+		<servlet-class>com.cjc.servlet.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>a</servlet-name>
+		<url-pattern>/reg</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ab</servlet-name>
+		<servlet-class>com.cjc.servlet.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ab</servlet-name>
+		<url-pattern>/log</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>db</servlet-name>
+		<servlet-class>com.cjc.util.DatabaseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>db</servlet-name>
+		<url-pattern>/db</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>del</servlet-name>
+		<servlet-class>com.cjc.servlet.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>del</servlet-name>
+		<url-pattern>/dels</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edt</servlet-name>
+		<servlet-class>com.cjc.servlet.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edt</servlet-name>
+		<url-pattern>/edits</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edtd</servlet-name>
+		<servlet-class>com.cjc.servlet.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edtd</servlet-name>
+		<url-pattern>/editeds</url-pattern>
+	</servlet-mapping>
+</web-app>
