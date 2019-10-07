@@ -2,8 +2,6 @@ package com.extremityIndia.interceptor;
 
 
 
-import com.extremityIndia.model.Login;
-
 import java.util.Date;
 import java.util.Map;
 

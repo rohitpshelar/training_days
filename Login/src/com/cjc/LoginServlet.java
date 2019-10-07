@@ -1,8 +1,6 @@
 package com.cjc;
 
-import java.awt.Event;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,16 +8,17 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.PreparedStatement;
-
 public class LoginServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final ServletContext Connection = null;
 	private java.sql.Connection con;
 
@@ -56,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 
 				rs = pst.executeQuery();
 
-				ArrayList al = new ArrayList();
+				ArrayList<RegForm> al = new ArrayList<RegForm>();
 				while (rs.next())
 
 				{

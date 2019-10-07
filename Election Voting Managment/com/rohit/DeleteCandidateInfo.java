@@ -4,10 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.util.*;
 
 class DeleteCandidateInfo extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JLabel l1,l2,l3;
     JTextField t1,t2;
     JButton b1,b2,b3;

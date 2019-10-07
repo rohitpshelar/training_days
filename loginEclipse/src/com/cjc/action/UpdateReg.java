@@ -13,6 +13,11 @@ import com.cjc.daoImpI.Dao;
 
 public class UpdateReg extends HttpServlet {
 
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 public void updateAction(HttpServletRequest request, HttpServletResponse response) {
 	
 
@@ -20,7 +25,7 @@ public void updateAction(HttpServletRequest request, HttpServletResponse respons
 		System.out.println("id="+id);
 		RequestDispatcher rd;
 		Dao d = new Dao();
-		ArrayList al = d.GetLoginDetails(Integer.parseInt(id));
+		ArrayList<?> al = d.GetLoginDetails(Integer.parseInt(id));
 		request.setAttribute("data", al);
 		rd = request.getRequestDispatcher("update.jsp");
 		try {

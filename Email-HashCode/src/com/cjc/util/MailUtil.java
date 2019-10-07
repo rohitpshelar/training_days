@@ -12,8 +12,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.cjc.emailRegistration.PasswordGenerator;
-import com.cjc.model.StatusPojo;
-import com.cjc.model.UserPojo;
 
 public class MailUtil {
 

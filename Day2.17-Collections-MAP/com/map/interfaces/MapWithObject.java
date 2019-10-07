@@ -36,17 +36,17 @@ public class MapWithObject {
 			System.out.println("");
 			String sstate = itr.next();
 			System.out.println(sstate);// India
-			HashMap hstate = hm.get(sstate);
+			HashMap<?, ?> hstate = hm.get(sstate);
 			System.out.println(" " + hstate);// {Rajastan=[rajastan, unchal]
-			Set key2 = hstate.keySet();
+			Set<?> key2 = hstate.keySet();
 			System.out.println("  " + key2);// [Rajastan, Maharashtra]
-			Iterator itr2 = key2.iterator();
+			Iterator<?> itr2 = key2.iterator();
 			while (itr2.hasNext()) {
 				String cString = (String) itr2.next();
 				System.out.println("   STATE: =" + cString);// Rajastan
-				ArrayList hstate22 = (ArrayList) hstate.get(cString);
+				ArrayList<?> hstate22 = (ArrayList<?>) hstate.get(cString);
 				System.out.println("    " + hstate22);// [rajastan, unchal]
-				Iterator iter = hstate22.iterator();
+				Iterator<?> iter = hstate22.iterator();
 				while (iter.hasNext()) {
 					String v3 = (String) iter.next();
 					System.out.println("     CITY:==" + v3);// rajastan

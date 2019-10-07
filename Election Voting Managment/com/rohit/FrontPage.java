@@ -1,6 +1,5 @@
 package com.rohit;
 
-import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -8,7 +7,11 @@ import java.sql.*;
 
 class FrontPage extends JFrame implements ActionListener
 {
-  JLabel l,l1,l2;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+JLabel l,l1,l2;
   JTextField t1,t2,t3;
   JButton okButton,resetButton,chk;
   Container cont;

@@ -1,8 +1,6 @@
 package com.cjc.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +33,7 @@ public class ForgetPassword extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String email=request.getParameter("email");
 	RandomString rs=new RandomString();
-	String pw=rs.autoGenrator();
+	String pw=RandomString.autoGenrator();
 	Dao d=new Dao();
 	d.UpdateEmailPassword(email, pw);
 	EmailSender emails=new EmailSender();

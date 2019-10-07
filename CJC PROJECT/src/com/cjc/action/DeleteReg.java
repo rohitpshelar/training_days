@@ -20,7 +20,7 @@ public class DeleteReg {
 		Dao d = new Dao();
 		d.DeleteReg(Integer.parseInt(id));
 
-		ArrayList al = d.GetLoginDetails();
+		ArrayList<?> al = d.GetLoginDetails();
 
 		request.setAttribute("data", al);
 		rd = request.getRequestDispatcher("Success.jsp");

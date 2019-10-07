@@ -1,7 +1,6 @@
 package com.rohit;
 
 import java.io.*;
-import java.util.*;
 import java.rmi.*;
 import java.awt.*;
 import javax.swing.*;
@@ -10,7 +9,11 @@ import java.sql.*;
 
 class VotingPage extends JFrame implements ActionListener
 {
-   JLabel Lhead,l2,l3,l4,l5,l6,l7,l8,l9,Lhead0,Lhead1,Lhead2;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+JLabel Lhead,l2,l3,l4,l5,l6,l7,l8,l9,Lhead0,Lhead1,Lhead2;
    JLabel pic[]=new JLabel[20];
    JRadioButton jr[]=new JRadioButton[20];
    JButton electedButton,cancelButton;

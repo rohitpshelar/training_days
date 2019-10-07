@@ -13,9 +13,13 @@ public class State  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer sid;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer sid;
      private String sname;
-     private Set cities = new HashSet(0);
+     private Set<?> cities = new HashSet<Object>(0);
 
 
     // Constructors
@@ -31,7 +35,7 @@ public class State  implements java.io.Serializable {
     }
     
     /** full constructor */
-    public State(Integer sid, String sname, Set cities) {
+    public State(Integer sid, String sname, Set<?> cities) {
         this.sid = sid;
         this.sname = sname;
         this.cities = cities;
@@ -60,7 +64,7 @@ public class State  implements java.io.Serializable {
         return this.cities;
     }
     
-    public void setCities(Set cities) {
+    public void setCities(Set<?> cities) {
         this.cities = cities;
     }
    

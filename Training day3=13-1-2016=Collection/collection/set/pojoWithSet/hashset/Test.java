@@ -8,9 +8,9 @@ public class Test {
 	public static void main(String[] args) {
 		ObjectCalling oc = new ObjectCalling();
 
-		ArrayList a = oc.m1();
+		ArrayList<?> a = oc.m1();
 
-		Iterator itr = a.iterator();
+		Iterator<?> itr = a.iterator();
 		while (itr.hasNext()) {
 			Student s = (Student) itr.next();
 			System.out.println(s.getRollno());

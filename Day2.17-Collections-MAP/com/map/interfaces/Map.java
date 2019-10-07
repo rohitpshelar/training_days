@@ -14,7 +14,7 @@ public class Map {
 		hm.put(2, "aaaa");
 		hm.put(1, "cccc");
 		 
-		ArrayList a = new ArrayList();
+		ArrayList<String> a = new ArrayList<String>();
 		
 		final Set<Integer> key = hm.keySet();
 	

@@ -11,7 +11,11 @@ public class City  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer cityid;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer cityid;
      private State state;
      private String cityname;
 

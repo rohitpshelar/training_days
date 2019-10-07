@@ -11,7 +11,11 @@ public class Login  implements java.io.Serializable {
 
     // Fields    
 
-     private String email;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String email;
      private String pass;
 
 

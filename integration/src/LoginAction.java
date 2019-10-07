@@ -5,6 +5,10 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class LoginAction extends ActionSupport implements ModelDriven<Systemlogin>{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Systemlogin systemlogin;//=new Systemlogin();
 
 	public String loginCheck()

@@ -1,7 +1,5 @@
 package com.rohit;
 
-import java.net.MalformedURLException;
-
 
 public class Main {
 

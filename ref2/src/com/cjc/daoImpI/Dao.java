@@ -1,14 +1,11 @@
 package com.cjc.daoImpI;
 
 import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -95,7 +92,7 @@ public class Dao implements IDao{
 	}
 	FileOutputStream fs;
 	OutputStream fo;
-	public ArrayList GetLoginDetails(int id) 
+	public ArrayList<RegForm> GetLoginDetails(int id) 
 	{
 		String file="C:/a.jpg"; 
 		int i=0;
@@ -150,7 +147,7 @@ public class Dao implements IDao{
 		Dao d = new Dao();
 		d.GetLoginDetails();
 	}
-	public ArrayList GetLoginDetails() 
+	public ArrayList<RegForm> GetLoginDetails() 
 	{
 		int i=0;
 		System.out.println("inside GetLoginDetails");
@@ -227,7 +224,7 @@ public class Dao implements IDao{
 	
 	}
 	
-	public ArrayList GetLoginDetailsSpecific(String un,String pw) 
+	public ArrayList<RegForm> GetLoginDetailsSpecific(String un,String pw) 
 	{
 		int i=0;
 		String query="SELECT * FROM `login`.`reg`  WHERE uname='"+un+"' and pw='"+pw+"'" ;			

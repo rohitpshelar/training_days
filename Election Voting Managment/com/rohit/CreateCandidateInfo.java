@@ -5,10 +5,13 @@ import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.filechooser.*;
 
 class CreateCandidateInfo extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JLabel l,Lid,l2,l3,l4,l5,l6,l7,l8,l9,l10,Lgender,Lage,Lpartyname,Linfo,Lsym,Lphoto,Lstatus;
     JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16;
     JButton createButton,resetButton,extButton,symButton,phtButton;

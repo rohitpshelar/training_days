@@ -3,8 +3,6 @@ package com.rohit;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
-
 import java.awt.event.*;
 import java.sql.*;
 

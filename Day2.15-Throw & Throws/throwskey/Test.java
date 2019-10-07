@@ -1,7 +1,5 @@
 package throwskey;
 
-import java.io.IOException;
-
 public class Test extends A {
 	@Override
 	public void m1() {

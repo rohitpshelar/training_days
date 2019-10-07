@@ -7,7 +7,11 @@ public class Product  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer pid;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer pid;
      private String pname;
      private String price;
 

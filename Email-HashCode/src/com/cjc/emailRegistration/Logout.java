@@ -1,21 +1,13 @@
 package com.cjc.emailRegistration;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cjc.dao.UserDAO;
-import com.cjc.db.DBException;
-import com.cjc.model.StatusPojo;
-import com.cjc.model.UserPojo;
-import com.cjc.util.BCrypt;
 import com.cjc.util.GlobalConstants;
-import com.cjc.util.Utils;
 
 /**
  * Servlet implementation class Logout

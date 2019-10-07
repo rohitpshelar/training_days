@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.cjc.dao.UserDAO;
-import com.cjc.db.DBConn;
 import com.cjc.db.DBException;
 import com.cjc.model.StatusPojo;
 import com.cjc.util.BCrypt;

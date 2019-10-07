@@ -40,15 +40,15 @@ public class A {
 		country.add(usa);
 		
 		System.out.println("USING HASHSET");
-		Iterator itr=  country.iterator();
+		Iterator<HashSet<HashSet<String>>> itr=  country.iterator();
 		while (itr.hasNext()) {
-		HashSet hi=	(HashSet) itr.next();
+		HashSet<?> hi=	(HashSet<?>) itr.next();
 		System.out.println("State=="+hi);
-		Iterator itr1=  hi.iterator();
+		Iterator<?> itr1=  hi.iterator();
 		while (itr1.hasNext()) {
-		HashSet hi1=	(HashSet) itr1.next();
+		HashSet<?> hi1=	(HashSet<?>) itr1.next();
 		System.out.println("City"+hi1);
-		Iterator itr2=  hi1.iterator();
+		Iterator<?> itr2=  hi1.iterator();
 		while (itr2.hasNext()) {
 		String hi2=	(String) itr2.next();
 		System.out.println("City====="+hi2);

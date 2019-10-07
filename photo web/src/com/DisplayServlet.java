@@ -3,7 +3,6 @@ package com;
 import java.io.*;
 import java.sql.*;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.*;
 
 public class DisplayServlet extends HttpServlet

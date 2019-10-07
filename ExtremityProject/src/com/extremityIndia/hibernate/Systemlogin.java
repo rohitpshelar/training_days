@@ -11,7 +11,11 @@ public class Systemlogin  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer uid;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer uid;
      private String uname;
      private String password;
      private String utype;

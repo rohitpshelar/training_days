@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +39,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 	
 	System.out.println("IN DISE TEMPR");
 	Dao d=new Dao();
-	ArrayList al = d.GetLoginDetailsSpecific("r", "r");
+	ArrayList<?> al = d.GetLoginDetailsSpecific("r", "r");
 	request.setAttribute("data", al);
 	RequestDispatcher rdDispatcher =request.getRequestDispatcher("temp.jsp");
 	rdDispatcher.forward(request, response);

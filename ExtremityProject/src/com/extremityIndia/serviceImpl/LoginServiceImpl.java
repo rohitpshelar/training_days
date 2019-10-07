@@ -3,7 +3,6 @@ package com.extremityIndia.serviceImpl;
 import java.util.List;
 
 import com.extremityIndia.dao.LoginDao;
-import com.extremityIndia.daoImpl.LoginDaoImpl;
 import com.extremityIndia.hibernate.Systemlogin;
 import com.extremityIndia.service.LoginService;
 

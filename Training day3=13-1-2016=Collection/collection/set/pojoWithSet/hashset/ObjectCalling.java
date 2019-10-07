@@ -36,6 +36,6 @@ public class ObjectCalling {
 public static void main(String[] args) {
 	ObjectCalling oc = new ObjectCalling();
 	
-	ArrayList a=oc.m1();
+	ArrayList<?> a=oc.m1();
 }
 }

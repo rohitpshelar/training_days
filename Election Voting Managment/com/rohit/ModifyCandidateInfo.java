@@ -4,11 +4,14 @@ import java.sql.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.filechooser.*;
 import java.io.*;
 
 class ModifyCandidateInfo extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JLabel l,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14,l15,l16,l17;
     JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16;
     JButton modifyButton,resetButton,extButton,searchButton,sym,pht;

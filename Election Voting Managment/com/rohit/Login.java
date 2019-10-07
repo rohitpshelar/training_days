@@ -2,11 +2,9 @@ package com.rohit;
 
 import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -20,7 +18,7 @@ public class Login implements ActionListener,KeyListener {
 	}
 
 	JLabel l1, l2, l3;
-	JComboBox t1;
+	JComboBox<String> t1;
 	JButton si;
 	JPasswordField t2;
 	JFrame f1 = new JFrame("Login window");
@@ -43,7 +41,7 @@ public class Login implements ActionListener,KeyListener {
 
 		l1 = new JLabel("User Name :");
 		l2 = new JLabel("Password :");
-		t1 = new JComboBox();
+		t1 = new JComboBox<String>();
 		t1.addItem("Administrator");
 		t1.addItem("User");
 		t2 = new JPasswordField();

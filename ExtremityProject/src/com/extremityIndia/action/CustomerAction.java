@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
-
 import com.extremityIndia.context.CallContextService;
 
 import com.extremityIndia.hibernate.City;

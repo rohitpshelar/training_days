@@ -7,7 +7,11 @@ import java.sql.*;
 
 class CurrentElectionInfo extends JFrame implements ActionListener
 {
-  JLabel l1;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+JLabel l1;
   JButton okButton;
   Container cont;
   Connection con;

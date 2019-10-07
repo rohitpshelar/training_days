@@ -11,7 +11,11 @@ public class Customer  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer cid;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer cid;
      private String cname;
      private String addr;
      private String mbno;

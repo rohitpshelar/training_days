@@ -2,15 +2,17 @@ package com.rohit;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.io.*;
 
 
 class Server extends JFrame implements ActionListener
 {
-  JButton finish,start;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+JButton finish,start;
   JLabel l;
   Container cont;
   String eleName;

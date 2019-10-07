@@ -16,8 +16,8 @@ public interface IDao {
 
 	public ResultSet GetLoginDetails(String id);
 
-	public ArrayList GetLoginDetails(int id);
+	public ArrayList<?> GetLoginDetails(int id);
 
-	public ArrayList GetLoginDetails();
+	public ArrayList<?> GetLoginDetails();
 
 }

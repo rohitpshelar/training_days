@@ -1,15 +1,10 @@
 package com.cjc.action;
 
 import java.io.IOException;
-import java.util.Random;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.*;
-
 import com.cjc.daoImpI.Dao;
 import com.cjc.model.RegForm;
 
@@ -20,7 +15,7 @@ public class RegServlet {
 	public void regaction(HttpServletRequest request, HttpServletResponse response) {
 		//password generator
 		RandomString rands = new RandomString();
-		String pwd = rands.autoGenrator();
+		String pwd = RandomString.autoGenrator();
 		
 		String fname = request.getParameter("fn");
 		String lname = request.getParameter("ln");

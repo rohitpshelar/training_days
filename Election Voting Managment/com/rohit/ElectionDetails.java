@@ -7,7 +7,11 @@ import java.sql.*;
 
 class ElectionDetails extends JFrame implements ActionListener
 {
-  JLabel l1,Lsearch,Lsearch1;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+JLabel l1,Lsearch,Lsearch1;
   JTextField Tsearch;
   JButton b1,Bsearch;
   Container cont;

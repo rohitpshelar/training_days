@@ -4,6 +4,11 @@ import javax.mail.internet.*;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EmailSender extends ActionSupport {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static void main(String[] args) {
 		EmailSender e = new EmailSender();
 	}

@@ -2,8 +2,6 @@ package com.cjc.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +13,6 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
-import com.itextpdf.text.ElementListener;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
@@ -33,7 +30,7 @@ public class ReportGeneratorServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Inside report");
 		Dao d = new Dao();
-		ArrayList<RegForm> list  = (ArrayList) d.GetLoginDetails();
+		ArrayList<RegForm> list  = (ArrayList<RegForm>) d.GetLoginDetails();
 
 
 		try {

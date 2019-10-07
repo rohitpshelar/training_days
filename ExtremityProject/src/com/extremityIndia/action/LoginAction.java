@@ -3,19 +3,18 @@ package com.extremityIndia.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.classic.Session;
-import org.hibernate.criterion.Restrictions;
-
-import com.extremityIndia.context.CallContextService;
 import com.extremityIndia.hibernate.Systemlogin;
 import com.extremityIndia.model.Product;
 import com.extremityIndia.service.LoginService;
-import com.extremityIndia.serviceImpl.LoginServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 
 public class LoginAction extends ActionSupport implements ModelDriven<Systemlogin>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	LoginService loginService;
 	Systemlogin systemlogin;//=new Systemlogin();
 	List<Product> list;

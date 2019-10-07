@@ -7,7 +7,11 @@ import java.sql.*;
 
 class NewElection extends JFrame implements ActionListener
 {
-  JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14,l15;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14,l15;
   JTextField t1,t2,t3;
   JButton b1,b2,b3;
   Container cont;

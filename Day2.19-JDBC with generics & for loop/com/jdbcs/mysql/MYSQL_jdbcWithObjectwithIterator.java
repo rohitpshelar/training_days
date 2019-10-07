@@ -32,21 +32,21 @@ public class MYSQL_jdbcWithObjectwithIterator {
 		hm.put("USA", uhm);
 		// ======================================
 
-		Set key = hm.keySet();
+		Set<String> key = hm.keySet();
 		System.out.println(key);// [India, USA]
-		Iterator itr = key.iterator();
+		Iterator<String> itr = key.iterator();
 		while (itr.hasNext()) {
 			System.out.println("");
 			String sstate = (String) itr.next();
 			System.out.println("Country: =" + sstate);// India
-			HashMap hstate = (HashMap) hm.get(sstate);
-			Set key2 = hstate.keySet();
-			Iterator itr2 = key2.iterator();
+			HashMap<?, ?> hstate = (HashMap<?, ?>) hm.get(sstate);
+			Set<?> key2 = hstate.keySet();
+			Iterator<?> itr2 = key2.iterator();
 			while (itr2.hasNext()) {
 				String cString = (String) itr2.next();
 				System.out.println("     STATE: =" + cString);// Rajastan
-				ArrayList hstate22 = (ArrayList) hstate.get(cString);
-				Iterator iter = hstate22.iterator();
+				ArrayList<?> hstate22 = (ArrayList<?>) hstate.get(cString);
+				Iterator<?> iter = hstate22.iterator();
 				while (iter.hasNext()) {
 					String v3 = (String) iter.next();
 					System.out.println("        CITY:==" + v3);// rajastan

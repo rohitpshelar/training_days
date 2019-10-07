@@ -1,6 +1,5 @@
 package collection.set.DirectSet.hashset.withArray;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -42,17 +41,17 @@ public class WithArray {
 
 
 		System.out.println("USING HASHSET");
-		Iterator itr=  country.iterator();
+		Iterator<ArrayList<ArrayList<String>>> itr=  country.iterator();
 		while (itr.hasNext()) {
-		ArrayList hi=	(ArrayList) itr.next();
-		HashSet hs=new HashSet(hi);
+		ArrayList<?> hi=	(ArrayList<?>) itr.next();
+		HashSet<?> hs=new HashSet<Object>(hi);
 		System.out.println("State=="+hs);
-		Iterator itr1=  hs.iterator();
+		Iterator<?> itr1=  hs.iterator();
 		while (itr1.hasNext()) {
-			ArrayList hi1=	(ArrayList) itr1.next();
-			HashSet hs1=new HashSet(hi1);
+			ArrayList<?> hi1=	(ArrayList<?>) itr1.next();
+			HashSet<?> hs1=new HashSet<Object>(hi1);
 		System.out.println("City"+hs1);
-		Iterator itr2=  hs1.iterator();
+		Iterator<?> itr2=  hs1.iterator();
 		while (itr2.hasNext()) {
 		String hi2=	(String) itr2.next();
 		System.out.println("City====="+hi2);

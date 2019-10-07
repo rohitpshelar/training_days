@@ -1,7 +1,5 @@
 package com.servlet;
 
-import javax.management.loading.PrivateClassLoader;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

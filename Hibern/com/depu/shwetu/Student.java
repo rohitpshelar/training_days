@@ -4,7 +4,11 @@ public class Student  implements java.io.Serializable {
 
     // Fields    
 
-     private Integer rollno;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer rollno;
      private String name;
 
     // Constructors

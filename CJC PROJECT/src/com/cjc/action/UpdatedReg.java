@@ -13,6 +13,11 @@ import com.cjc.model.RegForm;
 
 public class UpdatedReg extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void updatedAction(HttpServletRequest request, HttpServletResponse response) {
 	
 		String id = request.getParameter("r");
@@ -53,7 +58,7 @@ public class UpdatedReg extends HttpServlet {
 		int i=d.UpdateRegDetails(r);
 		System.out.println(i+" Recort Updated");
 		
-			ArrayList al = d.GetLoginDetails();
+			ArrayList<?> al = d.GetLoginDetails();
 			request.setAttribute("data", al);
 			rd = request.getRequestDispatcher("Success.jsp");
 			try {

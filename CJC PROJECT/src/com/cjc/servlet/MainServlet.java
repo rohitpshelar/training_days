@@ -16,6 +16,11 @@ import com.cjc.action.UpdatedReg;
 
 public class MainServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	DeleteReg deleteReg;
 
 	LoginServlet loginServlet;

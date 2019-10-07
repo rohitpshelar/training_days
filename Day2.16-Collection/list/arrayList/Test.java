@@ -87,14 +87,14 @@ public class Test {
 		System.out.println("Country==" + arl);
 		Iterator<ArrayList<ArrayList<String>>> country = arl.iterator();
 		while (country.hasNext()) {
-			ArrayList state = country.next();
+			ArrayList<?> state = country.next();
 			System.out.println("");
 			System.out.println("State==" + state);
-			Iterator statei = state.iterator();
+			Iterator<?> statei = state.iterator();
 			while (statei.hasNext()) {
-				ArrayList city = (ArrayList) statei.next();
+				ArrayList<?> city = (ArrayList<?>) statei.next();
 				System.out.println("City==" + city);
-				Iterator cityi = city.iterator();
+				Iterator<?> cityi = city.iterator();
 				while (cityi.hasNext()) {
 					String citys = (String) cityi.next();
 					System.out.println(citys);

@@ -32,7 +32,7 @@ public void LoginAction(HttpServletRequest request, HttpServletResponse response
 		if(uname.equals("admin") && pwd.equals("admin"))
 		{
 			System.out.println("inside admin");
-		ArrayList al = d.GetLoginDetails();
+		ArrayList<?> al = d.GetLoginDetails();
 		request.setAttribute("data", al);
 		rd = request.getRequestDispatcher("Success.jsp");
 		
@@ -54,7 +54,7 @@ public void LoginAction(HttpServletRequest request, HttpServletResponse response
 
 				
 				if (uname.equals(rs.getString(1)) && pwd.equals(rs.getString(2))) {
-					ArrayList al = d.GetLoginDetailsSpecific(uname, pwd);
+					ArrayList<?> al = d.GetLoginDetailsSpecific(uname, pwd);
 					request.setAttribute("data", al);
 					rd = request.getRequestDispatcher("Success.jsp");
 					rd.forward(request, response);

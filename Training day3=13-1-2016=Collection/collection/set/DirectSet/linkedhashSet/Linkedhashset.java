@@ -1,10 +1,8 @@
 package collection.set.DirectSet.linkedhashSet;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 
 public class Linkedhashset {
 
@@ -38,17 +36,17 @@ public class Linkedhashset {
 		country.add(usa);
 
 		System.out.println("USING HASHSET");
-		Iterator itr = country.iterator();
+		Iterator<ArrayList<ArrayList<String>>> itr = country.iterator();
 		while (itr.hasNext()) {
-			ArrayList hi = (ArrayList) itr.next();
-			LinkedHashSet hs = new LinkedHashSet(hi);
+			ArrayList<?> hi = (ArrayList<?>) itr.next();
+			LinkedHashSet<?> hs = new LinkedHashSet<Object>(hi);
 			System.out.println("State==" + hs);
-			Iterator itr1 = hs.iterator();
+			Iterator<?> itr1 = hs.iterator();
 			while (itr1.hasNext()) {
-				ArrayList hi1 = (ArrayList) itr1.next();
-				LinkedHashSet hs1 = new LinkedHashSet(hi1);
+				ArrayList<?> hi1 = (ArrayList<?>) itr1.next();
+				LinkedHashSet<?> hs1 = new LinkedHashSet<Object>(hi1);
 				System.out.println("City" + hs1);
-				Iterator itr2 = hs1.iterator();
+				Iterator<?> itr2 = hs1.iterator();
 				while (itr2.hasNext()) {
 					String hi2 = (String) itr2.next();
 					System.out.println("City=====" + hi2);
