@@ -15,14 +15,14 @@
 <%
 
 
- ArrayList al=(ArrayList) request.getAttribute("data");
+ ArrayList<String> al=(ArrayList<String>) request.getAttribute("data");
  
- for()
+ for(String s:al)
  {
  %>
 
 <td>
-<%= r.%>
+<%= s%>
 
 <%} %>
 </table>
