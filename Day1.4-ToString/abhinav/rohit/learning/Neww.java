@@ -29,7 +29,7 @@ public class Neww {
 		System.out.println("rollNO is : " + input );// rollno is +a
 
 		input = s.toString();
-		
+		s.close();
 		System.out.println(n);
 	}
 

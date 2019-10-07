@@ -2,7 +2,7 @@ package creationalDesignPatterns.factoryMethodPattern;
 
 import java.io.*;
 
-class main {
+class maind {
 	public static void main(String args[]) throws IOException {
 		GetPlanFactory planFactory = new GetPlanFactory();
 

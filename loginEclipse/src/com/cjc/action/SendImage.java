@@ -103,6 +103,7 @@ public class SendImage extends javax.servlet.http.HttpServlet implements
 		try {
 			FileInputStream in = new FileInputStream(fileLocation);
 			in.read(result);
+			in.close();
 		} catch (Exception ex) {
 			System.out.println("GET IMAGE PROBLEM :: " + ex);
 			ex.printStackTrace();

@@ -21,6 +21,7 @@ public class Test {
 		System.out.println(" In Tower of Hanoi ---Enter No. of disk:");
 		java.util.Scanner s=new java.util.Scanner(System.in);
 		int n=Integer.parseInt(s.next());
+		s.close();
 		Test t = new Test();
 		t.m1(n, "a", "b", "c");
 		t.count++;

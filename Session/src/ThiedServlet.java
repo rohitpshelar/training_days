@@ -27,7 +27,7 @@ public class ThiedServlet extends HttpServlet{
 			request.getSession();
 			
 		}
-		if(session==null){
+		if(session!=null){
 			RequestDispatcher rd=request.getRequestDispatcher("first.jsp");
 			rd.forward(request, response);
 		}

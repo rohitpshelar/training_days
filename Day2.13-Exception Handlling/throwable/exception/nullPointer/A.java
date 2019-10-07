@@ -7,6 +7,7 @@ public class A {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String a = scanner.nextLine();
+		scanner.close();
 		try {
 			System.out.println("try ===start");
 			String s = a;

@@ -85,6 +85,7 @@ public class Dao implements IDao{
 	}
 	FileOutputStream fs;
 	OutputStream fo;
+	private ServletConfig config;
 	public ArrayList<RegForm> GetLoginDetails(int id) 
 	{
 		String file="C:/a.jpg"; 
@@ -113,7 +114,7 @@ public class Dao implements IDao{
 				r.setUname(rs.getString(8));
 				r.setPass(rs.getString(9));
 			
-				ServletConfig config = null;
+				config = null;
 				String fileOutput= config.getServletContext().getRealPath("/")+"DBimages\\"+rs.getString(8)+".jpg";
 				String ShowFrom="DBimages/"+rs.getString(8)+".jpg";
 			    InputStream in = rs.getBinaryStream("photo");

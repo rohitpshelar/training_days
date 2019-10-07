@@ -16,7 +16,7 @@ public class A {
 			System.out.println("Enter No:_____");
 			Scanner scanner = new Scanner(System.in);
 			String s = scanner.nextLine();
-
+scanner.close();
 			int i = Integer.parseInt(s);
 
 			a = 10 / i;

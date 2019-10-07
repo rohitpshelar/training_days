@@ -25,7 +25,7 @@ public class RegServlet {
 	
 		
 System.out.println("PHOTO======"+photo);
-		if (lang == null) {
+		if (lang != null) {
 			lang[0] = null;
 		}
 		String lang2 = "";
