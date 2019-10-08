@@ -6,4 +6,6 @@ public interface I {
 		System.out.println("M1 from I");
 		
 	}
+	
+	void m2();
 }

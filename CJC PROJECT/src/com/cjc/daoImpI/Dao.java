@@ -26,7 +26,7 @@ public class Dao implements IDao{
 	int n=0;
 	try {
 		
-		String query="INSERT INTO `cjc_project`.`reg` (`fname`, `lname`, `pw`,`email`) VALUES ('"+s.getFname()+"', '"+s.getLname()+"','"+s.getPass()+"','"+s.getEmail()+"');";
+		String query="INSERT INTO `reg` (`fname`, `lname`, `pw`,`email`) VALUES ('"+s.getFname()+"', '"+s.getLname()+"','"+s.getPass()+"','"+s.getEmail()+"');";
 		System.out.println(query);	
 		
 		
@@ -53,7 +53,7 @@ public class Dao implements IDao{
 	int n=0;
 	try {
 		
-		String query="INSERT INTO `cjc_project`.`reg` (`fname`, `lname`,`gender`,`qual`, `adds`,`lang`, `uname`, `pw`,`photo`,`email`) VALUES ('"+s.getFname()+"', '"+s.getLname()+"','"+s.getGender()+"','"+s.getQual()+"', '"+s.getAdder()+"','"+s.getLang()+"', '"+s.getUname()+"', '"+s.getPass()+"',LOAD_FILE(?), '"+s.getEmail()+"');";
+		String query="INSERT INTO `reg` (`fname`, `lname`,`gender`,`qual`, `adds`,`lang`, `uname`, `pw`,`photo`,`email`) VALUES ('"+s.getFname()+"', '"+s.getLname()+"','"+s.getGender()+"','"+s.getQual()+"', '"+s.getAdder()+"','"+s.getLang()+"', '"+s.getUname()+"', '"+s.getPass()+"',LOAD_FILE(?), '"+s.getEmail()+"');";
 		System.out.println(query);	
 		
 		
@@ -76,7 +76,7 @@ public class Dao implements IDao{
 	
 	public int UpdateRegDetails(RegForm s) 
 	{
-		String query="UPDATE `cjc_project`.`reg` SET `fname` = '"+ s.getFname() + "' ,`lname` = '" + s.getLname()+ "' ,`gender` = '" + s.getGender() + "' ,`qual` = '"+ s.getQual() + "' ,`adds` = '" + s.getAdder()+ "' ,`lang` = '" + s.getLang() + "' ,`uname` = '"+ s.getUname() + "' ,`pw` = '" + s.getPass() + "',`email` = '" + s.getEmail() + "' WHERE `id` = '"+ s.getRegid() + "'";
+		String query="UPDATE `reg` SET `fname` = '"+ s.getFname() + "' ,`lname` = '" + s.getLname()+ "' ,`gender` = '" + s.getGender() + "' ,`qual` = '"+ s.getQual() + "' ,`adds` = '" + s.getAdder()+ "' ,`lang` = '" + s.getLang() + "' ,`uname` = '"+ s.getUname() + "' ,`pw` = '" + s.getPass() + "',`email` = '" + s.getEmail() + "' WHERE `id` = '"+ s.getRegid() + "'";
 		System.out.println(query);
 		int n=DatabaseServlet.ExecuteUpdate(query);
 		return n;
@@ -84,7 +84,7 @@ public class Dao implements IDao{
 	
 	public int UpdateEmailPassword(String email,String pw) 
 	{
-		String query="UPDATE `cjc_project`.`reg` SET `pw` = '" + pw + "' WHERE `email` = '" + email + "' ";
+		String query="UPDATE `reg` SET `pw` = '" + pw + "' WHERE `email` = '" + email + "' ";
 		System.out.println(query);
 		int n=DatabaseServlet.ExecuteUpdate(query);
 		return n;
@@ -92,7 +92,7 @@ public class Dao implements IDao{
 	
 	public int DeleteReg(int id) 
 	{
-		String query="DELETE FROM `cjc_project`.`reg` WHERE `id` = '"+id+"'";
+		String query="DELETE FROM `reg` WHERE `id` = '"+id+"'";
 		System.out.println(query);		
 		int n=DatabaseServlet.ExecuteUpdate(query);		
 		return n;
@@ -101,7 +101,7 @@ public class Dao implements IDao{
 	public ResultSet GetLoginDetails(String un,String pw) 
 	{
 		System.out.println(un+pw);
-		String query="SELECT `uname`,`pw` FROM `cjc_project`.`reg` WHERE uname='"+un+"' and pw='"+pw+"'" ;			
+		String query="SELECT `uname`,`pw` FROM `reg` WHERE uname='"+un+"' and pw='"+pw+"'" ;			
 		ResultSet rs=DatabaseServlet.ExecuteQuery(query);	
 		System.out.println("out of dao GetLoginDetails");
 		System.out.println(rs);
@@ -110,23 +110,24 @@ public class Dao implements IDao{
 	
 	public ResultSet CheckEmail(String Emailcheck) 
 	{
-		String query="SELECT `email` FROM `cjc_project`.`reg` where email='"+Emailcheck+"' " ;			
+		String query="SELECT `email` FROM `reg` where email='"+Emailcheck+"' " ;			
 		ResultSet rs=DatabaseServlet.ExecuteQuery(query);		
 		return rs;
 	}
 	
 	public ResultSet GetLoginDetails(String id) 
 	{		
-		String query="SELECT * FROM `cjc_project`.`reg` WHERE `id` = '"+id+"' LIMIT 0, 30";		
+		String query="SELECT * FROM `reg` WHERE `id` = '"+id+"' LIMIT 0, 30";		
 		ResultSet rs=DatabaseServlet.ExecuteQuery(query);		
 		return rs;
 	}
 	FileOutputStream fs;
 	OutputStream fo;
+	 int i;
 	public ArrayList<RegForm> GetLoginDetails(int id) 
 	{
 		String file="C:/a.jpg"; 
-		int i=0;
+		i=0;
 		try {
 			fs = new FileOutputStream(file);
 		} catch (FileNotFoundException e1) {
@@ -134,7 +135,7 @@ public class Dao implements IDao{
 			e1.printStackTrace();
 		}
 		
-		String query="SELECT * FROM `cjc_project`.`reg` WHERE `id` = '"+id+"' LIMIT 0, 30";		
+		String query="SELECT * FROM `reg` WHERE `id` = '"+id+"' LIMIT 0, 30";		
 		ResultSet rs=DatabaseServlet.ExecuteQuery(query);		
 		ArrayList<RegForm> al = new ArrayList<RegForm>();
 		try {
@@ -182,9 +183,9 @@ public class Dao implements IDao{
 
 	public ArrayList<RegForm> GetLoginDetails() 
 	{
-		int i=0;
+		i=0;
 		System.out.println("inside GetLoginDetails");
-		String query="SELECT * FROM `cjc_project`.`reg`" ;			
+		String query="SELECT * FROM `reg`" ;			
 		ResultSet rs=DatabaseServlet.ExecuteQuery(query);		
 		ArrayList<RegForm> al = new ArrayList<RegForm>();
 		
@@ -242,8 +243,8 @@ public class Dao implements IDao{
 	}
 	public ArrayList<RegForm> GetLoginDetailsSpecific(String un,String pw) 
 	{
-		int i=0;
-		String query="SELECT * FROM `cjc_project`.`reg`  WHERE uname='"+un+"' and pw='"+pw+"'" ;			
+		i = 0;
+		String query="SELECT * FROM `reg`  WHERE uname='"+un+"' and pw='"+pw+"'" ;			
 		ResultSet rs=DatabaseServlet.ExecuteQuery(query);		
 		ArrayList<RegForm> al = new ArrayList<RegForm>();
 	
