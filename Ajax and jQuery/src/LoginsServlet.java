@@ -20,6 +20,6 @@ protected void doPost(HttpServletRequest req, HttpServletResponse response) thro
 	response.getWriter().write("Success");
 }
 	public static void main(String[] args) {
-		LoginsServlet l = new LoginsServlet();
+		new LoginsServlet();
 	}
 }

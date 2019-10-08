@@ -5,9 +5,9 @@ import java.sql.*;
 public class DatabaseConnection {
 	
 	public static String name = "com.mysql.jdbc.Driver";
-	public static String un_pw = "root";
-
-	public static String url = "jdbc:mysql://localhost:3306/ajax";
+	public static String un = "root";
+	public static String pw = "southampton6835";
+	public static String url = "jdbc:mysql://localhost:3310/ajax";
 	public static Connection con;
 	public static ResultSet rs;
 	public static PreparedStatement ps;
@@ -15,7 +15,7 @@ public class DatabaseConnection {
 	public static Connection getConnection() {
 		try {
 			Class.forName(name);
-			con = (Connection) DriverManager.getConnection(url, un_pw, un_pw);
+			con = (Connection) DriverManager.getConnection(url, un, pw);
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

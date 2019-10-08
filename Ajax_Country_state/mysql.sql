@@ -1,5 +1,5 @@
 
-USE `rohitshe_country`;
+USE `ajax`;
 
 /*Table structure for table `city` */
 

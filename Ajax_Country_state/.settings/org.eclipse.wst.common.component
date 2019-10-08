@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Ajax_Country_state">
+    <wb-module deploy-name="Xproject - Ajax_Country_state">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Ajax_Country_state"/>
-        <property name="java-output-path" value="/Ajax_Country_state/build/classes"/>
+        <property name="java-output-path" value="/Xproject - Ajax_Country_state/build/classes"/>
+        <property name="context-root" value="Xproject - Ajax_Country_state"/>
     </wb-module>
 </project-modules>
