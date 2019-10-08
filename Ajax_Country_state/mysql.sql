@@ -1,3 +1,4 @@
+CREATE SCHEMA `ajax` ;
 
 USE `ajax`;
 

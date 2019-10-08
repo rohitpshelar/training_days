@@ -15,7 +15,17 @@ public class Anonymous implements I {
 
 	public void m1() {
 		System.out.println("Anonymous ====m1");
+	}
 
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void m3() {
+		System.out.println("a==M3");
+		I.super.m3();
 	}
 
 	public static void main(String[] args) {
@@ -41,14 +51,4 @@ public class Anonymous implements I {
 		I.m2();
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void m3() {
-		System.out.println("a==M3");
-		I.super.m3();
-	}
 }

@@ -1,0 +1,10 @@
+CREATE SCHEMA `servletcurd` ;
+
+USE `servletcurd`;
+
+CREATE TABLE `servletcurd`.`student` (
+  `STUDENTID` INT NOT NULL,
+  `NAME` VARCHAR(45) NULL,
+  `DEPARTMENT` VARCHAR(45) NULL,
+  `EMAIL` VARCHAR(45) NULL,
+  PRIMARY KEY (`STUDENTID`));
