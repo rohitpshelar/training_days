@@ -16,7 +16,7 @@ public class MethodWithoutObject2 {
 
 	public static void main(String[] args) {
 
-	//	Rohit.out.println("Chetan");
+	//	Rohit.out.println("Sachin");
 		
 		System.out.println("main");
 		m2();
