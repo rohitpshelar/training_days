@@ -11,13 +11,20 @@ public class Test {
 		Student r = new Student();
 		r.name = "Rohit";
 		r.rollno = 1;
-
+		al.add(r);
+		
+		Student zd = new Student();
+		zd.name = "Zen";
+		zd.rollno = 9;
+		al.add(zd);
+		
 		Student d = new Student();
 		d.name = "Don";
 		d.rollno = 6;
-
-		al.add(r);
 		al.add(d);
+		
+
+		
 		return al;
 	}
 
