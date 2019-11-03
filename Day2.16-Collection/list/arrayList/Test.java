@@ -109,15 +109,5 @@ public class Test {
 
 			}
 		}
-
-		/*
-		 * System.out.println(""); System.out.println("String &
-		 * Integer==iterator"); ArrayList isa = new ArrayList(); isa.add(3);
-		 * isa.add(2); isa.add("rohit"); isa.add("Don"); isa.add("mad");
-		 * Iterator sii = isa.iterator(); while (sii.hasNext()) { if (sii
-		 * instanceof String) { String stringi = (String) sii.next();
-		 * System.out.println(stringi); } }
-		 */
-
 	}
 }

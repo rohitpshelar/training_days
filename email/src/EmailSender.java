@@ -1,24 +1,15 @@
 
 
 
-	import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+	import java.util.*;
+	import javax.mail.*;
+	import javax.mail.internet.*;
+import javax.activation.*;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 	public class EmailSender extends ActionSupport {
 		
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
 		String emailid;
 		String email;
 		String subject;
@@ -37,19 +28,16 @@ import com.opensymphony.xwork2.ActionSupport;
 		public void setEmailid(String emailid) {
 			this.emailid = emailid;
 		}
-public static void main(String[] args) {
-	EmailSender e = new EmailSender();
-	
-	for(int i=1;i<1000;i++){
-		e.execute();	
-	}
-	
-}
+
 	public String execute() {
-		 
-	      String to = "rohit.shelar@riomed.com";
-	      final String username = "Niteen.dhobale3@gmail.Com";
-	      final String password = "sexyvboabrgkjngx";
+		
+	
+	       
+	      String to = emailid;
+
+	      //String from = "gurunn3@gmail.com";
+	      final String username = "chetanmangade20@gmail.com";
+	      final String password = "kwzkyvsuschylaix";
 	 
 			Properties properties = new Properties();
 			properties.put("mail.smtp.auth", "true");
@@ -61,15 +49,22 @@ public static void main(String[] args) {
 			  new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(username, password);
-				}});
+				}
+			  });
 	      //............................................................
 	      
 	      try{
 	         MimeMessage message = new MimeMessage(session);
-	         message.setFrom(new InternetAddress(to));
-	         message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
-	         message.setSubject("Your Password : "+subject);
-	         message.setText("hello");
+
+	        // message.setFrom(new InternetAddress(from));
+
+	         message.addRecipient(Message.RecipientType.TO,
+	                                  new InternetAddress(to));
+
+	         message.setSubject(subject);
+
+	         message.setText(email);
+//sending msg
 	         Transport.send(message);
 	         System.out.println("Sent message successfully....");
 	         return "success";
