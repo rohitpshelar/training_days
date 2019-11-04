@@ -1,11 +1,12 @@
 package com.spring.learn;
 
-import org.springframework.beans.factory.BeanFactory;
+import org.apache.naming.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 import com.spring.ConnectiorInterface;
+
+import jdk.internal.loader.Resource;
 
 public class CallingClass {
 	public static void main(String[] args) {
