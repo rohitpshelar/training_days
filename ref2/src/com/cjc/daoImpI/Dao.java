@@ -120,7 +120,7 @@ public class Dao implements IDao{
 				r.setUname(rs.getString(8));
 				r.setPass(rs.getString(9));
 			
-				String fileOutput="C:/Users/ROHIT SHELAR/Myeclipse/Login With folder N templet=photo/WebRoot/DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
+				String fileOutput="G:/"+rs.getString(2)+rs.getString(3)+".jpg";
 				String ShowFrom="DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
 			    InputStream in = rs.getBinaryStream("photo");
                  fs = new FileOutputStream(new File(fileOutput));   
@@ -189,7 +189,7 @@ public class Dao implements IDao{
 				Blob b=rs.getBlob(10);
 				byte bb[]=b.getBytes(1, (int)b.length());
 				fs.write(bb);*/
-				String fileOutput="C:/Users/ROHIT SHELAR/Myeclipse/Login With folder N templet=photo/WebRoot/DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
+				String fileOutput="D:/Repository/training_days/Login With folder N templet=photo/WebRoot/DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
 				String ShowFrom="DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
 			    InputStream in = rs.getBinaryStream("photo");
                  fs = new FileOutputStream(new File(fileOutput));   
@@ -246,7 +246,7 @@ public class Dao implements IDao{
 				r.setUname(rs.getString(8));
 				r.setPass(rs.getString(9));
 				
-				String fileOutput="C:/Users/ROHIT SHELAR/Myeclipse/Login With folder N templet=photo/WebRoot/DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
+				String fileOutput="D:/Repository/training_days/Login With folder N templet=photo/WebRoot/DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
 				String ShowFrom="DBimages/"+rs.getString(2)+rs.getString(3)+".jpg";
 			    InputStream in = rs.getBinaryStream("photo");
                  fs = new FileOutputStream(new File(fileOutput));   

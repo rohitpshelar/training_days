@@ -13,9 +13,9 @@ public class DatabaseServlet  {
 		private static Connection con=null;
 		private static ResultSet rs=null;
 		private static String Driver="com.mysql.jdbc.Driver";
-		private static String URL="jdbc:mysql://localhost:3306/login";
+		private static String URL="jdbc:mysql://localhost:3310/login";
 		private static String UserNAme="root";
-		private static String Pass="root";
+		private static String Pass="southampton6835";
 		private static PreparedStatement pst=null;
 		
 		public static Connection GetConnection()

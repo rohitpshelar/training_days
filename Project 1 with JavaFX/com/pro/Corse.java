@@ -17,7 +17,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import com.mysql.jdbc.Statement;
 
 
 
@@ -229,7 +228,7 @@ static String howmany;
 		layout.getChildren().add(label2);
 		try{
 		ConnectionProject connectionProject=new ConnectionProject();
-		 con=ConnectionProject.connectionProjectMethod();
+		 con=connectionProject.connectionProjectMethod();
 		String sql="SELECT * FROM `project`.`course` LIMIT 0, 30; ";
 		PreparedStatement ps=con.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
