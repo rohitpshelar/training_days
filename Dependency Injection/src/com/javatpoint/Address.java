@@ -12,7 +12,13 @@ public Address(String city, String state, String country) {
 	this.country = country;
 }
 
-public String toString(){
-	return city+" "+state+" "+country;
+@Override
+public String toString() {
+	return " {\n\t \"Address\" : { \n\t\t\"city \" : \"" + city + "\",\n\t\t\"state \" : \"" + state
+			+ "\",\n\t\t\"country \" : \"" + country + "\" \n}\n}";
 }
+
+
+
+
 }

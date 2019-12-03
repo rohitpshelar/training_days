@@ -28,8 +28,8 @@
 </bean>
 -->
 <bean id="a1" class="com.javatpoint.Address">
-<constructor-arg value="Maharashtra"></constructor-arg>
 <constructor-arg value="Pune"></constructor-arg>
+<constructor-arg value="Maharashtra"></constructor-arg>
 <constructor-arg value="India"></constructor-arg>
 </bean>
 

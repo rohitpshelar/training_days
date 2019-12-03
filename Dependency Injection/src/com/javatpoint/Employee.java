@@ -24,8 +24,15 @@ public Employee(int id, String name, Address address) {
 }
 
 void show(){
-	System.out.println(id+" "+name);
-	System.out.println(address.toString());
+	System.out.println(toString());
 }
+
+@Override
+public String toString() {
+	return " {\n\t \"Employee\" : { \n\t\t\"id \" : \"" + id + "\",\n\t\t\"name \" : \"" + name
+			+ "\",\n\t\t\"address \" : \"" + address + "\" \n}\n}";
+}
+
+
 
 }
