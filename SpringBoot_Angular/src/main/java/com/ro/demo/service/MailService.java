@@ -7,7 +7,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import com.ro.demo.exceptions.SpringredditException;
+import com.ro.demo.exceptions.SpringRedditException;
 import com.ro.demo.model.NotificationEmail;
 
 import lombok.AllArgsConstructor;
@@ -35,7 +35,7 @@ public class MailService {
 			mailSender.send(messagePreparator);
 			log.info("Mail sent");
 		} catch (MailException e) {
-			throw new SpringredditException("Exception in mail" +notificationEmail.getRecipient());
+			throw new SpringRedditException("Exception in mail" +notificationEmail.getRecipient());
 		}
 
 	}

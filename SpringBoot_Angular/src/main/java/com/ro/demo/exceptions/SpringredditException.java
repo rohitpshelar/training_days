@@ -1,11 +1,15 @@
 package com.ro.demo.exceptions;
 
-public class SpringredditException extends RuntimeException {
+public class SpringRedditException extends RuntimeException {
 	
-	public SpringredditException(String exMessage) {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public SpringRedditException(String exMessage) {
 		super(exMessage);
 	}
-	public SpringredditException(String exMessage, Exception e) {
+	public SpringRedditException(String exMessage, Exception e) {
 		super(exMessage);
 	}
 }

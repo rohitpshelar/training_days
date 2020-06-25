@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ro.demo.exceptions.SpringredditException;
+import com.ro.demo.exceptions.SpringRedditException;
 import com.ro.demo.model.User;
 import com.ro.demo.repository.UserRepository;
 
@@ -30,10 +30,10 @@ public class UserDetailsServiceIMPL implements UserDetailsService{
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<User> optional = userRepository.findByUsername(username);
-		User user = optional.orElseThrow(() -> new SpringredditException("User not found"));
+		User user = optional.orElseThrow(() -> new SpringRedditException("User not found"));
 		
 		// TODO learn org.springframework.security.core.userdetails.User
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.isEnable(), true, true, true, getAuthorities("USER"));
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, getAuthorities("USER"));
 	}
 
 	private Collection<? extends GrantedAuthority> getAuthorities(String role) {
