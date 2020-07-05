@@ -34,5 +34,10 @@ public class ModuleService {
 	public List<ModuleDto> getModules() {
 		return moduleRepository.findAll().stream().map(moduleMapper::moduleToDto).collect(toList());
 	}
+	
+	@Transactional(readOnly = true)
+	public List<ModuleDto> getModules(Long id) {
+		return moduleRepository.findById(id).stream().map(moduleMapper::moduleToDto).collect(toList());
+	}
 
 }

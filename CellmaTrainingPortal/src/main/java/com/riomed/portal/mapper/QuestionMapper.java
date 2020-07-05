@@ -10,10 +10,10 @@ import com.riomed.portal.model.User;
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
 
-	QuestionDto QuestionToDto(Question question);
+	QuestionDto questionToDto(Question question);
 
 	@Mapping(target = "queCreated", expression = "java(java.time.Instant.now())")
 	@Mapping(target = "queCreatedBy", source = "user.username")
-	Question DtoToQuestion(QuestionDto questionDto, User user);
+	Question dtoToQuestion(QuestionDto questionDto, User user);
 
 }

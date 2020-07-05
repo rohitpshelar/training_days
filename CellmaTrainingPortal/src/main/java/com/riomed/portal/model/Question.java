@@ -24,7 +24,7 @@ public class Question {
 	@NotBlank(message = "Question text is required")
 	private String queText;
 	@NotBlank(message = "Question type is required, like : select, select+image,text, etc.")
-	private String Type;
+	private String queType;
 	@NotBlank(message = "Question Module Id is required")
 	private Long queModId;
 	private boolean queMandatory;

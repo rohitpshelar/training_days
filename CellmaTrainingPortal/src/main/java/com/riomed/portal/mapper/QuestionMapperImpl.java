@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-30T09:17:45+0530",
+    date = "2020-07-05T20:23:30+0530",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
 )
 @Component
 public class QuestionMapperImpl implements QuestionMapper {
 
     @Override
-    public QuestionDto QuestionToDto(Question question) {
+    public QuestionDto questionToDto(Question question) {
         if ( question == null ) {
             return null;
         }
@@ -24,14 +24,16 @@ public class QuestionMapperImpl implements QuestionMapper {
 
         questionDto.setQueId( question.getQueId() );
         questionDto.setQueText( question.getQueText() );
-        questionDto.setType( question.getType() );
+        questionDto.setQueType( question.getQueType() );
         questionDto.setQueModId( question.getQueModId() );
+        questionDto.setQueMandatory( question.isQueMandatory() );
+        questionDto.setQueStatus( question.getQueStatus() );
 
         return questionDto;
     }
 
     @Override
-    public Question DtoToQuestion(QuestionDto questionDto, User user) {
+    public Question dtoToQuestion(QuestionDto questionDto, User user) {
         if ( questionDto == null && user == null ) {
             return null;
         }
@@ -41,8 +43,10 @@ public class QuestionMapperImpl implements QuestionMapper {
         if ( questionDto != null ) {
             question.setQueId( questionDto.getQueId() );
             question.setQueText( questionDto.getQueText() );
-            question.setType( questionDto.getType() );
+            question.setQueType( questionDto.getQueType() );
             question.setQueModId( questionDto.getQueModId() );
+            question.setQueMandatory( questionDto.isQueMandatory() );
+            question.setQueStatus( questionDto.getQueStatus() );
         }
         if ( user != null ) {
             question.setQueCreatedBy( user.getUsername() );

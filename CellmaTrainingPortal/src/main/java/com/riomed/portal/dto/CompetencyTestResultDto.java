@@ -10,20 +10,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class QuestionDto {
+public class CompetencyTestResultDto {
 	
-	private Long queId;
-	private String queText;
-	private String queType;
-	private Long queModId;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private boolean queMandatory;
-	private List<QuestionOptionDto> questionOptionDtos;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private String queStatus;
+	private Long ctrId;
 	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String ctrUsername;
+	private String ctrModCode;
+	
+	private Long ctrModId;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Long ctrModQuestionLimit;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Long ctrPercentageScore;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String ctrResult;
+	
+	private List<QuestionDto> questionDtos;
+
 }

@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.riomed.portal.dto.QuestionDto;
 import com.riomed.portal.dto.QuestionOptionDto;
 import com.riomed.portal.exceptions.ModuleNotFoundException;
-import com.riomed.portal.mapper.OptionMapper;
 import com.riomed.portal.mapper.QuestionMapper;
+import com.riomed.portal.mapper.QuestionOptionMapper;
 import com.riomed.portal.model.Module;
 import com.riomed.portal.model.Question;
 import com.riomed.portal.repository.ModuleRepository;
@@ -32,18 +32,20 @@ public class QuestionService {
 	//private QuestionService questionService;
 	
 	private QuestionOptionRepository questionOptionRepository;
-	private OptionMapper optionMapper;
+	private QuestionOptionMapper questionOptionMapper;
 	private AuthService authService;
 
 	public QuestionDto saveQuestion(QuestionDto questionDto) {
 		questionDto.setQueStatus("Approved");
-		Question question = questionRepository.save(questionMapper.DtoToQuestion(questionDto, authService.getCurrentUser()));
+		Question question = questionRepository.save(questionMapper.dtoToQuestion(questionDto, authService.getCurrentUser()));
 		questionDto.setQueId(question.getQueId());
 		return questionDto;
 	}
 
 	public List<QuestionDto> getQuestionsByQueModId(Long queModId) {
-		return getQuestionByQueModId(queModId);
+		Module module = moduleRepository.findById(queModId)
+				.orElseThrow(() -> new ModuleNotFoundException("queModId not found for " + queModId));
+		return getQuestionByQueModId(module);
 	}
 	
 	public List<QuestionDto> getQuestions( ) {
@@ -52,24 +54,20 @@ public class QuestionService {
 
 	@Transactional(readOnly = true)
 	private List<QuestionDto> getAll() {
-		List<QuestionDto> questionDtos =  questionRepository.findAll().stream().map(questionMapper::QuestionToDto).collect(toList());
+		List<QuestionDto> questionDtos =  questionRepository.findAll().stream().map(questionMapper::questionToDto).collect(toList());
 		List<QuestionDto> questionDtoss = updateQuestions(questionDtos);
 		return questionDtoss;
 	}
 
 	@Transactional(readOnly = true)
-	private List<QuestionDto> getQuestionByQueModId(Long queModId) {
-		Module module = moduleRepository.findById(queModId)
-				.orElseThrow(() -> new ModuleNotFoundException("queModId not found for " + queModId));
+	public List<QuestionDto> getQuestionByQueModId(Module module) {
 		List<Question> questionlist = questionRepository.findQuestionByQueModId(module.getModId());
-		List<QuestionDto> questionDtos =  questionlist.stream().map(questionMapper::QuestionToDto).collect(toList());
-		//List<QuestionDto> questionDtoss =  questionDtos.stream().map(this::mapOptionToQuestion).collect(toList());
+		List<QuestionDto> questionDtos =  questionlist.stream().map(questionMapper::questionToDto).collect(toList());
 		List<QuestionDto> questionDtoss = updateQuestions(questionDtos);
-		
 		return questionDtoss;
 	}
 	
-	private List<QuestionDto>  updateQuestions(List<QuestionDto> questionDtos ) {
+	public List<QuestionDto>  updateQuestions(List<QuestionDto> questionDtos ) {
 		List<QuestionDto> questionDtoss = new ArrayList<QuestionDto>();
 		for (int i = 0; i < questionDtos.size(); i++) {
 			QuestionDto questionDto = questionDtos.get(i);
@@ -82,7 +80,7 @@ public class QuestionService {
 	
 	@Transactional(readOnly = true)
 	public QuestionDto mapOptionToQuestion(QuestionDto questionDto) {
-		List<QuestionOptionDto> questionOptionDtos = questionOptionRepository.findQuestionOptionByoptQueId(questionDto.getQueId()).stream().map(optionMapper::optionToDto).collect(toList());
+		List<QuestionOptionDto> questionOptionDtos = questionOptionRepository.findQuestionOptionByoptQueId(questionDto.getQueId()).stream().map(questionOptionMapper::questionOptionToDto).collect(toList());
 		 questionDto.setQuestionOptionDtos( questionOptionDtos);
 		 return questionDto;
 	}

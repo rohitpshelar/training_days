@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-30T09:17:44+0530",
+    date = "2020-07-05T20:23:29+0530",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
 )
 @Component
-public class OptionMapperImpl implements OptionMapper {
+public class QuestionOptionMapperImpl implements QuestionOptionMapper {
 
     @Override
-    public QuestionOptionDto optionToDto(QuestionOption questionOption) {
+    public QuestionOptionDto questionOptionToDto(QuestionOption questionOption) {
         if ( questionOption == null ) {
             return null;
         }
@@ -26,12 +26,13 @@ public class OptionMapperImpl implements OptionMapper {
         questionOptionDto.setOptText( questionOption.getOptText() );
         questionOptionDto.setOptQueId( questionOption.getOptQueId() );
         questionOptionDto.setOptWeighting( questionOption.getOptWeighting() );
+        questionOptionDto.setOptStatus( questionOption.getOptStatus() );
 
         return questionOptionDto;
     }
 
     @Override
-    public QuestionOption dtoToOption(QuestionOptionDto questionOptionDto, User user) {
+    public QuestionOption dtoToQuestionOption(QuestionOptionDto questionOptionDto, User user) {
         if ( questionOptionDto == null && user == null ) {
             return null;
         }
@@ -43,6 +44,7 @@ public class OptionMapperImpl implements OptionMapper {
             questionOption.setOptText( questionOptionDto.getOptText() );
             questionOption.setOptQueId( questionOptionDto.getOptQueId() );
             questionOption.setOptWeighting( questionOptionDto.getOptWeighting() );
+            questionOption.setOptStatus( questionOptionDto.getOptStatus() );
         }
         if ( user != null ) {
             questionOption.setOptCreatedBy( user.getUsername() );

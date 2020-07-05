@@ -31,5 +31,10 @@ public class Module {
     private String modStatus;
     private Instant modCreated;
     private String modCreatedBy;
+	@NotBlank(message = "Question limit is required")
+	private Long modQuestionLimit;
+	@NotBlank(message = "Weighting Pass Percent is required")
+	private Long modWeightingPassPercent;
+	private boolean modRandomQuestions;
     
 }

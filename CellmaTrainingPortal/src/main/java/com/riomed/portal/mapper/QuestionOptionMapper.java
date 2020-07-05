@@ -7,13 +7,13 @@ import com.riomed.portal.dto.QuestionOptionDto;
 import com.riomed.portal.model.QuestionOption;
 import com.riomed.portal.model.User;
 
-@Mapper
-public interface OptionMapper {
+@Mapper(componentModel = "spring")
+public interface QuestionOptionMapper {
 	
-	QuestionOptionDto optionToDto(QuestionOption  questionOption);
+	QuestionOptionDto questionOptionToDto(QuestionOption  questionOption);
 	
 	@Mapping(target = "optCreated" , expression = "java(java.time.Instant.now())")
 	@Mapping(target = "optCreatedBy", source = "user.username")
-	QuestionOption dtoToOption(QuestionOptionDto questionOptionDto, User user);
+	QuestionOption dtoToQuestionOption(QuestionOptionDto questionOptionDto, User user);
 
 }

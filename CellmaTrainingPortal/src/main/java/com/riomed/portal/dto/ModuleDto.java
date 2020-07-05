@@ -15,5 +15,8 @@ public class ModuleDto {
     private String modName;
     private String modCode;
     private String modStatus;
+    private Long modQuestionLimit;
+	private Long modWeightingPassPercent;
+	private boolean modRandomQuestions;
 
 }

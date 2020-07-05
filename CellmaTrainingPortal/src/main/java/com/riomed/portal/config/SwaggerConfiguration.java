@@ -28,10 +28,10 @@ public class SwaggerConfiguration {
 
 	private ApiInfo getApiInfo() {
 		return new ApiInfoBuilder()
-				.title("Reddit Clone API")
+				.title("Cellma Training Portal")
 				.version("1.0")
 				.description("Description")
-				.contact(new Contact("Rohit Shelar", "http://www.rohitshelar.in", "rohit.p.shelar@gmail.com"))
+				.contact(new Contact("Rohit Shelar", "http://www.cellmatraining.in", "rohit.shelar@riomed.com"))
 				.license("Apache 2.0")
 				.build();
 	}
