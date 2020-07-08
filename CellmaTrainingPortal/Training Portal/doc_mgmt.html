@@ -1,0 +1,713 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cellma Training Portal</title>	<link rel="shortcut icon" href="images\cellma_icon.jpg">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/presentation.css">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script>                                   
+<script src="js/myjquery.js"></script>
+	<script src="x-config.js"></script>
+<script src="js/login.js"></script>
+<script>
+$(document).ready(function(){
+if(sessionStorage.Document_Management != null && sessionStorage.Document_Management != ""){
+$("#warning").html('');
+$("#test").removeClass('disable');
+}});
+</script>
+<script>
+function returnScore() {
+    alert("Your score is " + getScore() + "/10");
+}
+function msg()
+{
+	alert("Thank you for giving your feedback !");
+}
+
+function selectOnlyThis(id) {
+    for (var i = 1;i <= 4; i++)
+    {
+        document.getElementById(i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+}
+ </script>
+ <script>
+$(document).ready(function(){
+    $('input:checkbox').click(function() {
+        $('input:checkbox').not(this).prop('checked', false);
+    });
+});
+</script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+ <style>
+ ol li {
+  counter-increment: list;
+  list-style-type: none;
+  position: relative;
+}
+ol li:before {
+  color: black;
+  content: counter(list) ".";
+  left:-32px;
+  position: absolute;
+  text-align: right;
+  width: 26px;
+  font-weight:bold;
+}
+video {
+    width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      	<span class="sr-only">Toggle navigation</span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+      </button>
+      <a href="index.html" class="navbar-brand" style="cursor:pointer;padding:4px;"><img src="images/riomed 230 x 100 size.png" alt="img" class="img-responsive" width="90px"></a>
+   </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" style="cursor:pointer;">
+      	<li><a href="index.html">Home</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">View<span class="caret"></span></a>
+ <ul class="dropdown-menu">
+           <li id="Patient_Administration_and_Scheduling"><a href="pas.html">Patient Administration and Scheduling</a></li>
+<li id="ePharmacy"><a href="ephar.html">ePharmacy</a> </li>
+<li id="Pathology"><a href="pathology.html">Pathology</a> </li>
+<li id="Imaging"><a href="imaging.html">Imaging</a> </li>
+<li id="Electronic_Patient_Record"><a href="epr.html">Electronic Patient Record</a></li>
+<li id="Ward_and_Bed_management"><a href="ward_bed_mgmt.html">Ward and Bed management</a></li> <li id="Theatre_and_Surgery"><a href="theatre_surgery.html">Theatre and Surgery</a></li> <li id="Communication"><a href="communication.html">Communucation</a></li> <li id="Supplies_and_Inventory_Management"><a href="supplies_inventory.html">Supplies and inventory management</a></li>  <li id="Finance_billing_and_insurance"><a href="finance_billing.html">Finance billing and insurance</a></li>
+<li id="Document_Management"><a href="doc_mgmt.html">Document Management</a></li>
+<li id="Patient_Online_Access"><a href="patient_online_access.html">Patient Online Access</a></li>
+<li id="Business_intelligence_and_reporting"><a href="business_int_reporting.html">Business intelligence and reporting</a></li>
+<li id="Porters"><a href="porters.html">Porters</a></li>
+<li id="Maintenance"><a href="maintenance.html">Maintenance</a></li>
+<li id="Dietetics_and_Kitchen"><a href="dietetic_kitchen.html">Dietetics and Kitchen</a></li>
+          </ul>
+          <!-- <li><a>Feedback</a></li> -->
+          <li><a href="contact_form.html">Contact Us</a></li>
+        </li>
+     <li id="loginFun" style="padding-top: 9px; padding-right: 8px;" >
+ 
+</li>
+<li id="LogoutFun" style="padding-top: 9px; padding-right: 8px;" >
+</li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+
+<!----scroll button ---->
+<button id="scrollBtn"><span class="arrow"></span></button>
+
+<!---Social Icon---->
+<div id="socialIconHide" style="display:block;">
+<button id="facebook" onClick="window.open('https://www.facebook.com/RioMedLtd/')" title="Share this page on facebook"><span class="fa fa-facebook"></span></button>
+<button id="twitter" onClick="window.open('https://twitter.com/RioMed')" title="Share this page on Twitter"><span class="fa fa-twitter"></span></button>
+<button id="linkedin" onClick="window.open('https://www.linkedin.com/company/5013660/')" title="Share this page on linkedin"><span class="fa fa-linkedin"></span></button>
+</div>
+<button id="shareIt" class="btn btn-info btn-xs"><span class="fa fa-share-alt"></span></button>
+
+<!---Contact Form---->
+<div id="contact"><img alt="img" src="images/contact us circle.png"></div>
+
+<!---Contact Form after click---->
+<div id="contactForm" class="container" style="display:none;">
+    <div class="form">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+               <form>
+                <div class="row" style="color:#fff;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" name="UserName" placeholder="UserName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Subject</label>
+                            <input type="text" class="form-control" id="Subject" placeholder="Enter Subject" required="required">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                        	<button type="submit" class="btn btn-primary pull-right">Send Message</button>
+                      </div>
+                       <div class="col-md-12">&nbsp;</div>
+                     </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+    
+<div class="container"><br><br><br></div>
+
+<header>
+<div class="carousel slide" data-ride="carousel">
+	<!-- Wrapper for slides -->
+    <div class="carousel-inner" style="border: 1px solid rgb(221, 221, 221); border-image: none; box-shadow: 0px 8px 7px -7px #999;">
+        <div class="img-responsive" style="width:100%;height: 299px;position:relative;">
+            <div class="bannerImage" style="background-image:url(images/document%20mgt_banner.png);"></div>
+        </div>
+    </div>
+</div>
+</header>
+<!-- / HEADER --> 
+
+<div class="container"><br><br></div>
+<!---Side bar for pregnancy--->
+<div class="container-fluid">
+<div class="col-md-3">
+<div class="nav-side-menu">
+
+<div class="brand">Document Management</div>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content xxx out">
+            <li data-toggle="collapse" data-target="#service" class="" aria-expanded="true">
+              <a>Module Info<span class="glyphicon glyphicon-chevron-right" style="float: right;margin: 10px 13px 0px 0px;"></span></a>
+            </li>  
+            <ul id="service" class="sub-menu collapse" aria-expanded="true">
+                <li onClick="showhide('moduleinfo');"><a>Module Info</a></li>
+                <li onClick="showhide('workflow');"><a>Workflow</a></li>
+            </ul>
+            
+            <li data-toggle="collapse" data-target="#pregnant" class="" aria-expanded="true">
+              <a>Videos for learning<span class="glyphicon glyphicon-chevron-right" style="float: right;margin: 10px 13px 0px 0px;"></span></a>
+            </li>  
+            <ul id="pregnant" class="sub-menu collapse" aria-expanded="true" >
+                <li onClick="showhide('ap');"><a>How to use Document Section</a></li>
+                <li onClick="showhide('mednotes');"><a>How to use Medical Notes Section</a></li>
+            </ul>
+            
+            <li data-toggle="collapse" data-target="#practice" class="" aria-expanded="true">
+              <a>Practice Session<span class="glyphicon glyphicon-chevron-right" style="float: right;margin: 10px 13px 0px 0px;"></span></a>
+            </li>  
+            <ul id="practice" class="sub-menu collapse" aria-expanded="true" >
+                <li onClick="showhide('pract');"><a>Practice Session for Document Management</a></li>
+            </ul>
+            
+            <li data-toggle="collapse" data-target="#assessment" class="" aria-expanded="true">
+              <a>Competency Test<span class="glyphicon glyphicon-chevron-right" style="float: right;margin: 10px 13px 0px 0px;"></span></a>
+            </li>  
+            <ul id="assessment" class="sub-menu collapse" aria-expanded="true" >
+                <li id="toggle_test_page"  onClick="showhide('assesstest');checkTestAccessDMA();"><a>Competency Test Assessment</a></li>
+            </ul>
+            
+            <li data-toggle="collapse" data-target="#feedback" class="" aria-expanded="true">
+              <a>Feedback<span class="glyphicon glyphicon-chevron-right" style="float: right;margin: 10px 13px 0px 0px;"></span></a>
+            </li>  
+            <ul id="feedback" class="sub-menu collapse" aria-expanded="true">
+                <li onClick="showhide('feedbackform');"><a>Feedback Form</a></li> 
+            </ul>
+        </ul>
+      </div>
+   </div>
+</div><!---Closing side bar--->
+
+
+ <!--PAS---->
+<div class="col-md-9">
+<div id="mdif" class="panel panel-success">
+    <div class="panel-heading"> Document Management </div>
+        <div class="panel-body">
+        <p>
+        Cellma's Document Management module helps to move from a paper-based to a paperless environment allowing
+        all patients' case history files to be scanned and uploaded onto the patient's records. Also helps hospitals
+        and clinic staff to have a fully integrated view of the patient's current and past medical history.
+        
+        </p>
+        <br>
+        </div>
+</div>
+
+<div id="moduleinfo" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">Document Management </div>
+        <div class="panel-body">
+            <p>
+        Cellma's Document Management module helps to move from a paper-based to a paperless environment allowing
+        all patients' case history files to be scanned and uploaded onto the patient's records. Also helps hospitals
+        and clinic staff to have a fully integrated view of the patient's current and past medical history.
+        </p>
+      </div>
+ </div>
+<!--Foods to avoid---->
+<div id="ap" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">How to use Document Section </div>
+        <div class="panel-body">
+        <p style="font-size:16px;color:#339900;">
+            </p>
+            <p>
+             You can learn <b>"How to use Document section</b> here.
+             
+            <video  controls controlsList="download" width="700" height="350">
+                   <source src="videos/Document.mp4" type="video/mp4"></source>
+             </video>  
+            </p>
+       </div>
+</div>
+
+<!--Foods to avoid---->
+<div id="mednotes" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">How to use Medical Notes section </div>
+        <div class="panel-body">
+        <p style="font-size:16px;color:#339900;">
+            </p>
+            <p>
+             You can learn <b>"How to use Medical Notes section</b> here.
+             
+            <video  controls controlsList="download" width="700" height="350">
+                   <source src="videos/medical notes.mp4" type="video/mp4"></source>
+             </video>  
+            </p>
+       </div>
+</div>
+
+ <div id="workflow" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">Workflow for Document Management</div>
+        <div class="panel-body">
+                <div class="col-md-12">
+                <div class="box col-md-6">
+                <div><input type="button" id="Document_ManagementGoToLink" class="btn btn-info btn-md" value="Access Workflow" onclick=""></div>                
+                <br>  	
+                <div class="workflowboxstyle"><a>Login with username and password</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Select Patient module from home screen</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Search and select Patient, then select Contact type and go to Patient Summary or add referral and go to patient summary</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Select Document Section from left pane of Patient Summary</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Add Document icon and add a new document</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Add the file type, upload file and category type and description and save it</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>View and edit the document details if required</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Logout</a></div>
+                <br>
+                </div>
+                
+                
+                <!-- div for med-notes workflow -->
+                <div class="box col-md-6">
+                <div><input type="button" id="Medical_Notes_ManagementGoToLink" class="btn btn-info btn-md" value="Access Workflow" onclick=""></div>                
+                <br>  	
+                <div class="workflowboxstyle"><a>Login with username and password</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Select Medical Notes module from home screen</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Find Patient option from Search Request section and then select your Patient for further process</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Add notes option from Notes section from left pane</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Fill in the document location details from the drop down on Case Note page and then click on Add Notes button</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>The added Case notes details will be then displayed</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Checked-in hyperlink to change the status of the document</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Create Batch option from Batch Tasks section which will take you to Show case notes page</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Select date filter, location from drop down and then view it</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Select the "Create Batch For" Location from the drop down, tick the check box and click on Create Batch button.(Make sure that the "Create batch for" location is different than the current notes location)</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>It will then give you an option to transfer the batch. Click on  Transfer hyperlink and then pop-up will generated, click on Confirm the Batch Transfer button to finally transfer the documents</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Accept Batch section from left pane</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Click on Accept hyperlink to accept the batch and then click on Confirm Accept Batch</a></div>
+                <div class="arrow-down"><div class="line"></div><div class="point"></div></div>
+                <div class="workflowboxstyle"><a>Logout</a></div>
+                <br>
+                </div>
+                </div>
+                </div>
+      </div>
+
+ <div id="pract" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">Practice Session</div>
+        <div class="panel-body">
+            <p style="font-size:16px;color:#339900;">
+            <strong>Get practice sessions here.</strong>
+            </p>
+            <p>
+            <a id="Document_ManagementLink" target="_blank" >Click here</a> to practice Document Management module.
+            </p>
+			            <p>
+            <a id="Medical_Notes_ManagementLink" target="_blank" >Click here</a> to practice  Medical Notes Management module.
+            </p>
+      </div>
+ </div>
+ 
+ <div id="assesstest" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">Test</div>
+        <div class="panel-body">
+			<p style="font-size:16px;">
+			<strong>Test your skills, become proficient in Cellma by taking this competency test.</strong>
+            </p>
+            <p><strong>Instructions</strong>
+             <div id="questions_container">
+             <div class="alert-box alert-default">
+		
+       <ul class="titlename instructions-list">
+       <li>The test has <strong>10</strong> mutliple choice questions</li>
+       <li>There is no time limit to the test</li>
+       <li>The test must be completed in one go</li>
+       <li>You are unable to go back and change your answers</li>
+       <li>The pass percentage for the test is <strong>80%</strong></li>
+       </ul>
+       </div>
+       <div class="clearheight"></div>
+        </div>
+            </p>
+			<p id="warning_DMA" style="color: rgb(241, 14, 14);">
+				Please complete practice
+			</p>
+			<div style="cursor: not-allowed;">
+				<p id="test_DMA" class="disableModule" >
+					<!-- Trigger the modal with a button -->
+					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+						Start Test
+					</button>
+				</p>
+			</div>
+      </div>
+ </div>
+ 
+ <!-- div for feedback info -->
+ <div id="feedbackform" class="panel panel-success" style="display:none;">
+    <div class="panel-heading">Feedback</div>
+        <div class="panel-body">
+            <p style="font-size:16px;color:#339900;">
+            <strong>Please provide your valuable feedback.</strong>
+            </p>
+             <div id="fbquestions_container">
+             <div class="alert-box alert-default">
+             <p>
+                Please provide feedback on your training of the Document Management module.
+Your inputs and feedback is valuable to us.  
+   
+		     </p>
+            </div>
+            <div class="clearheight"></div>
+        </div>
+            <p>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalfb">
+            Give Feedback
+            </button>
+            </p>
+      </div>
+ </div>
+ <!-- modal popup -->
+ <div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Questions</h4>
+        </div>
+        <div class="modal-body">
+                <form id = "form1">
+     <ol>
+     <li>
+     <h5><b>Where do you go to upload a document to a patient profile?</b> </h5>
+     <input type = "radio" name = "question0" value = "A"> A) Go to services &gt; Select patients &gt; Select document upload &gt; Enter the relevant info &gt; click “upload doc” to choose the document &gt; click save <br>
+     <input type = "radio" name = "question0" value = "B"> B) On the Cellma home screen, click on the document module &gt; click on find patient &gt; Select the patient &gt; Go to contact history page &gt; select documents on the left pane &gt; select +doc icon &gt; Enter the relevant info &gt; click “upload doc” to choose the document &gt; click save  <br>
+     <input type = "radio" name = "question0" value = "C"> C) None of the above<br>
+     <input type = "radio" name = "question0" value = "D"> D) All of the above<br>
+     </li>
+
+     <li>
+     <h5><b>What are the categories you can upload documents for?</b>  </h5>
+     <input type = "radio" name = "question1" value = "A" > A) Examination, Investigation, Letters<br>
+     <input type = "radio" name = "question1" value = "B" > B) Medication, Medical Notes, Procedures<br>
+     <input type = "radio" name = "question1" value = "C" > C) Finance, History, Hospitalisation<br>
+     <input type = "radio" name = "question1" value = "D" > D) All of the above<br>
+     </li>
+     
+      <li>
+     <h5><b> Name types of documents you can upload?</b></h5>
+     <input type = "radio" name = "question2" value = "A" > A) PDF only <br>
+     <input type = "radio" name = "question2" value = "B" > B) Scans only<br>
+     <input type = "radio" name = "question2" value = "C" > C) Doc, Html, Jpg, Pdf, Odt, Png, Docx, Txt <br>
+     <input type = "radio" name = "question2" value = "D" > D) Doc only <br>
+     </li>
+     
+      <li>
+     <h5> <b>Who can you upload a document for?</b> </h5>
+     <input type = "radio" name = "question3" value = "A" > A) A GP<br>
+     <input type = "radio" name = "question3" value = "B" > B) A HP<br>
+     <input type = "radio" name = "question3" value = "C" > C) All Patients <br>
+     <input type = "radio" name = "question3" value = "D" > D) Dead Patients <br>
+     </li>
+     
+      <li>
+     <h5> <b>Where are the two places in Cellma you can upload documents?</b>  </h5>
+     <input type = "radio" name = "question4" value = "A" > A) Patient demographic page, discharge page<br>
+     <input type = "radio" name = "question4" value = "B" > B) The document module <br>
+     <input type = "radio" name = "question4" value = "C" > C) Services and Patient details <br>
+     <input type = "radio" name = "question4" value = "D" > D) All of the above <br>
+     </li>
+     
+      <li>
+     <h5><b> How do you delete a document from a patient profile? </b> </h5>
+     <input type = "radio" name = "question5" value = "A" > A) This cannot be done<br>
+     <input type = "radio" name = "question5" value = "B" > B) Search and select the patient &gt; Patient details &gt; Documents &gt; click the edit hyperlink &gt; click delete <br>
+     <input type = "radio" name = "question5" value = "C" > C) Search and select the patient &gt; go to admin &gt; go to doc &gt; click the delete hyperlink<br>
+     <input type = "radio" name = "question5" value = "D" > D) You must be a doctor to have this done<br>
+     </li>
+     
+      <li>
+     <h5><b>What are some documents my may need to upload?</b> </h5>
+     <input type = "radio" name = "question6" value = "A" > A) Insurance & Bills, Lab results, Imaging Results <br>
+     <input type = "radio" name = "question6" value = "B" > B) Nursing notes, Progress Notes, Vital signs Notes <br>
+     <input type = "radio" name = "question6" value = "C" > C) Dental Health Notes, Autopsy Notes, Discharge letter<br>
+     <input type = "radio" name = "question6" value = "D" > D) All of the Above <br>
+     </li>
+     
+      <li>
+     <h5><b>Who can you send documents to in Cellma? </b> </h5>
+     <input type = "radio" name = "question7" value = "A" > A) HP<br>
+     <input type = "radio" name = "question7" value = "B" > B) Patients<br>
+     <input type = "radio" name = "question7" value = "C" > C) GP <br>
+     <input type = "radio" name = "question7" value = "D" > D) Nobody<br>
+     </li>
+     
+      <li>
+     <h5><b> Who can receive documents in Cellma? </b> </h5>
+     <input type = "radio" name = "question8" value = "A" > A) HP<br>
+     <input type = "radio" name = "question8" value = "B" > B) Patients<br>
+     <input type = "radio" name = "question8" value = "C" > C) GP<br>
+     <input type = "radio" name = "question8" value = "D" > D) Nobody  <br>
+     </li>
+     
+      <li>
+     <h5><b> How would you know which patient the document is being uploaded for?</b> </h5>
+     <input type = "radio" name = "question9" value = "A" > A) Search and select the patient or enter the patient barcode number<br>
+     <input type = "radio" name = "question9" value = "B" > B) Swipe the Cellma card<br>
+     <input type = "radio" name = "question9" value = "C" > C) The document will automatically go to the patient since the info is stated  <br>
+     <input type = "radio" name = "question9" value = "D" > D) Take a photo of the patient   <br>
+     </li>
+     </ol> 
+     </form>
+     <center>
+     <button type="button" class="btn btn-sm btn-primary" onclick = "javascript: getScore()" >
+            SUBMIT
+     </button>
+     </center>           
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal popup for feedback form -->
+ <div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModalfb" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Feedback Form</h4>
+        </div>
+        <div class="modal-body">
+                <form id = "form2">
+                  <ol>
+			<li>
+			<h5><b>How satisfied are you with the Document management module training? </b> </h5>
+			<input type = "radio" name = "question0" value = "1"> Extremely Satisfied<br>
+			<input type = "radio" name = "question0" value = "2"> Very satisfied<br>
+			<input type = "radio" name = "question0" value = "3"> Neutral<br>
+            <input type = "radio" name = "question0" value = "4"> Unsatisfied<br>
+            <input type = "radio" name = "question0" value = "5"> Extremely Unsatisifed<br>
+			</li>
+
+			<li>
+			<h5><b>Was it easy to understand each step of the workflow?</b>  </h5>
+			<input type = "radio" name = "question1" value = "1" > Yes <br>
+			<input type = "radio" name = "question1" value = "2" > Neutral <br>
+			<input type = "radio" name = "question1" value = "3" > No <br>
+			</li>
+
+			<li>
+			<h5><b> Was the the workflow explained clearly?</b></h5>
+			<input type = "radio" name = "question2" value = "1" > Yes <br>
+			<input type = "radio" name = "question2" value = "2" > Neutral <br>
+			<input type = "radio" name = "question2" value = "3" > No <br>
+			</li>
+
+			<li>
+			<h5> <b>How did you find the practice session?</b> </h5>
+			<input type = "radio" name = "question3" value = "1" > Very Useful <br>
+			<input type = "radio" name = "question3" value = "2" > Useful <br>
+			<input type = "radio" name = "question3" value = "3" > Neutral <br>
+            <input type = "radio" name = "question3" value = "4" > Not Useful <br>
+            <input type = "radio" name = "question3" value = "5" > Not Very Useful <br>
+			</li>
+
+			<li>
+			<h5> <b>How did you find the test?</b>  </h5>
+			<input type = "radio" name = "question4" value = "1" > Very Easy  <br>
+			<input type = "radio" name = "question4" value = "2" > Easy<br>
+			<input type = "radio" name = "question4" value = "3" > Moderate <br>
+            <input type = "radio" name = "question4" value = "4" > Difficult <br>
+            <input type = "radio" name = "question4" value = "5" > Very Difficult <br>
+			</li>
+
+			<li>
+			<h5><b>Overall how would you rate the training on this module? 1 being the lowest, 10 being the best </b> </h5>
+			<input type="radio" name = "question5" value="1"> 1
+			<input type="radio" name = "question5" value="2"> 2
+			<input type="radio" name = "question5" value="3"> 3
+			<input type="radio" name = "question5" value="4"> 4
+			<input type="radio" name = "question5" value="5"> 5
+			<input type="radio" name = "question5" value="6"> 6
+			<input type="radio" name = "question5" value="7"> 7
+			<input type="radio" name = "question5" value="8"> 8
+			<input type="radio" name = "question5" value="9"> 9
+			<input type="radio" name = "question5" value="10"> 10
+			</li>
+
+			<li>
+			<h5><b>Please give your suggestions on how we can improve our modules </b> </h5>
+			<textarea name = "question6" style=" width: 100%;" maxlength="250"></textarea><br>
+			</li>
+
+			</ol> 
+			
+			 <center>
+			<button type="button" data-dismiss="modal" class="btn btn-sm btn-primary" onclick = "javascript: getFeedback(this.form,'Document Management'); hideModal();" >
+				Submit
+			</button>
+			</center> 
+		</form>        
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="container"><br><br></div>
+<footer class="text-center" style="background-color:#006699;">
+  <div class="container">
+      <div class="col-md-12">&nbsp;</div>
+      <div class="col-xs-12">
+        <p style="color:#fff;"> © <script type="text/JavaScript">document.write(new Date().getFullYear()); </script>  RioMed Ltd. All Rights Reserved | <a style="cursor:pointer;color:#fff;" onClick="window.open('http://www.riomed.com/')">www.riomed.com.</a></p>
+      </div>
+  </div>
+</footer>
+<script type = "text/javascript">
+         var userInput = [];
+var answers = []
+answers[0] = "D";
+answers[1] = "D";
+answers[2] = "C";
+answers[3] = "C";
+answers[4] = "C";
+answers[5] = "B";
+answers[6] = "D";
+answers[7] = "A";
+answers[8] = "A";
+answers[9] = "A";
+
+function getScore() {
+     var score = 0;
+     var numQuestions = 10;
+     var form = document.getElementById('form1');
+
+     userInput[0] = form1.question0.value; 
+	 userInput[1] = form1.question1.value;  
+	 userInput[2] = form1.question2.value;
+	 userInput[3] = form1.question3.value;
+	 userInput[4] = form1.question4.value;
+	 userInput[5] = form1.question5.value;
+	 userInput[6] = form1.question6.value;
+	 userInput[7] = form1.question7.value;
+	 userInput[8] = form1.question8.value;
+     userInput[9] = form1.question9.value;
+
+	for (var i = 0; i < numQuestions; i++) { 
+		 if(userInput[i] != ''){
+
+          if (userInput[i] == answers[i]) {
+               score += 1; 
+			 $('input:radio[name=question'+i+'][value='+userInput[i]+']').addClass("checkmark");
+          } else {
+               $('input:radio[name=question'+i+'][value='+userInput[i]+']').addClass("closei");}
+          }
+     }
+     
+	 if(score>=8){
+		alert("Congratulations !!! You have passed the test with "+score+"/10");
+		createLiveUser("update","Medical Notes, Medical Notes Admin","11",score);
+		$("#test_DMA").addClass('disableModule');
+		$('#toggle_test_page').click(); 
+		$('#toggle_test_popup').click(); 
+		$("#myModal").modal('hide');	
+	 }else{
+		alert("You have failed the test with score of "+score+"/10, \n please try again");
+	}
+	
+	
+	
+	 //return score;
+} 
+
+</script>
+</body>
+</html>

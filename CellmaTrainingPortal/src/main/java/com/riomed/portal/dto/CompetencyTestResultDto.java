@@ -27,10 +27,10 @@ public class CompetencyTestResultDto {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Long ctrModQuestionLimit;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.READ_ONLY)
 	private Long ctrPercentageScore;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.READ_ONLY)
 	private String ctrResult;
 	
 	private List<QuestionDto> questionDtos;

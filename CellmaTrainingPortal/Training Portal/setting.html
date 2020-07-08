@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cellma Training Portal</title>	<link rel="shortcut icon" href="images\cellma_icon.jpg">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/presentation.css">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script>                                   
+<script src="js/myjquery.js"></script>
+<script src="x-config.js"></script>
+<script src="js/login.js"></script>
+<script src="js/setting.js"></script>
+<script type="text/javascript">
+</script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      	<span class="sr-only">Toggle navigation</span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+      </button>
+      <a href="index.html" class="navbar-brand" style="cursor:pointer;padding:4px;"><img src="images/riomed 230 x 100 size.png" alt="img" class="img-responsive" width="90px"></a>
+   </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" style="cursor:pointer;">
+      	<li><a href="index.html">Home</a></li>
+       
+        <li id="loginFun" style="padding-top: 9px; padding-right: 8px;" >
+          
+        </li>
+        <li id="LogoutFun" style="padding-top: 9px; padding-right: 8px;" ></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+
+<!-- / HEADER --> 
+
+<div class="container"><br></div>
+
+<div id="contactForm" class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+               <form>
+                <div class="row" style="color:#000;">
+                	<div class="col-lg-12 page-header text-center">
+                        <h2 style="font-weight:bold;color:#006699;">Get in Touch</h2>
+                    </div>                    
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">Module <span style="color:red;">*</span></label>
+                            <div class="input-group">
+                           
+                                <Select type="text" id="module"  class="form-control" name="module" >
+                                    <option selected>Please select </option>
+                                
+                                
+                                </select>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label for="email">Subject</label>
+                            <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Enter Subject" required="required">
+                        </div>
+                        
+						<div class="form-group">
+                            <label for="version">Version</label>
+                            <input type="text" class="form-control" id="version" readonly>
+                        </div>
+						
+                    </div>
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="email">Your Email <span style="color:red;">*</span></label>
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input type="text" class="form-control" id="contactEmail" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="name">Your Message</label>
+                                <textarea name="message" id="message" class="form-control" rows="9" cols="25" required placeholder="Message"></textarea>
+                            </div>
+                        </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <button type="submit" class="btn btn-primary pull-right" onclick = "javascript: getContactForm(this.form);">Send</button>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+     </div>
+     
+     
+<div class="container"><br><br><br></div>
+
+
+
+<div class="container"><br><br></div>
+<footer class="text-center" style="background-color:#006699;">
+  <div class="container">
+      <div class="col-md-12">&nbsp;</div>
+      <div class="col-xs-12">
+        <p style="color:#fff;"> © <script type="text/JavaScript">document.write(new Date().getFullYear()); </script>  RioMed Ltd. All Rights Reserved |<a style="cursor:pointer;color:#fff;" onClick="window.open('http://www.riomed.com/')">www.riomed.com.</a></p>
+      </div>
+  </div>
+</footer>
+</body>
+</html>
