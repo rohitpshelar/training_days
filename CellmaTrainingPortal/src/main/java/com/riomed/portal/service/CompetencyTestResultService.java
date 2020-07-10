@@ -91,7 +91,7 @@ public class CompetencyTestResultService {
 			}
 		}
 		
-		List<Integer> questionList= generateQuestionSetFromList(module.getModQuestionLimit().intValue(), questions.size(), mendatoryList, module.isModRandomQuestions());
+		List<Integer> questionList= generateQuestionSetFromList(module.getModQuestionLimit().intValue(), questions, mendatoryList, module.isModRandomQuestions());
 		
 		for (Integer QueIds : questionList) {
 			CompetencyTestAnswer testAnswer = new CompetencyTestAnswer();
@@ -106,13 +106,16 @@ public class CompetencyTestResultService {
 		return questionList;
 	}
 	
-	private static List<Integer> generateQuestionSetFromList(Integer modQuestionLimit, Integer totalQue, List<Integer> mendatoryList, boolean modRandomQuestions) {
+	private static List<Integer> generateQuestionSetFromList(Integer modQuestionLimit, List<QuestionDto> totalQue, List<Integer> mendatoryList, boolean modRandomQuestions) {
 		for (int i = mendatoryList.size()+1; i <= modQuestionLimit; i++) {
 			Integer No = 0;
 			if(modRandomQuestions) {
-				No = getRandomNumberInRange(1, totalQue);
+				Collections.shuffle(totalQue);
+				No = totalQue.get(0).getQueId().intValue();
+				//No = getRandomNumberInRange(1, totalQue.size());
 			}else {
-				No = i;
+				No = totalQue.get(0).getQueId().intValue();
+				totalQue.remove(0);
 			}
 			if (mendatoryList.contains(No)) {
 				i--;

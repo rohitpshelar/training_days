@@ -20,10 +20,10 @@ public class QuestionDto {
 	private String queText;
 	private String queType;
 	private Long queModId;
-	@JsonProperty(access = Access.WRITE_ONLY)
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private boolean queMandatory;
 	private List<QuestionOptionDto> questionOptionDtos;
-	@JsonProperty(access = Access.WRITE_ONLY)
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private String queStatus;
 	
 }

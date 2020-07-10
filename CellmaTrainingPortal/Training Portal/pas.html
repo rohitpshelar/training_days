@@ -332,20 +332,15 @@ video {
              <div class="alert-box alert-default">
 		
        <ul class="titlename instructions-list">
-       <li>The test has <strong>10</strong> mutliple choice questions</li>
        <li>There is no time limit to the test</li>
        <li>The test must be completed in one go</li>
        <li>You are unable to go back and change your answers</li>
-       <li>The pass percentage for the test is <strong>80%</strong></li>
        </ul>
        </div>
        <div class="clearheight"></div>
         </div>
 
             </p>
-			<p id="warning_PAS" style="color: rgb(241, 14, 14);">
-				Please complete practice
-			</p>
 			<div style="cursor: not-allowed;">
 				<p id="test_PAS" class="" >
 					<!-- Trigger the modal with a button -->
@@ -719,7 +714,7 @@ async: false,
   "method": "POST",
   "timeout": 0,
   "headers": {
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2hpdCIsImlhdCI6MTU5Mzk2MDM1OCwiZXhwIjoxNTk0MDUwMzU4fQ.e-nbLO2yloc9x-mbaheAfq4lMBWItSs-lol71sdEHKui0oo2rPahEVhKHorWNfr7TmR7ICE4M55tpZvpw1DzaV1rH0GgPCIgRFGxB8VbwC-D7wsin5NJsfp5J6b2ejPw1VaCxGr_mxzqsjI_spn6I1y57joOiiXsTlFl5lwB2OCDvg0odiUGn9jO7tm3SlTb2Vm-OV43jdn9M69IMR0FA1JIjitnP2JcpeYEp5S2WABLTcG955kauPm-WjwlxpNZonUUgS74YW426R_WFjKw0fSJ7mU8uPD6Wt0TmZEHVdFgStu1h5OH2-VJz-zS3AaoHb9QFX8PtDlr89bAid_AXQ",
+    "Authorization": "Bearer "+token,
     "Content-Type": "application/json",
     "Cookie": "JSESSIONID=69DB6C3D40AFCB14E84641A49E5C7175"
   },

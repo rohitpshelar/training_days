@@ -1,4 +1,6 @@
 
+var token = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2hpdCIsImlhdCI6MTU5NDI3NTM3MSwiZXhwIjoxNTk0MzY1MzcxfQ.VcttOzD6Oq3ji-Q_BmWxbMqIUra-4JcAaHwCYFJMUFJSuQt6V_iB9rmvtaWQRMomrXNzEDbr8bcA5FQp6NZPkXghCnkZpV6QompPD_REGQK_noAFZEIQ7vqiU9_zGdAEQUWo9HmggqJ9lQU4GsWx9CVVNaUdNjxtemoI2fXNTEbILGGYdATIlIePP-cLR2ejPBiS_piBfOgosfVhi2bXx3P0UEe9imdWl1pkYX2ZKftXIeOGBdqLlcqFZULwMBjOdLRIch5ekfkL5HZeBnYV08F5kOUD4JTPYWDVwXX7qXAvHDYQ8AIdha5tiwXeHpR10MkfpwkX7xeltZgIszcJ2A";
+
 var clicks = 3;
 function clickCounter() {
 	clicks--;
@@ -34,9 +36,8 @@ function jtogel(ele){
 	  "method": "POST",
 	  "timeout": 0,
 	  "headers": {
-		"Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2hpdCIsImlhdCI6MTU5MzkzMTA2OSwiZXhwIjoxNTk0MDIxMDY5fQ.HgY3J0LgzCB_BQAsVwLWszkY-rMhZzkyy-zGXrIhMhjyk_KK0Z2JP7nMWCKq4H9wFPZwYrrqGagDgWqaaAgn_y1CznbwLudCYCRqU7T-m_6Qfka-95adi_bNfy5zu5_ip0T02dLZD9PWHRrg-G3ugJLTRtgVIGYKWqTRrXet-DE5HaEuG4PYPjZekZim-eTy2LnGr0CYt3jBQCwobInZ1hwn94XlSjqmMBGululfqlIWh7WQd5kbP30UOrq4FVDrR7g_qK1KNII3LJQgjADeHuMcJ6arxdm8q2VUf2cHlvCPBpTgG9S8laG40-XLApvHpLkNJIU4nHW_uOkz8APp5A",
-		"Content-Type": "application/json",
-		"Cookie": "JSESSIONID=50771CE1259BE6D7428E5D88EE5DE899"
+		"Authorization": "Bearer "+token,
+		"Content-Type": "application/json"
 	  },
 	  "data": JSON.stringify({"ctrModCode":"PAS"}),
 	};
@@ -51,16 +52,13 @@ $.ajax(settings).done(function (response) {
     '  <div class="modal-content">'+
      '   <div class="modal-body">      '+   
 		' <form id = "form'+icount+'">'+
-		'	 <ol>'+
-		'		 <li>'+	
-		'			 <h5><b>'+response.questionDtos[i].queText+'</b></h5>';
+		'			 <pre><h5><b> '+icount+')'+response.questionDtos[i].queText+'</b></h5></pre>';
 		for(j = 0; j<response.questionDtos[i].questionOptionDtos.length; j++ ){
 			var jcount = j +1;
 			contect = contect + '<input type = "radio" name = "question1" value = "'+response.questionDtos[i].questionOptionDtos[j].optId+'"> '+jcount+') '+response.questionDtos[i].questionOptionDtos[j].optText+' <br>';	
 		}
 		var nexti = icount + 1
-		contect = contect + '		 </li>'+
-		'	 </ol> '+
+		contect = contect + 
 		 '</form>  '+
 		 '<center>';
 		 if(icount == response.questionDtos.length){
