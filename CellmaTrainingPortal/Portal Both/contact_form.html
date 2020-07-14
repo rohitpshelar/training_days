@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cellma Training Portal</title>	<link rel="shortcut icon" href="images\cellma_icon.jpg">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/presentation.css">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script>                                   
+<script src="js/myjquery.js"></script>
+<script src="x-config.js"></script>
+<script src="js/login.js"></script>
+
+<script type="text/javascript">
+</script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      	<span class="sr-only">Toggle navigation</span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+      </button>
+      <a href="index.html" class="navbar-brand" style="cursor:pointer;padding:4px;"><img src="images/riomed 230 x 100 size.png" alt="img" class="img-responsive" width="90px"></a>
+   </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" style="cursor:pointer;">
+      	<li><a href="index.html">Home</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">View<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li id="Patient_Administration_and_Scheduling"><a href="pas.html">Patient Administration and Scheduling</a></li>
+                <li id="ePharmacy"><a href="ephar.html">ePharmacy</a> </li>
+                <li id="Pathology"><a href="pathology.html">Pathology</a> </li>
+                <li id="Imaging"><a href="imaging.html">Imaging</a> </li>
+                <li id="Electronic_Patient_Record"><a href="epr.html">Electronic Patient Record</a></li>
+                <li id="Ward_and_Bed_management"><a href="ward_bed_mgmt.html">Ward and Bed management</a></li> <li id="Theatre_and_Surgery"><a href="theatre_surgery.html">Theatre and Surgery</a></li> <li id="Communication"><a href="communication.html">Communucation</a></li> <li id="Supplies_and_Inventory_Management"><a href="supplies_inventory.html">Supplies and inventory management</a></li>  <li id="Finance_billing_and_insurance"><a href="finance_billing.html">Finance billing and insurance</a></li>
+                <li id="Document_Management"><a href="doc_mgmt.html">Document Management</a></li>
+                <li id="Patient_Online_Access"><a href="patient_online_access.html">Patient Online Access</a></li>
+                <li id="Business_intelligence_and_reporting"><a href="business_int_reporting.html">Business intelligence and reporting</a></li>
+                <li id="Porters"><a href="porters.html">Porters</a></li>
+                <li id="Maintenance"><a href="maintenance.html">Maintenance</a></li>
+                <li id="Dietetics_and_Kitchen"><a href="dietetic_kitchen.html">Dietetics and Kitchen</a></li>
+            </ul>
+          <!-- <li><a>Feedback</a></li> -->
+          <li><a href="contact_form.html">Contact Us</a></li>
+        </li>
+        <li id="loginFun" style="padding-top: 9px; padding-right: 8px;" >
+          
+        </li>
+        <li id="LogoutFun" style="padding-top: 9px; padding-right: 8px;" ></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+
+
+<!----scroll button ---->
+<button id="scrollBtn"><span class="arrow"></span></button>
+
+<!---Social Icon---->
+<div id="socialIconHide" style="display:block;">
+<button id="facebook" onClick="window.open('https://www.facebook.com/RioMedLtd/')" title="Share this page on facebook"><span class="fa fa-facebook"></span></button>
+<button id="twitter" onClick="window.open('https://twitter.com/RioMed')" title="Share this page on Twitter"><span class="fa fa-twitter"></span></button>
+<button id="linkedin" onClick="window.open('https://www.linkedin.com/company/5013660/')" title="Share this page on linkedin"><span class="fa fa-linkedin"></span></button>
+</div>
+<button id="shareIt" class="btn btn-info btn-xs"><span class="fa fa-share-alt"></span></button>
+
+<!---Contact Form---->
+<div id="contact"><img src="images/contact us circle.png"></div>
+
+<!---Contact Form after click---->
+<div id="contactForm" class="container" style="display:none;">
+    <div class="form">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+               <form>
+                <div class="row" style="color:#fff;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" name="UserName" placeholder="UserName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Subject</label>
+                            <input type="text" class="form-control" id="Subject" placeholder="Enter Subject" required="required">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required placeholder="Message"></textarea>
+                        </div>
+                        
+                        <div class="col-md-12">
+                        	<button type="submit" class="btn btn-primary pull-right">Send Message</button>
+                      </div>
+                       <div class="col-md-12">&nbsp;</div>
+                     </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+<div class="container"><br><br><br></div>
+
+<header>
+<div class="carousel slide" data-ride="carousel">
+<!-- Wrapper for slides -->
+	<div class="carousel-inner" style="border: 1px solid rgb(221, 221, 221); border-image: none; box-shadow: 0px 8px 7px -7px #999;">
+		<div class="img-responsive" style="width:100%;height: 299px;position:relative;">
+			<div class="bannerImage" style="background-image:url(images/banner_2.png);"></div>
+		</div>
+	</div>
+</div>
+</header>
+<!-- / HEADER --> 
+
+<div class="container"><br></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+               <form>
+                <div class="row" style="color:#000;">
+                	<div class="col-lg-12 page-header text-center">
+                        <h2 style="font-weight:bold;color:#006699;">Get in Touch</h2>
+                    </div>                    
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">Your Name <span style="color:red;">*</span></label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" id="contactName"  class="form-control" name="UserName" placeholder="UserName">
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label for="email">Subject</label>
+                            <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Enter Subject" required="required">
+                        </div>
+                        
+						<div class="form-group">
+                            <label for="version">Version</label>
+                            <input type="text" class="form-control" id="version" readonly>
+                        </div>
+						
+                        </div>
+                        
+                        <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="email">Your Email <span style="color:red;">*</span></label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" class="form-control" id="contactEmail" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Your Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required placeholder="Message"></textarea>
+                        </div>
+                     </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <button type="submit" class="btn btn-primary pull-right" onclick = "javascript: getContactForm(this.form);">Send</button>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+     </div>
+     
+     
+<div class="container"><br><br><br></div>
+
+<div class="well text-center"> 
+    <address>
+    <strong style="color: #006699;">Enquiry Email:</strong><br>
+    <a href="mailto:enquiry@riomed.com?cc=cellmatraining.support@riomed.com&subject=Enquiry%20mail" style="color:#337ab7;">enquiry@riomed.com</a>
+    </address>
+    <a href="http://www.riomed.com/" style="color:#337ab7;" target="_blank"> www.riomed.com </a>
+</div>
+
+<!-- FOOTER -->
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-sm-12 col-lg-12">
+        <div class="container">
+            <div class="row" style="color: #000;">
+                <div class="col-md-4">
+                    <form>
+                    <legend style="color:#006699;font-weight:600;"><img src="images/uk flag.png">&nbsp;UK office</legend>
+                    <address>
+                        <strong>RIOMED LIMITED</strong><br>
+                        18 Eastlinks Business Park<br>
+						Tollgate<br>
+						Chandlers Ford <br>
+						Eastleigh <br>
+                        SO53 3TG <br>
+                        <abbr>T:</abbr>+44 (0) 2380 277-040 <br>
+                    </address><br>
+                    </form>
+                </div>
+                 <div class="col-md-4">
+                    <form>
+                    <legend style="color:#006699;font-weight:600;"><img src="images/trinidad flag.png">&nbsp;Trinidad & Tobago office</legend>
+                    <address>
+                        <strong>RIOMED LIMITED</strong><br>
+                        26 Kitchener Street <br>
+                        Woodbrook <br>
+                        Port of Spain <br>
+                        Trinidad &amp; Tobago <br>
+                        <abbr>T:</abbr>+1 (868) 222-9410 <br>
+                    </address><br>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form>
+                    <legend style="color:#006699;font-weight:600;"><img src="images/india flag.png">&nbsp;India office</legend>
+                    <address>
+                        <strong>RIOMED LIMITED</strong><br>
+                        409, 4th Floor<br>
+                        World Trade Center <br>
+						Tower 1, 
+                        Kharadi <br>
+                        Maharashtra Pune – 411014 <br>
+                        India <br>
+                        <abbr>T:</abbr>+91 020 66329523 / 24 <br>
+                    </address>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+  </div>
+</div>
+        
+
+<div class="container"><br><br></div>
+<footer class="text-center" style="background-color:#006699;">
+  <div class="container">
+      <div class="col-md-12">&nbsp;</div>
+      <div class="col-xs-12">
+        <p style="color:#fff;"> © <script type="text/JavaScript">document.write(new Date().getFullYear()); </script>  RioMed Ltd. All Rights Reserved |<a style="cursor:pointer;color:#fff;" onClick="window.open('http://www.riomed.com/')">www.riomed.com.</a></p>
+      </div>
+  </div>
+</footer>
+</body>
+</html>

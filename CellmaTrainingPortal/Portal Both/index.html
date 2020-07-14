@@ -1,0 +1,851 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cellma Training Portal</title>	<link rel="shortcut icon" href="images\cellma_icon.jpg">
+<link rel="shortcut icon" href="images\cellma_icon.jpg">
+<!-- Bootstrap -->
+
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/presentation.css">
+
+<!-- Include all config parameters --> 
+<script src="x-config.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/jquery.serializeJSON.js"></script>
+<script src="js/bootstrap.js"></script>                                   
+<script src="js/myjquery.js"></script>
+<script src="js/validateinput.js"></script>
+<script src="js/offtheshelf.js"></script>
+<script src="js/login.js"></script>
+
+<style>
+#registerModal{
+	overflow: auto;
+}
+
+textarea{
+	resize: none;
+	font - size: 1em;
+	font - weight: bold;
+	background - color:  # B5F7C3;
+}
+ .carousel-indicators li {
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background-color:#2395F3;
+      border-color:#2395F3;
+    }
+</style>
+</head>
+
+<body onload="DrawCaptcha();" id="mainBodyPage">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      	<span class="sr-only">Toggle navigation</span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> 
+      </button>
+      <a href="index.html" class="navbar-brand" style="cursor:pointer;padding:4px;"><img src="images/riomed 230 x 100 size.png" alt="img" class="img-responsive" width="90px"></a>
+   </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav navbar-right" style="cursor:pointer;">
+		<li><a href="index.html">Home</a></li>
+		<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">View<span class="caret"></span></a>
+			<ul class="dropdown-menu" style="cursor: inherit;">
+				<li id="Patient_Administration_and_Scheduling"><a href="pas.html">Patient Administration and Scheduling</a></li>
+				<li id="ePharmacy"><a href="ephar.html">ePharmacy</a> </li>
+				<li id="Pathology"><a href="pathology.html">Pathology</a> </li>
+				<li id="Imaging"><a href="imaging.html">Imaging</a> </li>
+				<li id="Electronic_Patient_Record"><a href="epr.html">Electronic Patient Record</a></li>
+				<li id="Ward_and_Bed_management"><a href="ward_bed_mgmt.html">Ward and Bed management</a></li> <li id="Theatre_and_Surgery"><a href="theatre_surgery.html">Theatre and Surgery</a></li> <li id="Communication"><a href="communication.html">Communucation</a></li> <li id="Supplies_and_Inventory_Management"><a href="supplies_inventory.html">Supplies and inventory management</a></li>  <li id="Finance_billing_and_insurance"><a href="finance_billing.html">Finance billing and insurance</a></li>
+				<li id="Document_Management"><a href="doc_mgmt.html">Document Management</a></li>
+				<li id="Patient_Online_Access"><a href="patient_online_access.html">Patient Online Access</a></li>
+				<li id="Business_intelligence_and_reporting"><a href="business_int_reporting.html">Business intelligence and reporting</a></li>
+				<li id="Porters"><a href="porters.html">Porters</a></li>
+				<li id="Maintenance"><a href="maintenance.html">Maintenance</a></li>
+				<li id="Dietetics_and_Kitchen"><a href="dietetic_kitchen.html">Dietetics and Kitchen</a></li>
+			</ul>
+			<!-- <li><a>Feedback</a></li> -->
+			<li><a href="contact_form.html">Contact Us</a></li>
+		</li>
+
+		<!-- code for login button  -->
+
+		<li id="loginFun" style="padding-top: 9px; padding-right: 8px;" >
+			<button type="Login"onClick="onClickLogin()" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+				<span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</button>
+		</li>
+		<li id="LogoutFun" style="padding-top: 9px; padding-right: 8px;" >
+		</li>
+	</ul>
+</div>
+<!-- /.navbar-collapse --> 
+</div>
+  <!-- /.container-fluid --> 
+</nav>
+
+<!----scroll button ---->
+<button id="scrollBtn"><span class="arrow"></span></button>
+
+<!---Social Icon---->
+<div id="socialIconHide" style="display:block;">
+<button id="facebook" onClick="window.open('https://www.facebook.com/RioMedLtd/')" title="Share this page on facebook"><span class="fa fa-facebook"></span></button>
+<button id="twitter" onClick="window.open('https://twitter.com/RioMed')" title="Share this page on Twitter"><span class="fa fa-twitter"></span></button>
+<button id="linkedin" onClick="window.open('https://www.linkedin.com/company/5013660/')" title="Share this page on linkedin"><span class="fa fa-linkedin"></span></button>
+</div>
+<button id="shareIt" class="btn btn-info btn-xs"><span class="fa fa-share-alt"></span></button>
+
+<!---Contact Form---->
+<div id="contact" style="display:block;"><img src="images/contact us circle.png"/><img src="images/contact us X.png" style="display:none"/></div>
+
+<!---Contact Form after click---->
+<div id="contactForm" class="container" style="display:none;">
+    <div class="form">
+        <div class="col-md-12 	 col-lg-12">
+               <form>
+                <div class="row" style="color:#fff;">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-12">
+						<div id="contactClose" ><img src="images/contact us X.png" style="height: 25px;"/></div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="contactName" type="text" class="form-control" name="UserName" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input id="contactEmail" type="text" class="form-control" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Subject</label>
+                            <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Enter Subject" required="required">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="4" cols="25" required placeholder="Message"></textarea>
+                        </div>
+                        
+                        <div class="col-md-12">
+                        	<button type="submit" class="btn btn-primary pull-right" onclick = "javascript: getContactForm(this.form);">Send Message</button>
+                      </div>
+                       <div class="col-md-12">&nbsp;</div>
+                     </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>   
+<div class="container"><br><br><br></div>
+
+<header>
+	<div class="carousel slide" data-ride="carousel">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" style="border: 1px solid rgb(221, 221, 221); border-image: none; box-shadow: 0px 8px 7px -7px #999;">
+			<!-- <div data-toggle="modal" data-target="#loginModal"> -->
+                <div style="width:100%;position:relative;" class="img-responsive container-baner" >
+					<div class="bannerImage" style="background-image:url(images/banner_big.png);">
+						<!-- <button data-toggle="modal" data-target="#loginModal" class="btn">Become a Cellma Expert!</button> -->
+					</div>
+                </div>
+            <!-- </div> -->
+           <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 text-center" style="background-color:#e2f0f6;">
+				<h4 class="" style="font-weight:bold;color:#006699;">WELCOME TO THE CELLMA TRAINING PORTAL</h4>
+				<h5 style="color:#006699;"><span>An interactive and innovative e-Learning platform designed to assist user's understanding and </span>
+				<br><span>capabilities by providing easier access to Cellma modules through various training mediums.</span></h5>
+				<!-- Trigger the modal with a button -->
+
+				<!-- <center><button hidden type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#registerModal" data-backdrop="static" data-keyboard="false" style="margin:7px 0px 0px 0px;">
+				Register
+				</button>
+				</center> -->
+				<img src="images/cellma_logo.png" width="120px" style="float:right;">
+				</div>
+            </div>
+        </div>
+    </header>
+<!-- / HEADER --> 
+
+<!--  SECTION-1 -->
+<section>
+    <div class="col-lg-12 page-header text-center">
+     <h2><span style="color:#006699;">About the modules</span></h2>
+      <h4><span style="color:#006699;">Get help. Learn about the modules. Test your skills.</span></h4>
+    </div>
+  <div class="container "  style="cursor: not-allowed;">
+  	  <div class="row">
+      <!-- onmouseover="this.style.background='#e4f1f8';" onmouseout="this.style.background='white';" -->
+      <div id="Patient_Administration_and_Scheduling" class="col-lg-3 col-sm-12 text-center grow" name="Patient_Administration_and_Scheduling" title="Patient Administration and Scheduling" style="cursor:pointer;">
+		<a href="pas.html"> 
+			<img style="width: 140px; height: 140px;" alt="140x140" src="images/Pt Portal/pas.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Patient Administration and Scheduling</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" title="ePharmacy" style="cursor:pointer;">
+		<a href="ephar.html"> 
+			<img style="width: 140px; height: 140px;" alt="140x140" src="images/Pt Portal/ephar.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">ePharmacy</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" title="Pathology" style="cursor:pointer;">
+		<a href="pathology.html" >
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/pathology.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Pathology</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" title="Imaging" style="cursor:pointer;">
+		<a href="imaging.html">
+			<img style="width: 140px; height: 140px;" src="images/Pt Portal/imaging.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Imaging</h4>
+      </div>
+      </div>
+      
+      <div class="row">
+		<a href="epr.html">
+      <div class="col-lg-3 col-sm-12 text-center" name="Electronic_Patient_Record" title="Electronic Patient Record" style="cursor:pointer;">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/epr.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Electronic Patient Record</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" name="Ward_and_Bed_management" title="Ward and Bed management" style="cursor:pointer;">
+		<a href="ward_bed_mgmt.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/ward and bed.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Ward and Bed management</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" name="Theatre_and_Surgery" title="Theatre and Surgery" style="cursor:pointer;">
+		<a href="theatre_surgery.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/theater and suergy.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Theatre and Surgery</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" title="Communication" style="cursor:pointer;">
+		<a href="communication.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/communication.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Communication</h4>
+      </div>
+      </div>
+      
+      <div class="row">
+      <div class="col-lg-3 col-sm-12 text-center" name="Supplies_and_Inventory_Management"  title="Supplies and Inventory Management"style="cursor:pointer;">
+		<a href="supplies_inventory.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/supplies and inv.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Supplies and Inventory Management</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" name="Finance_billing_and_insurance" title="Finance billing and insurance" style="cursor:pointer;">
+		<a href="finance_billing.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/finance billing and insurance.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Finance billing and insurance</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" name="Document_Management" title="Document Management" style="cursor:pointer;">
+		<a href="doc_mgmt.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/document_mgmt.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Document Management</h4>
+      </div>
+      <div class="col-lg-3 col-sm-12 text-center" name="Patient_Online_Access" title="Patient Online Access" style="cursor:pointer;">
+		<a href="patient_online_access.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/poa.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Patient Online Access</h4>
+      </div>
+      </div>
+      
+      
+      <div class="row">
+      
+      <div class="col-lg-3 col-sm-12 text-center" name="Business_intelligence_and_reporting"  title="Business Intelligence and Reporting"  style="cursor:pointer;">
+		<a href="business_int_reporting.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/business int and reporting.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Business intelligence and reporting</h4>
+      </div>
+      
+      <div class="col-lg-3 col-sm-12 text-center" title="Porters" style="cursor:pointer;">
+		<a href="porters.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/porter.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Porters</h4>
+      </div>
+      
+      <div class="col-lg-3 col-sm-12 text-center" title="Maintenance" style="cursor:pointer;">
+		<a href="maintenance.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/maintenance.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Maintenance</h4>
+      </div>
+      
+      <div class="col-lg-3 col-sm-12 text-center" name="Dietetics_and_Kitchen" title="Dietetics and Kitchen" style="cursor:pointer;">
+		<a href="dietetic_kitchen.html">
+			<img alt="140x140" style="width: 140px; height: 140px;" src="images/Pt Portal/ditetic and kitchen.png" data-holder-rendered="true">
+			<span style="position: absolute;"><img style="display:none; width: 80px; height: 80px; left : -40px; top: -10px; z-index:1; position:relative" alt="80x80" src="images/Pt Portal/tick.png" data-holder-rendered="true"></span>
+		</a>
+        <h4 style="color:#549CE8;">Dietetics and Kitchen</h4>
+      </div>
+     
+      </div>
+  </div>
+  </section>
+  
+<div class="container-fluid">
+        <div class="row"><div class="col-lg-12 page-header text-center" style="background-color: #E2F0F3;">
+            <h2 style="font-weight:bold;color:#006699;">Cellma Training Objectives</h2>
+          </div>
+    <div class="col-md-12" style="max-width: 100%;">
+    <div class="carousel slide" data-ride="carousel" style="cursor:pointer;padding: 0 0px 0px 30px;" data-type="multi" id="demo">
+    
+      <div class="carousel-inner text-center" style="color: black;" >
+       <div class="item active"><!--breast-->
+          <div class="carousel-content">
+                            <div style="margin: 0 auto;height:200px;">
+                               <img src="images/first info.png" alt="first"><br>
+                                <p>
+                                    Our Cellma Training Objectives aims to provide all users with a detailed knowledge of the Cellma Modules
+                                    <br>
+                                </p>
+                            </div>
+           </div>
+        </div>
+    
+        
+        <div class="item"><!--breast-->
+          <div class="carousel-content">
+                            <div style="margin: 0 auto;height:200px;">
+                                <img src="images/third info.png" alt="third"><br>
+                                  <p>
+                                    Our Cellma Training Objectives is to provide users with practice sessions,<br> workflows and compentecy questions to test your understanding enabling users to become Cellma experts
+                                  </p>
+                                  <br> 
+                            </div>
+           </div>
+        </div>
+        
+        
+        <div class="item"><!--breast-->
+          <div class="carousel-content">
+                            <div style="margin: 0 auto;height:200px;">
+                                <img src="images/fourth info.png" alt="fourth"><br>
+                                <p>
+                                    Our Cellma Training Objective is to allow users to access training anywhere, at anytime on any device
+                                </p> 
+                                <br>
+                            </div>
+           </div>
+        </div>
+
+
+      </div>
+      
+      <a class="left carousel-control" href="#demo" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+      <a class="right carousel-control" href="#demo" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+    
+      <br><br>
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+      <!-- / CONTAINER--> 
+  <!--
+  <div class="container"><br><br></div>
+  <div class="well"> </div>
+  
+  -->
+  
+  <!-- / Latest news, blog and whitepapers-->
+<!--   <div hidden disabled class="container-fluid">
+	<div class="row">
+        <div class="col-lg-12 page-header text-center" style="background-color:#e2f0f6;">
+            <h2 style="font-weight:bold;color:#006699;">Now become a <span style="color:#006688;font-weight:bold;">Cellma Expert!</span></h2>
+        </div>
+     
+    	<div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image">
+                        <img src="images/personal.png" width="58px" height="61px" alt="img"></div>
+					<div class="info">
+						<h3 class="title">Dr. A - Consultant Anaesthetist</h3>
+						<p>
+							<q>The new dashboards are quite a <strong><em>game changer</em></strong>. I have not seen any other software that brings live <strong><em>real time </em></strong>mass data reports so quickly to your fingertips!</q>
+						</p>
+						
+					</div>
+				</div>
+				
+			</div> 
+		</div>
+			
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><img src="images/personal.png" width="58px" height="61px" alt="img"></div>
+					<div class="info">
+						<h3 class="title">Charge Nurse</h3>
+    					<p>
+							<q>A really good product with  <strong><em>great potential</em></strong></q>
+						</p>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+			
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><img src="images/personal.png" width="58px" height="61px" alt="img"></div>
+					<div class="info">
+						<h3 class="title">Assistant Accountant</h3>
+    					<p>
+						   <q>Very excited about this new program; it appears to be easy to use and <strong><em>very functional</em></strong></q>
+						</p>
+                        <br>
+						
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>		    
+		
+	</div>
+</div> -->
+
+
+
+
+
+ <!-- modal popup -->
+ <div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="registerModal" >
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+
+<div class="panel panel-primary">
+			<div class="panel-heading panel-heading-custom">Enter you details to Register
+			</div>
+			<div class="panel-body scrollcheck">
+
+    <form name="contact_form1" role="form" data-toggle="validator" class="form-horizontal" action="" method="post" id="contact_form1">
+<fieldset>
+
+
+<!-- Text input-->
+
+<div class="form-group has-feedback has-clear">
+  <label class="col-md-4 control-label">Given Name<span style="color:red;">*</span></label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  
+  <input id="useFirstname" name="useFirstname" placeholder="First Name" class="form-control" onKeyPress="return allowOnlyChar(event)" onChange="return clearGivenName()" required="required" type="text" maxlength="15" data-toggle="tooltip" data-placement="right" title="Given name eg.ABC">
+    <span class="form-control-clear glyphicon glyphicon-remove form-control-feedback hidden"></span>
+  
+    </div>
+    <div style="float:right;" id="msguseFirstname"></div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Family Name<span style="color:red;">*</span></label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input id="useSurname" name="useSurname" placeholder="Last Name" class="form-control" onKeyPress="return allowOnlyChar(event)"  onChange="return clearGivenName()" type="text" required="required" maxlength="15" data-toggle="tooltip" data-placement="right" title="Family name eg.XZY">
+    </div>
+    <div style="float:right;" id="msguseSurname"></div>
+  </div>
+</div>
+
+  
+  
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Username<span style="color:red;">*</span></label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input id="useUsername" name="useUsername" placeholder="Username" class="form-control" type="text" required="required" onChange="return clearGivenName()" data-toggle="tooltip" data-placement="right" title="User name eg.ABCXZY">
+    </div>
+     <div style="float:right;" id="msguseUsername"></div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Password<span style="color:red;">*</span></label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+  <input id="usePassword" name="usePassword" placeholder="Password" class="form-control" onKeyUp="return passwordValidate();"  type="password" required="required" data-toggle="tooltip" data-placement="right" title="(Password should be at least 1 lowercase letter,1 uppercase letter,1 digit,1 special character,length 8)">
+   <!--<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
+   <!--<span style="float:right;" id="password_strength"></span>-->
+    </div>
+    <div style="float:right;" id="msgusePassword"></div>
+    <div style="float:right; display:none;" id="password_strength"></div>
+   <!-- <div><span style="color:red;">(Password should be at least 1 lowercase letter,1 uppercase letter,1 digit,1 special character,length 8)</span></div>-->
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Confirm Password<span style="color:red;">*</span></label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+  <input id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onkeyUp="return checkPasswordMatch()" class="form-control"  type="password" required="required" data-toggle="tooltip" data-placement="right" title="Confirm password">
+    </div>
+     <div style="float:right;" id="msgconfirmPassword"></div>
+  </div>
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">E-Mail<span style="color:red;">*</span></label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input id="useEmail" name="useEmail" placeholder="E-Mail Address" onKeyUp="return emailValidate()" onChange="return clearGivenName()"  class="form-control"  type="text" required="required" data-toggle="tooltip" data-placement="right" title="Email id eg.abc.xzy@pqr.com">
+    </div>
+     <div style="float:right;" id="msguseEmail"></div>   
+  </div>
+</div>
+<!-- Establishment select -->
+<!-- <div class="form-group">  -->
+  <!-- <label class="col-md-4 control-label">Establishment<span style="color:red;">*</span></label> -->
+    <!-- <div class="col-md-4 selectContainer"> -->
+    <!-- <div class="input-group"> -->
+	<!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> -->
+    <!-- <select id="useEstId" name="useEstId" class="form-control selectpicker" onChange="loadEstablishmentData()" ondata-toggle="tooltip" data-placement="right"  title="Select establishment"> -->
+		<!-- <option value="">Select your Establishment</option> -->
+	<!-- </select> -->
+     
+  <!-- </div> -->
+  <!-- <div style="float:right;" id="msguseEst"></div>   -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- Service select -->
+<!-- <div class="form-group">  -->
+  <!-- <label class="col-md-4 control-label">Service<span style="color:red;">*</span></label> -->
+    <!-- <div class="col-md-4 selectContainer"> -->
+    <!-- <div class="input-group"> -->
+	<!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> -->
+    <!-- <select id="useCliId" name="useCliId" class="form-control selectpicker" onChange="loadClinics()" data-toggle="tooltip" data-placement="right" title="select service" disabled> -->
+		<!-- <option value="">Select your Service</option> -->
+    <!-- </select> -->
+  <!-- </div> -->
+  <!-- <div style="float:right;" id="msguseService"></div>   -->
+<!-- </div> -->
+<!-- </div> -->
+
+<!-- Group select -->
+<div class="form-group"> 
+  <label class="col-md-4 control-label">Group<span style="color:red;">*</span></label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select id="useUggId" name="useUggId[]" class="form-control selectpicker" onChange="uggNameValidate()" data-toggle="tooltip" data-placement="right" title="select module" >
+		<option value="">Select your Group</option>
+    </select>
+  </div>
+   <div style="float:right;" id="msguseGroup"></div>  
+</div>
+</div>
+
+<!-- Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Contact No.<span style="color:red;">*</span></label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input id="useMobile" name="useMobile" placeholder="Mobile Number" minlength="10" maxlength="11" onKeyPress="return allowOnlyDigit(event)" onChange="return lengthChk()" class="form-control" data-toggle="tooltip" data-placement="right"  type="text" title="Mobile number eg.9876543210">
+    </div>
+    <div style="float:right;" id="msguseMobile"></div>
+</div>
+</div>
+
+
+
+<!-- recapcha code -->
+
+<!-- image -->
+<div class="form-group">
+    <label class="col-md-4 control-label"></label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+       
+            <input class="form-control input-lg" id="txtCaptcha" type="text"  style="font-size: 18px;text-align:center; border:none;font-weight:bold; font-family:Modern;pointer-events: none;" readonly>
+            <!-- <textarea id="txtCaptcha" style="font-size: 18px;padding: 15px 0px 0px 0;text-align:center; border:none;font-weight:bold; font-family:Modern" disabled></textarea>
+              &nbsp;&nbsp;<img src="images/refresh_32size.png" alt="refresh img" id="btnrefresh" onclick="DrawCaptcha();"/>   -->   
+    </div>
+  </div>
+</div>
+       
+   
+
+<!-- textbox -->  
+<div class="form-group">
+ <label class="col-md-4 control-label">Enter the above code<span style="color:red;">*</span></label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
+           <input id="codeInput" name="useCode" placeholder="Enter above code" class="form-control" onKeyUp="return codeValidate()" data-toggle="tooltip" title="Code to validate"  data-placement="right" type="text"> 
+    </div>
+    <div style="float:right;" id="msgCode"></div>  
+  </div>
+</div>     
+        
+  
+
+<!-- Select Basic -->	
+
+
+<!-- Button submit and close-->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <center>
+  <div class="col-md-4"><br>
+   <button type="button" class="btn btn-warning" name="SUBMIT" onClick="javascript:validateUserRegistration();">Submit</button>
+   <button type="button" class="btn btn-warning" data-dismiss="modal"  onClick="javascript:clearUserRegistrationForm();" name="CLOSE">Close</button>
+  </div>
+  </center>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<!-- modal popup for login -->
+ <div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" >
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+        <div class="login-form">
+    <center><h5><b>Login to Your Account</b></h5></center>
+    <form >
+        <div class="text-center">
+            <img src="images/profile_1x.png" class="img-circle avatar" style="padding-bottom: 10px; width: 80px; height: 85px;" alt="Avatar">
+        </div>        
+        <div class="form-group">
+            <div class="input-group col-md-12">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span> 
+            	<input  id="username" type="text" onkeypress="clearWarning()" onChange="clearUsername()" onfocus="clearUsername()" class="form-control" placeholder="Username" required="required">
+        	</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group col-md-12">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                <input id="password" type="password" onkeypress="clearWarning()" class="form-control" placeholder="Password" required="required">
+
+           </div>
+        </div>
+        <div class="form-group">
+            <button type="button" id="loginbutton" onclick="clickCounter()" class="btn btn-primary btn-block">Log In</button>
+        </div>
+        <div class="clearfix">
+			<div id="result" style="color:red;"></div>
+            <a onclick="forgetPassword()" class="pull-left">Forgot Password?</a>
+        </div>        
+    </form>
+<!--    <div style="float:right;">
+		<button id="signUpBtn" style="margin:-28px 2px 8px 10px;" type="button" class="btn btn-success btn-sm">Sign Up</button>
+   </div> -->
+	
+</div>
+
+
+</div><!-- modal body -->
+</div>
+</div>
+</div>
+</div><!-- modal container close -->
+
+
+<!-- modal popup for Server check -->
+ <div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="serverCheckModal" >
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+        <div class="login-form">
+    <center><h5><b>This page is not accessible</b></h5></center>
+	 <center><h5 style=" color: rgb(241, 14, 14);" ><b>Please contact your Cellma administrators</b></h5></center>
+</div>
+</div><!-- modal body -->
+
+</div>
+</div>
+</div>
+</div><!-- modal container close -->
+
+
+<!-- modal popup for Server check -->
+ <div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="loadingModal" >
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+        <div class="login-form">
+    <center><h5><b>An interactive and innovative e-Learning platform designed to assist user's understanding and
+capabilities by providing easier access to Cellma modules through various training mediums.</b></h5></center>
+
+</div>
+</div><!-- modal body -->
+
+</div>
+</div>
+</div>
+</div><!-- modal container close -->
+
+<!-- modal popup for Server check -->
+ <div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="configCheckModal" >
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+        <div class="login-form">
+    <center><h5><b>Training Portal is not configured.</b></h5></center>
+	 <center><h5 style=" color: rgb(241, 14, 14);" ><b>Please contact administrator at <a href="mailto:cellmatraining.support@riomed.com?subject=Training%20Portal%20is%20not%20configured" style="color:#337ab7;">cellmatraining.support@riomed.com</a></b></h5></center>
+</div>
+</div><!-- modal body -->
+
+</div>
+</div>
+</div>
+</div><!-- modal container close -->
+
+
+<!-- modal popup for Server check -->
+ <div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="firstLoginModal" >
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+        <div class="login-form">
+    <center><h5><b>Hello <b style=" color: #549CE8;" ><script type="text/javascript">sessionStorage != null?document.write(sessionStorage.firstname):''</script></b> Welcome to Training Portal</b></h5></center>
+    <center><h5><b> Please complete PAS module to access your assigned module</b></h5></center>
+</div>
+</div><!-- modal body -->
+
+</div>
+</div>
+</div>
+</div><!-- modal container close -->
+
+
+
+<footer class="text-center page-footer" style="background-color:#006699;">
+  <div class="container-fluid">
+      <div class="col-md-12">&nbsp;</div>
+      <div class="col-xs-12">
+        <p style="color:#fff;"> © <script type="text/JavaScript">document.write(new Date().getFullYear()); </script>  RioMed Ltd. All Rights Reserved |<a style="cursor:pointer;color:#fff;" onClick="window.open('http://www.riomed.com/')">www.riomed.com.</a></p>
+      </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
