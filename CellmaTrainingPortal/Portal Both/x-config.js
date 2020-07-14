@@ -1,4 +1,6 @@
 var version		=	'T1D1P1';
+var portalBackendUrl = "http://localhost:8080"
+
 
 // // ## Config to connect Devlopment server ##
 // var trainingSiteDomain	=	'http://10.0.0.2:8080/';

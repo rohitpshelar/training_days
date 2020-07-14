@@ -1,4 +1,5 @@
 
+
 var clicks = 3;
 function clickCounter() {
 	clicks--;
@@ -25,6 +26,98 @@ function clickCounter() {
 		}
 	}
 };
+
+function getQuestionFromBackend(ele, module){
+	if(portalBackendUrl != null && portalBackendUrl != ""){
+		var settings = {
+			async : false,
+			"url" : portalBackendUrl + "/api/test/?user=" + sessionStorage.un,
+			"method" : "POST",
+			"timeout" : 0,
+			"headers" : {
+				// "Authorization": "Bearer "+token,
+				"Content-Type" : "application/json"
+			},
+			"data" : JSON.stringify({
+				"ctrModCode" : module
+			}),
+		};
+
+		$.ajax(settings).done(function(response) {
+			var contect = '';
+			sessionStorage.question = JSON.stringify(response);
+			for (i = 0; i < response.questionDtos.length; i++) {
+				var icount = i + 1;
+				contect = contect + ' <div class="modal fade" id="myModal' + icount + '" role="dialog">' + ' <div class="modal-dialog modal-lg">' + '  <div class="modal-content">' + '   <div class="modal-body">      ' + ' <form id = "form' + icount + '">' + '			 <pre><h5><b> ' + icount + ')' + response.questionDtos[i].queText + '</b></h5></pre>';
+				for (j = 0; j < response.questionDtos[i].questionOptionDtos.length; j++) {
+					var jcount = j + 1;
+					contect = contect + '<input type = "radio" name = "question1" value = "' + response.questionDtos[i].questionOptionDtos[j].optId + '"> ' + response.questionDtos[i].questionOptionDtos[j].optText + ' <br>';
+				}
+				var nexti = icount + 1
+				contect = contect + '</form>  ' + '<center>';
+				if (icount == response.questionDtos.length) {
+					contect = contect + ' <button type="button" id="subid"  class="btn btn-sm btn-primary" data-dismiss="modal" onclick = "javascript: getScore2()" >' + '		SUBMIT' + '</button>';
+				} else {
+					contect = contect + ' <button type="button" id="subid"  class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModal' + nexti + '" >' + '		Next' + '</button>';
+				}
+
+				contect = contect + ' </center>     ' + '</div>' + ' </div>' + ' </div>' + '</div>';
+
+			}
+
+			$("#myModal").parent().html(contect);
+		}).fail  (function(jqXHR, textStatus, errorThrown) {  alert("Error connecting backend , Please contact Administrator");  });
+		$(ele).attr("data-toggle", "modal");
+		$(ele).attr("data-target", "#myModal1");
+	}else{
+		$(ele).attr("data-toggle", "modal");
+		$(ele).attr("data-target", "#myModal");
+	}
+	
+}
+
+function getScore2() {
+	var response = JSON.parse(sessionStorage.question);
+	console.log(response);
+	for (i = 0; i < response.questionDtos.length; i++) {
+		var icount = i + 1;
+
+		for (j = 0; j < response.questionDtos[i].questionOptionDtos.length; j++) {
+			var jcount = j + 1;
+			if (response.questionDtos[i].questionOptionDtos[j].optId == document.getElementById('form' + icount).question1.value) {
+				response.questionDtos[i].questionOptionDtos[j].selected = true;
+			}
+		}
+	}
+
+	console.log(response);
+	sessionStorage.questionAnswred = JSON.stringify(response);
+
+	var settings = {
+		async : false,
+		"url" : portalBackendUrl + "/api/test/submit?user=" + sessionStorage.un,
+		"method" : "POST",
+		"timeout" : 0,
+		"headers" : {
+			// "Authorization": "Bearer "+token,
+			"Content-Type" : "application/json",
+			"Cookie" : "JSESSIONID=69DB6C3D40AFCB14E84641A49E5C7175"
+		},
+		"data" : JSON.stringify(response),
+	};
+
+	$.ajax(settings).done(function(response1) {
+
+		if (response1.ctrResult == "PASSED") {
+			alert("Congratulations !!! You have passed the test with " + response1.ctrPercentageScore + "%");
+			$("#test").addClass('disableModule');
+		} else {
+			alert("You have failed the test with " + response1.ctrPercentageScore + "%");
+		}
+
+	});
+
+}
 
 function loginToCellma(ele, url, un, pw) {
 	

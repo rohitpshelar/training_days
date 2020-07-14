@@ -19,6 +19,7 @@
 <script src="js/myjquery.js"></script>
 <script src="x-config.js"></script>
 <script src="js/login.js"></script>
+<script src="js/setting.js"></script>
 <script>
 $(document).ready(function(){
 	if(sessionStorage.Patient_Administration_and_Scheduling != null && sessionStorage.Patient_Administration_and_Scheduling != ""){
@@ -331,11 +332,9 @@ video {
              <div class="alert-box alert-default">
 		
        <ul class="titlename instructions-list">
-       <li>The test has <strong>10</strong> mutliple choice questions</li>
        <li>There is no time limit to the test</li>
        <li>The test must be completed in one go</li>
        <li>You are unable to go back and change your answers</li>
-       <li>The pass percentage for the test is <strong>80%</strong></li>
        </ul>
        </div>
        <div class="clearheight"></div>
@@ -348,7 +347,7 @@ video {
 			<div style="cursor: not-allowed;">
 				<p id="test_PAS" class="disableModule" >
 					<!-- Trigger the modal with a button -->
-					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" onClick="getQuestionFromBackend(this,'PAS');" >
 						Start Test
 					</button>
 				</p>
