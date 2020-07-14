@@ -5,7 +5,6 @@ import static java.util.stream.Collectors.toList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -45,6 +44,45 @@ public class CompetencyTestResultService {
 	private QuestionOptionRepository questionOptionRepository;
 	
 	@Transactional
+	public CompetencyTestResultDto saveCompetencyTestResult(CompetencyTestResultDto competencyTestResultDto, String user) {
+		Module module = new Module();
+		if(competencyTestResultDto.getCtrModCode() != null && !competencyTestResultDto.getCtrModCode().isBlank()) {
+		 module=  	moduleRepository.findByModCode(competencyTestResultDto.getCtrModCode());//.orElseThrow(() -> new CellmaTrainingPortalException("Module not found"));
+		}else if(competencyTestResultDto.getCtrModId() != null && !competencyTestResultDto.getCtrModId().toString().isBlank()) {
+		 module=  	moduleRepository.findById(1L).orElseThrow(() -> new CellmaTrainingPortalException("Module not found"));
+		}else {
+			new CellmaTrainingPortalException("Module not found");
+			return null;
+		}
+		
+		competencyTestResultDto.setCtrModCode(module.getModCode());
+		competencyTestResultDto.setCtrModId(module.getModId());
+		competencyTestResultDto.setCtrModQuestionLimit(module.getModQuestionLimit());
+		competencyTestResultDto.setCtrResult("Attended");
+		
+		CompetencyTestResult competencyTestResult = competencyTestResultReposiroty.save(competencyTestResultMapper.DtoToCompetencyTestResult(competencyTestResultDto, user));
+		competencyTestResultDto.setCtrId(competencyTestResult.getCtrId());
+		
+		List<Integer> queList = generateQuestionSetAsPerModuleQuestionLimit( module,  user,  competencyTestResult);
+		
+		List<Long> longs = queList.stream()
+		        .mapToLong(Integer::longValue)
+		        .boxed().collect(Collectors.toList());
+		
+		Iterable<Long> queLterable = longs;
+		List<Question> questions =   questionRepository.findAllById(queLterable);
+		if(module.isModRandomQuestions()) {
+			Collections.shuffle(questions);
+		}
+		List<QuestionDto> questionDtos =  questions.stream().map(questionMapper::questionToDto).collect(toList());
+		List<QuestionDto> questionDtoss = questionService.updateQuestions(questionDtos, module.isModRandomQuestions());
+		competencyTestResultDto.setQuestionDtos(questionDtoss);
+		
+		return competencyTestResultDto;
+	
+	}
+	
+	@Transactional
 	public CompetencyTestResultDto saveCompetencyTestResult(CompetencyTestResultDto competencyTestResultDto) {
 		Module module = new Module();
 		if(competencyTestResultDto.getCtrModCode() != null && !competencyTestResultDto.getCtrModCode().isBlank()) {
@@ -72,12 +110,45 @@ public class CompetencyTestResultService {
 		
 		Iterable<Long> queLterable = longs;
 		List<Question> questions =   questionRepository.findAllById(queLterable);
+		if(module.isModRandomQuestions()) {
+			Collections.shuffle(questions);
+		}
 		List<QuestionDto> questionDtos =  questions.stream().map(questionMapper::questionToDto).collect(toList());
-		List<QuestionDto> questionDtoss = questionService.updateQuestions(questionDtos);
+		List<QuestionDto> questionDtoss = questionService.updateQuestions(questionDtos, module.isModRandomQuestions());
 		competencyTestResultDto.setQuestionDtos(questionDtoss);
 		
 		return competencyTestResultDto;
 	
+	}
+	private List<Integer> generateQuestionSetAsPerModuleQuestionLimit(Module module, String user, CompetencyTestResult competencyTestResult) {
+		
+		List<QuestionDto> questions = questionService.getQuestionByQueModId(module);
+	//	List<QuestionDto> mendatoryList = questions.stream().filter(p -> p.isQueMandatory()).collect(Collectors.toList());
+		List<Integer> mendatoryList = new ArrayList<Integer>();
+		List<Integer> disabledQuestionList = new ArrayList<Integer>();
+		for (QuestionDto questionDto : questions) {
+			if(questionDto.isQueMandatory()) {
+				mendatoryList.add(questionDto.getQueId().intValue());
+			}
+			if(questionDto.getQueStatus().equals("Disable")) {
+				disabledQuestionList.add(questionDto.getQueId().intValue());
+			}
+			
+		}
+		
+		List<Integer> questionList= generateQuestionSetFromList(module.getModQuestionLimit().intValue(), questions, mendatoryList, module.isModRandomQuestions(), disabledQuestionList);
+		
+		for (Integer QueIds : questionList) {
+			CompetencyTestAnswer testAnswer = new CompetencyTestAnswer();
+			testAnswer.setCtaModId(module.getModId());
+			testAnswer.setCtaQueId(Long.valueOf(QueIds));
+			testAnswer.setCtaOptWeighting(0L);
+			testAnswer.setCtaCtrId(competencyTestResult.getCtrId());
+			testAnswer.setCtaUseUsername(user);
+			competencyTestAnswerRepository.save(testAnswer);
+		}
+		
+		return questionList;
 	}
 	
 	private List<Integer> generateQuestionSetAsPerModuleQuestionLimit(Module module, User user, CompetencyTestResult competencyTestResult) {
@@ -85,13 +156,18 @@ public class CompetencyTestResultService {
 		List<QuestionDto> questions = questionService.getQuestionByQueModId(module);
 	//	List<QuestionDto> mendatoryList = questions.stream().filter(p -> p.isQueMandatory()).collect(Collectors.toList());
 		List<Integer> mendatoryList = new ArrayList<Integer>();
+		List<Integer> disabledQuestionList = new ArrayList<Integer>();
 		for (QuestionDto questionDto : questions) {
 			if(questionDto.isQueMandatory()) {
 				mendatoryList.add(questionDto.getQueId().intValue());
 			}
+			if(questionDto.getQueStatus().equals("Disable")) {
+				disabledQuestionList.add(questionDto.getQueId().intValue());
+			}
+			
 		}
 		
-		List<Integer> questionList= generateQuestionSetFromList(module.getModQuestionLimit().intValue(), questions, mendatoryList, module.isModRandomQuestions());
+		List<Integer> questionList= generateQuestionSetFromList(module.getModQuestionLimit().intValue(), questions, mendatoryList, module.isModRandomQuestions(), disabledQuestionList);
 		
 		for (Integer QueIds : questionList) {
 			CompetencyTestAnswer testAnswer = new CompetencyTestAnswer();
@@ -106,35 +182,27 @@ public class CompetencyTestResultService {
 		return questionList;
 	}
 	
-	private static List<Integer> generateQuestionSetFromList(Integer modQuestionLimit, List<QuestionDto> totalQue, List<Integer> mendatoryList, boolean modRandomQuestions) {
-		for (int i = mendatoryList.size()+1; i <= modQuestionLimit; i++) {
-			Integer No = 0;
-			if(modRandomQuestions) {
-				Collections.shuffle(totalQue);
-				No = totalQue.get(0).getQueId().intValue();
-				//No = getRandomNumberInRange(1, totalQue.size());
-			}else {
-				No = totalQue.get(0).getQueId().intValue();
-				totalQue.remove(0);
-			}
-			if (mendatoryList.contains(No)) {
-				i--;
-			} else {
-				mendatoryList.add(No);
-			}
+	private static List<Integer> generateQuestionSetFromList(Integer modQuestionLimit, List<QuestionDto> totalQue, List<Integer> mendatoryList, boolean modRandomQuestions, List<Integer> disabledQuestionList ) {
+		
+		if(modQuestionLimit == 0) {
+			modQuestionLimit = totalQue.size();
 		}
-		if(modRandomQuestions) {
-		Collections.shuffle(mendatoryList);
+		
+		for (int i = mendatoryList.size()+1; i <= modQuestionLimit; i++) {
+			Integer No = totalQue.get(0).getQueId().intValue();
+			if (mendatoryList.contains(No)) {
+				totalQue.remove(0);
+			} else {
+				if(!disabledQuestionList.contains(No)) {
+				mendatoryList.add(No);
+				totalQue.remove(0);
+				}else {
+					totalQue.remove(0);
+				}
+			}
+			
 		}
 		return mendatoryList;
-	}
-
-	private static int getRandomNumberInRange(int min, int max) {
-		if (min >= max) {
-			throw new IllegalArgumentException("max must be greater than min");
-		}
-		Random r = new Random();
-		return r.nextInt((max - min) + 1) + min;
 	}
 
 	public CompetencyTestResultDto submitCompetencyTestResult(CompetencyTestResultDto competencyTestResultDto) {
@@ -165,7 +233,7 @@ public class CompetencyTestResultService {
 		Long calculatedPercentage = (long) ((countRightAns/countQuestions)*100);
 		competencyTestResult.setCtrPercentageScore(calculatedPercentage);
 		competencyTestResultDto.setCtrPercentageScore(calculatedPercentage);
-		if(module.getModWeightingPassPercent()<calculatedPercentage) {
+		if(module.getModWeightingPassPercent()<=calculatedPercentage) {
 			competencyTestResult.setCtrResult("PASSED");
 			competencyTestResultDto.setCtrResult("PASSED");
 		}else {

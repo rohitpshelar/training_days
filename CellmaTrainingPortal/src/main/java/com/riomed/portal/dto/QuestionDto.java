@@ -2,9 +2,6 @@ package com.riomed.portal.dto;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

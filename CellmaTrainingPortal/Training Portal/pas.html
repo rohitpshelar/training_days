@@ -19,6 +19,7 @@
 <script src="js/myjquery.js"></script>
 <script src="x-config.js"></script>
 <script src="js/login.js"></script>
+<script src="js/setting.js"></script>
 <script>
 $(document).ready(function(){
 
@@ -344,7 +345,7 @@ video {
 			<div style="cursor: not-allowed;">
 				<p id="test_PAS" class="" >
 					<!-- Trigger the modal with a button -->
-					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" onClick="jtogel(this);" >
+					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" onClick="jtogel(this,'PAS');" >
 						Start Test
 					</button>
 				</p>
@@ -546,24 +547,12 @@ Your inputs and feedback is valuable to us.
   <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-body">         
-		 <form id = "form1">
-			 <ol>
-				 <li>
-					 <h5><b>What are the steps to search a patient?</b></h5>
-					 <input type = "radio" name = "question0" value = "A"> A) Fill out all Patient Demographic details on Patient List page. Click the Search button shows details of patient searched <br>
-					 <input type = "radio" name = "question0" value = "B"> B) Search using the patient Cellma barcode  <br>
-					 <input type = "radio" name = "question0" value = "C"> C) Search using first name and surname  <br>
-					 <input type = "radio" name = "question0" value = "D"> D) Any of the above is applicable  <br>
-				 </li>
-			 </ol> 
-		 </form>  
-		 <center>
-			 <button type="button" id="subid"  class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalf" >
-					SUBMIT
-			 </button>
-		 </center>                           
+              <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Error</h4>
         </div>
+        <div class="modal-body">         
+					 <h5><b>Unable to connect server</b></h5>
       </div>
     </div>
   </div>
@@ -689,50 +678,7 @@ answers[9] = "C";
 
 var attempt = 0;
 
-function getScore2(){
 
-var response = JSON.parse(sessionStorage.question);
-console.log(response);
-	for(i = 0; i < response.questionDtos.length; i++){
-		var icount = i+1;
-
-		for(j = 0; j<response.questionDtos[i].questionOptionDtos.length; j++ ){
-			var jcount = j +1;
-			if(response.questionDtos[i].questionOptionDtos[j].optId == document.getElementById('form'+icount).question1.value){
-			response.questionDtos[i].questionOptionDtos[j].selected = true;
-			}			
-		}	
-	}
-
-console.log(response);
-sessionStorage.questionAnswred = JSON.stringify(response);
-
-
-var settings = {
-async: false,
-  "url": "http://localhost:8080/api/test/submit",
-  "method": "POST",
-  "timeout": 0,
-  "headers": {
-    "Authorization": "Bearer "+token,
-    "Content-Type": "application/json",
-    "Cookie": "JSESSIONID=69DB6C3D40AFCB14E84641A49E5C7175"
-  },
-  "data": JSON.stringify(response),
-};
-
-$.ajax(settings).done(function (response1) {
-
-if(response1.ctrResult == "PASSED"){
-alert("Congratulations !!! You have passed the test with "+response1.ctrPercentageScore+"%");
-}else{
-alert("You have failed the test with "+response1.ctrPercentageScore+"%");
-}
-
-});
-
-
-}
 
 function getScore() {
 

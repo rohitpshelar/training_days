@@ -29,6 +29,23 @@ public class ModuleService {
 		moduleDto.setModId(save.getModId());
 		return moduleDto;
 	}
+	
+	@Transactional
+	public ModuleDto save(ModuleDto moduleDto, String user) {
+		if(moduleDto.getModId() == null) {
+		moduleDto.setModStatus("Approved");
+		}
+		Module save = moduleRepository.save(moduleMapper.mapDtoToModule(moduleDto, user));
+		moduleDto.setModId(save.getModId());
+		return moduleDto;
+	}
+	
+//	@Transactional
+//	public ModuleDto updateModule(ModuleDto moduleDto, String user) {
+//		Module save = moduleRepository.(moduleMapper.mapDtoToModule(moduleDto, user));
+//		moduleDto.setModId(save.getModId());
+//		return moduleDto;
+//	}
 
 	@Transactional(readOnly = true)
 	public List<ModuleDto> getModules() {

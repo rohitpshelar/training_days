@@ -1,13 +1,9 @@
-var token = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2hpdCIsImlhdCI6MTU5NDI3NTM3MSwiZXhwIjoxNTk0MzY1MzcxfQ.VcttOzD6Oq3ji-Q_BmWxbMqIUra-4JcAaHwCYFJMUFJSuQt6V_iB9rmvtaWQRMomrXNzEDbr8bcA5FQp6NZPkXghCnkZpV6QompPD_REGQK_noAFZEIQ7vqiU9_zGdAEQUWo9HmggqJ9lQU4GsWx9CVVNaUdNjxtemoI2fXNTEbILGGYdATIlIePP-cLR2ejPBiS_piBfOgosfVhi2bXx3P0UEe9imdWl1pkYX2ZKftXIeOGBdqLlcqFZULwMBjOdLRIch5ekfkL5HZeBnYV08F5kOUD4JTPYWDVwXX7qXAvHDYQ8AIdha5tiwXeHpR10MkfpwkX7xeltZgIszcJ2A";
+//var token = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2hpdCIsImlhdCI6MTU5NDY1ODk3MywiZXhwIjoxNjM0NjU4OTc0fQ.byu9nisLHcwICv70rpgggQl0MSYeIDoAj-meCsOCjuFc0mIDufSQcD5eQL8kLhBf6aJLrG0alxG1JUYLqmWnZyk4jI4cdiCcec0Lbp0V0RooeT-UpRsfr4btRh-Dgwc5R-NH7sm81aa9jCEkUbBl-j84oQRkdWXaYFhHysemkEUYS6QDDxC3_2M--YO5lvke3U5HMtb_rr8r25QsNdRrHRZVWcDtdZ_PcZOGEwxOScndgLJon9aBtMGeCw8kcqRe2qltihV83R26v0aPmVCLBWHiOPdjt0qFHv9QHvBfDqjCETy_gVnEtJQ0W3NMuDCE6FUpIA549DrPM7VNSzVcQQq";
 
 
 $(document).ready(function () {
 	getModules();
 	
-	
-//	if($("#module").val() != null && $("#module").val() != "Please select"){
-//	$("#module").change(getModules($("#module").val()));
-//	}
 });
 
 function getModules(){
@@ -46,11 +42,11 @@ function addModule(){
 	var ele = $('#addmoduleForm').getFormObject();
 	var settings = {
 			async: false,
-		  "url": "http://localhost:8080/api/module",
+		  "url": "http://localhost:8080/api/module?user=rohitpshelar",
 		  "method": "POST",
 		  "timeout": 0,
 		  "headers": {
-			    "Authorization": "Bearer "+token,
+			  //  "Authorization": "Bearer "+token,
 			    "Content-Type": "application/json"
 			  },
 		  "data": JSON.stringify({"modCode":ele.addmodCode,"modName":ele.addmodName,"modQuestionLimit":0,"modRandomQuestions":ele.addmodRandomQuestions,"modStatus":ele.addmodStatus,"modWeightingPassPercent":ele.addmodWeightingPassPercent}),
@@ -66,11 +62,11 @@ function addQuestion(){
 	var ele = $('#addQuestionForm').getFormObject();
 	var settings = {
 			async: false,
-		  "url": "http://localhost:8080/api/question",
+		  "url": "http://localhost:8080/api/question?user=rohitpshelar",
 		  "method": "POST",
 		  "timeout": 0,
 		  "headers": {
-			    "Authorization": "Bearer "+token,
+			//    "Authorization": "Bearer "+token,
 			    "Content-Type": "application/json"
 			  },
 			  "data": 	JSON.stringify({"queMandatory":ele.addqueMandatory,"queModId":sessionStorage.modId,"queStatus":ele.addqueStatus,"queText":ele.addqueText,"queType":"text"}),
@@ -86,11 +82,11 @@ function addOption(){
 	var ele = $('#addOptionForm').getFormObject();
 	var settings = {
 			async: false,
-		  "url": "http://localhost:8080/api/option",
+		  "url": "http://localhost:8080/api/option?user=rohitpshelar",
 		  "method": "POST",
 		  "timeout": 0,
 		  "headers": {
-			    "Authorization": "Bearer "+token,
+			//    "Authorization": "Bearer "+token,
 			    "Content-Type": "application/json"
 			  },
 			  "data": JSON.stringify({"optQueId":sessionStorage.queId,"optStatus":"Approved","optText":ele.addoptText,"optWeighting":ele.addoptWeighting}),
@@ -120,16 +116,16 @@ function getModuleById(id){
 		};
 	
 		$.ajax(settings).done(function (response) {
-			$("#modId").val(response[0].modId);
-			$("#modName").val(response[0].modName);
-			$("#modStatus").val(response[0].modStatus);
-			$("#modQuestionLimit").val(response[0].modQuestionLimit);
-			$("#modWeightingPassPercent").val(response[0].modWeightingPassPercent);
-			$("#modRandomQuestions").val(response[0].modRandomQuestions.toString());
-			$("#modName").val(response[0].modName);
-			$("#moduleForm").show();
+			$("#updatemodId").val(response[0].modId);
+			$("#updatemodName").val(response[0].modName);
+			$("#updatemodStatus").val(response[0].modStatus);
+			$("#updatemodCode").val(response[0].modCode);
+			$("#updatemodQuestionLimit").val(response[0].modQuestionLimit);
+			$("#updatemodWeightingPassPercent").val(response[0].modWeightingPassPercent);
+			$("#updatemodRandomQuestions").val(response[0].modRandomQuestions.toString());
+			$("#updateModuleForm").show();
 
-			getQuestionByModule(response[0].modId);
+			getQuestionByModule(response[0].modId,response[0].modQuestionLimit );
 			$("#queContainer").show();
 			
 			sessionStorage.modId = response[0].modId;
@@ -150,7 +146,7 @@ function submitForm(ele){
 	consol.log(ele);
 }
 
-function getQuestionByModule(id){
+function getQuestionByModule(id, modQuestionLimit){
 	var settings = {
 			async: false,
 		  "url": "http://localhost:8080/api/question/bymodule/"+id,
@@ -165,6 +161,7 @@ function getQuestionByModule(id){
 		$.ajax(settings).done(function (response) {
 		  var queList = "";
 		  var modalDiv = ""
+		  var optModalDiv = "";
 		var qlimitstart =1;
 		  var qlimitend =response.length;
 		  for(i=0; i < response.length ; i++){
@@ -187,29 +184,93 @@ function getQuestionByModule(id){
 				
 				' <div class="modal-header">'+
 		         ' <button type="button" class="close" data-dismiss="modal">&times;</button>'+
+		         '<form id="updateQuestionForm'+response[i].queId +'" onsubmit="updateQuestion(this)">'+
+		       '  <div hidden="true">'+
+		      '   <label for="addqueId">Question Id</label> '+
+		      '   <input type="text" class="form-control" name="updatequeId" id="updatequeId" placeholder="Enter modName" value="'+response[i].queId +'">'+
+		      '  </div>'+
 		          '<h4 class="modal-title">Questions</h4>'+
 		          '<textarea rows="9" cols="25" class="form-control" name="updatequeText" id="updatequeText" value="'+response[i].queText +'">'+response[i].queText +'</textarea>'+
-		        '  <label for="modStatus"> Is Mandatory</label> <Select id="modStatus"'+
-					'	class="form-control" name="modStatus"'+
-					'	onchange="getModuleById(this)">'+
-					'<option selected value="Enable">Enable</option>'+
-			       '   <option value="Disable">Disable</option>'+
-				'	</select>'+
-				'  <label for="addqueMandatory">Is Question Mandatory</label> '+
-			      '   <Select id="addqueMandatory" class="form-control" name="addqueMandatory">'+
-			      '    <option value="true">Yes</option>'+
-			       '   <option selected value="false">No</option>'+
-			      '  </select>'+
+		        '  <label for="updatequeStatus">Status</label> <Select id="updatequeStatus"'+
+					'	class="form-control" name="updatequeStatus">';
+			  if(response[i].queStatus== "Enable"){
+				  modalDiv = modalDiv +	'<option selected value="Enable">Enable</option>'+
+			       '   <option value="Disable">Disable</option>';
+			  }else{
+				  modalDiv = modalDiv +		'<option  value="Enable">Enable</option>'+
+				       '   <option selected value="Disable">Disable</option>';
+			  }
+			  modalDiv = modalDiv +'	</select>'+
+				'  <label for="updatequeMandatory">Is Mandatory</label> '+
+			      '   <Select id="updatequeMandatory" class="form-control" name="updatequeMandatory">';
+			  if(response[i].queMandatory== true){
+				  modalDiv = modalDiv +  '    <option selected value="true">Yes</option>'+
+			       '   <option  value="false">No</option>';
+			  }else{
+				  modalDiv = modalDiv +   '    <option value="true">Yes</option>'+
+			       '   <option selected value="false">No</option>';
+			  }
+			  modalDiv = modalDiv +   '  </select>'+
 		          '<button type="submit" class="btn btn-primary" >Update Question</button>'+
 		        '</div>'+
-				
+		        '<button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" data-toggle="modal" data-target="#addOption">Add new Option</button>'+
 				 '   <div class="modal-body">      '+   
-					'<button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" data-toggle="modal" data-target="#addOption">Add new Option</button>'+
+					
 					' <form id = "form'+icount+'">'+
-					'			 <h5><b>OPTIONS :</b></h5>';
+					'			 <h5><b>OPTIONS :</b>'+
+					'<div style="border: 1px solid #f60b0b;background-color: #f2dede;">'+
+			   ' Note :<br>'+
+			 '   1) <b style="color: green;">GREEN</b> Option are Corrent Option<br>'+
+			  '  2) <span style="text-decoration: line-through;">Line-through </span>Option are Disabled Option<br>'+
+			  '  3) Click on Option to edit Option'+
+			  '  </div> </h5>';
 				for(j = 0; j<response[i].questionOptionDtos.length; j++ ){
 					var jcount = j +1;
-					modalDiv = modalDiv + '<h5 name = "question1" value = "'+response[i].questionOptionDtos[j].optId+'"> '+jcount+') '+response[i].questionOptionDtos[j].optText+' </h5>';	
+					
+					 if(response[i].questionOptionDtos[j].optWeighting == "0"){
+						 modalDiv = modalDiv + '<h5 data-dismiss="modal" data-toggle="modal" data-target="#myOptModal'+response[i].questionOptionDtos[j].optId+'" name = "question1" value = "'+response[i].questionOptionDtos[j].optId+'"><pre> '+jcount+') '+response[i].questionOptionDtos[j].optText+' </pre></h5>';	
+					  }else{
+						  modalDiv = modalDiv + '<h5 data-dismiss="modal" data-toggle="modal" data-target="#myOptModal'+response[i].questionOptionDtos[j].optId+'" name = "question1" value = "'+response[i].questionOptionDtos[j].optId+'"><pre style="color: green;"> '+jcount+') '+response[i].questionOptionDtos[j].optText+' </pre></h5>';	
+					  }
+					  
+					optModalDiv = optModalDiv +' <div class="modal fade" id="myOptModal'+response[i].questionOptionDtos[j].optId+'" role="dialog">'+
+						 ' <div class="modal-dialog modal-lg">'+
+						'  <div class="modal-content">'+
+						
+						' <div class="modal-header">'+
+				         ' <button type="button" class="close" data-dismiss="modal">&times;</button>'+
+				         '<form id="updateOptForm'+response[i].queId +'" onsubmit="updateOpt(this)">'+
+				       '  <div hidden="true">'+
+				      '   <label for="updateoptId">Opt Id</label> '+
+				      '   <input type="text" class="form-control" name="updateoptId" id="updateoptId" value="'+response[i].questionOptionDtos[j].optId +'">'+
+				      '  </div>'+
+				          '<h4 class="modal-title">Option</h4>'+
+				          '<textarea rows="9" cols="25" class="form-control" name="updateoptText" id="updateoptText" value="'+response[i].questionOptionDtos[j].optText +'">'+response[i].questionOptionDtos[j].optText +'</textarea>'+
+					
+					' <label for="updateoptStatus"> Status</label> <Select id="updateoptStatus" class="form-control" name="updateoptStatus">';
+					 if(response[i].questionOptionDtos[j].optStatus== "Enable"){
+						 optModalDiv = optModalDiv +	'<option selected value="Enable">Enable</option>'+
+					       '   <option value="Disable">Disable</option>';
+					  }else{
+						  optModalDiv = optModalDiv +		'<option  value="Enable">Enable</option>'+
+						       '   <option selected value="Disable">Disable</option>';
+					  }
+					 optModalDiv = optModalDiv +'   </select>'+
+			        ' <label for="addoptWeighting">Is Correct</label> <Select id="addoptWeighting" class="form-control" name="addoptWeighting"> ';
+					 if(response[i].questionOptionDtos[j].optWeighting == "0"){
+						 optModalDiv = optModalDiv +	'<option selected value="0">No</option>'+
+					       '   <option value="1">Yes</option>';
+					  }else{
+						  optModalDiv = optModalDiv +	'<option  value="0">No</option>'+
+					       '   <option selected value="1">Yes</option>';
+					  }
+					 optModalDiv = optModalDiv + '  </select>'+
+					 '<button type="submit" class="btn btn-primary" >Update Option</button>'+
+					 ' </div>'+
+					    '</div>'+
+					 ' </div>'+
+					'</div>';	
+					
 				}
 				modalDiv = modalDiv +  '</form>  '+
 				 '<center>'+
@@ -223,14 +284,54 @@ function getQuestionByModule(id){
 		  
 		  //to set Question Limit
 		  for(i = qlimitstart; i <= qlimitend; i++){
-			  $("#modQuestionLimit").append(new Option(i, i));
+			  $("#updatemodQuestionLimit").append(new Option(i, i));
 		  }
+		  $("#updatemodQuestionLimit").val(modQuestionLimit);
 		  
-		  queList = queList +	'<button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addQuestion" >Add new Question</button>';
+		//  queList = queList +	'<button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addQuestion" >Add new Question</button>';
 		  $("#myModal1").parent().html(modalDiv);
 		  $("#queList").html(queList);
+		  $("#myOptModal").parent().html(optModalDiv);
 		
 	});
+}
+
+function updateModule(ele){
+	var settings = {
+			async: false,
+		  "url": "http://localhost:8080/api/module?user=rohitpshelar",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+			  //  "Authorization": "Bearer "+token,
+			    "Content-Type": "application/json"
+			  },
+		  "data": JSON.stringify({"modId":ele.updatemodId.value,"modCode":ele.updatemodCode.value,"modName":ele.updatemodName.value,"modQuestionLimit":ele.updatemodQuestionLimit.value,"modRandomQuestions":ele.updatemodRandomQuestions.value,"modStatus":ele.updatemodStatus.value,"modWeightingPassPercent":ele.updatemodWeightingPassPercent.value}),
+		};
+
+		$.ajax(settings).done(function (response) {
+			showModel("Module Updated");
+			
+		});
+	
+}
+
+function updateQuestion(ele){
+	var settings = {
+			async: false,
+		  "url": "http://localhost:8080/api/question?user=rohitpshelar",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+			//    "Authorization": "Bearer "+token,
+			    "Content-Type": "application/json"
+			  },
+			  "data": 	JSON.stringify({"queId":ele.updatequeId.value,"queMandatory":ele.updatequeMandatory.value,"queModId":sessionStorage.modId,"queStatus":ele.updatequeStatus.value,"queText":ele.updatequeText.value,"queType":"text"}),
+		};
+
+		$.ajax(settings).done(function (response) {
+			showModel("Question Updated");
+		});
 }
 
 

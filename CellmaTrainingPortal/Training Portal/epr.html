@@ -19,6 +19,7 @@
 <script src="js/myjquery.js"></script>
 	<script src="x-config.js"></script>
 <script src="js/login.js"></script>
+<script src="js/setting.js"></script>
 <script>
 $(document).ready(function(){
 if(sessionStorage.Electronic_Patient_Record != null && sessionStorage.Electronic_Patient_Record != ""){
@@ -370,9 +371,9 @@ video {
 				Please complete practice
 			</p>
 			<div style="cursor: not-allowed;">
-				<p id="test_EPR" class="disableModule" >
+				<p id="test_EPR" class="" >
 					<!-- Trigger the modal with a button -->
-					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" onClick="jtogel(this,'ROH');" >
 						Start Test
 					</button>
 				</p>
@@ -410,110 +411,20 @@ Your inputs and feedback is valuable to us.
  <!-- modal popup -->
  <div class="container">
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog modal-lg">
-      <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
+              <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Questions</h4>
+          <h4 class="modal-title">Error</h4>
         </div>
-        <div class="modal-body">
-                <form id = "form1">
-     <ol>
-     <li>
-     <h5><b> How do you begin an assessment for a patient?</b> </h5>
-     <input type = "radio" name = "question0" value = "A"> A) After searching and selecting the patient &gt; go to contact summary page &gt; click on assessments &gt; choose the desired assessment from the dropdown &gt; click the start button<br>
-     <input type = "radio" name = "question0" value = "B"> B) Click on assessment &gt; click on +assess &gt; enter info &gt; click save  <br>
-     <input type = "radio" name = "question0" value = "C"> C) Fill out the assessment form physically &gt; click the +assessment at top &gt; click upload document button &gt; choose file from your computer &gt; click save<br>
-     <input type = "radio" name = "question0" value = "D"> D) Any of the above is correct <br>
-     </li>
-
-     <li>
-     <h5><b>How do you prescribe a drug from an assessment?</b>  </h5>
-     <input type = "radio" name = "question1" value = "A" > A) Go to the medication section of the assessment &gt; click on the desired drug listed on the buttons below &gt; Fill out the prescription at the right side of the screen (does, frequency, route etc.) &gt; click save<br>
-     <input type = "radio" name = "question1" value = "B" > B) Click assessment category &gt; click +assessment &gt; enter info &gt; click save<br>
-     <input type = "radio" name = "question1" value = "C" > C) Click on the medication section &gt; click upload document button &gt; choose file from your computer &gt; click save<br>
-     <input type = "radio" name = "question1" value = "D" > D) Click on the view dropdown at the top &gt; click on prescription &gt; choose your desired prescription &gt; click edit &gt; view the preview &gt; click send for approval/approved<br>
-     </li>
-     
-      <li>
-     <h5><b>What are the steps to doing an assessment?</b></h5>
-     <input type = "radio" name = "question2" value = "A" > A) Click assessment category &gt; click +assessment &gt; enter info &gt; click save <br>
-     <input type = "radio" name = "question2" value = "B" > B) Click on the assessment category on the left &gt; click start &gt; enter info based on the assessment &gt; click next for next section of the assessment &gt; repeat steps &gt; click end &gt; view summary &gt; click save<br>
-     <input type = "radio" name = "question2" value = "C" > C) Fill out the assessment form physically &gt; click the +assessment at top &gt; click upload document button &gt; choose file from your computer &gt; click save <br>
-     <input type = "radio" name = "question2" value = "D" > D) Any of the above is correct <br>
-     </li>
-     
-      <li>
-     <h5> <b>How are the steps to doing a lab request in an assessment?</b> </h5>
-     <input type = "radio" name = "question3" value = "A" > A) By checking the “for lab request or for imaging request” button at the bottom of the mini assessment screen<br>
-     <input type = "radio" name = "question3" value = "B" > B) By selecting the lab or imaging category on the left<br>
-     <input type = "radio" name = "question3" value = "C" > C) By entering it in notes section<br>
-     <input type = "radio" name = "question3" value = "D" > D) Start the assessment &gt; go to the investigation section &gt; select the desired investigation &gt; fill out the relevant info on the right of the page &gt; tick the “for lab request” check box> click save<br>
-     </li>
-     
-      <li>
-     <h5> <b>Name three categories from the left panel</b>  </h5>
-     <input type = "radio" name = "question4" value = "A" > A) Diagnosis, Medications, allergies<br>
-     <input type = "radio" name = "question4" value = "B" > B) Assessments, Conditions, Investigations<br>
-     <input type = "radio" name = "question4" value = "C" > C) Procedure, Physical signs, Contact history<br>
-     <input type = "radio" name = "question4" value = "D" > D) All of the above <br>
-     </li>
-     
-      <li>
-     <h5><b>In an assessment, how do you enter the answers? </b> </h5>
-     <input type = "radio" name = "question5" value = "A" > A) Free text or check boxes<br>
-     <input type = "radio" name = "question5" value = "B" > B) Search and select<br>
-     <input type = "radio" name = "question5" value = "C" > C) Upload documents<br>
-     <input type = "radio" name = "question5" value = "D" > D) All of the above <br>
-     </li>
-     
-      <li>
-     <h5><b>When adding an investigation, how do you decipher if it’s an imaging request or for a lab request?</b> </h5>
-     <input type = "radio" name = "question6" value = "A" > A) By checking the “for lab request or for imaging request” on the right of the assessment screen<br>
-     <input type = "radio" name = "question6" value = "B" > B) By selecting the lab or imaging category on the left<br>
-     <input type = "radio" name = "question6" value = "C" > C) By entering it in notes section<br>
-     <input type = "radio" name = "question6" value = "D" > D) By clicking the request hyperlink <br>
-     </li>
-     
-      <li>
-     <h5><b>How do you add an allergen to a patient in an assessment?</b> </h5>
-     <input type = "radio" name = "question7" value = "A" > A) This can only be done in contact history<br>
-     <input type = "radio" name = "question7" value = "B" > B) This can only be done in the allergy category on the patient summary page<br>
-     <input type = "radio" name = "question7" value = "C" > C) Start the desired assessment &gt; click on the allergy section &gt; select the desired allergy &gt; fil out the extra details on the right of the page &gt; click save<br>
-     <input type = "radio" name = "question7" value = "D" > D) All of the above  <br>
-     </li>
-     
-      <li>
-     <h5><b>How do you view details that were previously recorded while in another section in an assessment?</b> </h5>
-     <input type = "radio" name = "question8" value = "A" > A) You cannot view this until you have completed the assessment<br>
-     <input type = "radio" name = "question8" value = "B" > B) This is shown at the right of the screen when you enter another section of that assessment<br>
-     <input type = "radio" name = "question8" value = "C" > C) Click on assessment summary<br>
-     <input type = "radio" name = "question8" value = "D" > D) Any of the above is correct<br>
-     </li>
-     
-      <li>
-     <h5><b> How do you view details that were recorded in an assessment?</b> </h5>
-     <input type = "radio" name = "question9" value = "A" > A) Click on the assessment category on the left of the patient summary page  &gt; click on the view hyperlink of the desired assessment  &gt; view the details in the pop up <br>
-     <input type = "radio" name = "question9" value = "B" > B) Go to the contact history<br>
-     <input type = "radio" name = "question9" value = "C" > C) Go into the desired assessment  &gt; go to the sections in which you wish to view the details of<br>
-     <input type = "radio" name = "question9" value = "D" > D) This cannot be done <br>
-     </li>
-     </ol> 
-     </form>
-     <center>
-     <button type="button" class="btn btn-sm btn-primary" onclick = "javascript: getScore()" >
-            SUBMIT
-     </button>
-     </center>           
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+        <div class="modal-body">         
+					 <h5><b>Unable to connect server</b></h5>
       </div>
     </div>
   </div>
+  
+</div>
 </div>
 <!-- modal popup for feedback form -->
  <div class="container">

@@ -15,5 +15,9 @@ public interface QuestionOptionMapper {
 	@Mapping(target = "optCreated" , expression = "java(java.time.Instant.now())")
 	@Mapping(target = "optCreatedBy", source = "user.username")
 	QuestionOption dtoToQuestionOption(QuestionOptionDto questionOptionDto, User user);
+	
+	@Mapping(target = "optCreated" , expression = "java(java.time.Instant.now())")
+	@Mapping(target = "optCreatedBy", source = "user")
+	QuestionOption dtoToQuestionOption(QuestionOptionDto questionOptionDto, String user);
 
 }

@@ -16,5 +16,9 @@ public interface CompetencyTestResultMapper {
 	@Mapping( target = "ctrCreated", expression = "java(java.time.Instant.now())")
 	@Mapping(target = "ctrUsername", source = "user.username")
 	CompetencyTestResult DtoToCompetencyTestResult(CompetencyTestResultDto competencyTestResultDto, User user);
+	
+	@Mapping( target = "ctrCreated", expression = "java(java.time.Instant.now())")
+	@Mapping(target = "ctrUsername", source = "user")
+	CompetencyTestResult DtoToCompetencyTestResult(CompetencyTestResultDto competencyTestResultDto, String user);
 
 }

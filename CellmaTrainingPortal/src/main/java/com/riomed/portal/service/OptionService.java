@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.toList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.riomed.portal.dto.QuestionOptionDto;
 import com.riomed.portal.exceptions.CellmaTrainingPortalException;
@@ -26,7 +27,17 @@ public class OptionService {
 	private AuthService authService;
 	
 	
+	@Transactional
+	public QuestionOptionDto saveOption(QuestionOptionDto questionOptionDto, String user) {
+		if(questionOptionDto.getOptId() == null) {
+		questionOptionDto.setOptStatus("Approved");
+		}
+		QuestionOption questionOption =  questionOptionRepository.save(questionOptionMapper.dtoToQuestionOption(questionOptionDto, user));
+		questionOptionDto.setOptId(questionOption.getOptId());
+		return questionOptionDto;
+	}
 	
+	@Transactional
 	public QuestionOptionDto saveOption(QuestionOptionDto questionOptionDto) {
 		questionOptionDto.setOptStatus("Approved");
 		QuestionOption questionOption =  questionOptionRepository.save(questionOptionMapper.dtoToQuestionOption(questionOptionDto, authService.getCurrentUser()));

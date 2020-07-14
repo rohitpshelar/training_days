@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.riomed.portal.dto.QuestionOptionDto;
@@ -24,6 +25,11 @@ public class OptionController {
 	private OptionService optionService;
 	
 	@PostMapping
+	public ResponseEntity<QuestionOptionDto> saveOptions(@RequestBody QuestionOptionDto questionOptionDto, @RequestParam String user) {
+		return ResponseEntity.status(HttpStatus.OK).body(optionService.saveOption(questionOptionDto, user));
+	}
+	
+	@PostMapping("/auth")
 	public ResponseEntity<QuestionOptionDto> saveOptions(@RequestBody QuestionOptionDto questionOptionDto) {
 		return ResponseEntity.status(HttpStatus.OK).body(optionService.saveOption(questionOptionDto));
 	}

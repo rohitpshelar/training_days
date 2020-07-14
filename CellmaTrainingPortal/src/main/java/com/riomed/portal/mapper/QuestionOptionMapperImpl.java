@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-07-05T20:23:29+0530",
+    date = "2020-07-14T15:25:37+0530",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
 )
 @Component
@@ -48,6 +48,29 @@ public class QuestionOptionMapperImpl implements QuestionOptionMapper {
         }
         if ( user != null ) {
             questionOption.setOptCreatedBy( user.getUsername() );
+        }
+        questionOption.setOptCreated( java.time.Instant.now() );
+
+        return questionOption;
+    }
+
+    @Override
+    public QuestionOption dtoToQuestionOption(QuestionOptionDto questionOptionDto, String user) {
+        if ( questionOptionDto == null && user == null ) {
+            return null;
+        }
+
+        QuestionOption questionOption = new QuestionOption();
+
+        if ( questionOptionDto != null ) {
+            questionOption.setOptId( questionOptionDto.getOptId() );
+            questionOption.setOptText( questionOptionDto.getOptText() );
+            questionOption.setOptQueId( questionOptionDto.getOptQueId() );
+            questionOption.setOptWeighting( questionOptionDto.getOptWeighting() );
+            questionOption.setOptStatus( questionOptionDto.getOptStatus() );
+        }
+        if ( user != null ) {
+            questionOption.setOptCreatedBy( user );
         }
         questionOption.setOptCreated( java.time.Instant.now() );
 

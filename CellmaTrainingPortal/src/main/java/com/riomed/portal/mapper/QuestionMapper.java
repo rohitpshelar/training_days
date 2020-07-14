@@ -15,5 +15,9 @@ public interface QuestionMapper {
 	@Mapping(target = "queCreated", expression = "java(java.time.Instant.now())")
 	@Mapping(target = "queCreatedBy", source = "user.username")
 	Question dtoToQuestion(QuestionDto questionDto, User user);
+	
+	@Mapping(target = "queCreated", expression = "java(java.time.Instant.now())")
+	@Mapping(target = "queCreatedBy", source = "user")
+	Question dtoToQuestion(QuestionDto questionDto, String user);
 
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.riomed.portal.dto.CompetencyTestResultDto;
@@ -21,9 +22,13 @@ public class CompetencyTestResultController {
 	private CompetencyTestResultService competencyTestResultService;
 	
 	@PostMapping
+	public ResponseEntity<CompetencyTestResultDto> startCompetencyTest(@RequestBody CompetencyTestResultDto competencyTestResultDto,@RequestParam String user) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(competencyTestResultService.saveCompetencyTestResult(competencyTestResultDto,user));
+	}
+	
+	@PostMapping("/auth")
 	public ResponseEntity<CompetencyTestResultDto> startCompetencyTest(@RequestBody CompetencyTestResultDto competencyTestResultDto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(competencyTestResultService.saveCompetencyTestResult(competencyTestResultDto));
-
 	}
 	
 	@PostMapping("/code/{code}")

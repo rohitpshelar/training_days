@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-07-05T20:23:30+0530",
+    date = "2020-07-14T15:25:37+0530",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
 )
 @Component
@@ -50,6 +50,30 @@ public class QuestionMapperImpl implements QuestionMapper {
         }
         if ( user != null ) {
             question.setQueCreatedBy( user.getUsername() );
+        }
+        question.setQueCreated( java.time.Instant.now() );
+
+        return question;
+    }
+
+    @Override
+    public Question dtoToQuestion(QuestionDto questionDto, String user) {
+        if ( questionDto == null && user == null ) {
+            return null;
+        }
+
+        Question question = new Question();
+
+        if ( questionDto != null ) {
+            question.setQueId( questionDto.getQueId() );
+            question.setQueText( questionDto.getQueText() );
+            question.setQueType( questionDto.getQueType() );
+            question.setQueModId( questionDto.getQueModId() );
+            question.setQueMandatory( questionDto.isQueMandatory() );
+            question.setQueStatus( questionDto.getQueStatus() );
+        }
+        if ( user != null ) {
+            question.setQueCreatedBy( user );
         }
         question.setQueCreated( java.time.Instant.now() );
 

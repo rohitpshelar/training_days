@@ -19,5 +19,9 @@ public interface  ModuleMapper {
 	@Mapping(target = "modCreated", expression = "java(java.time.Instant.now())")
 	@Mapping(target = "modCreatedBy", source = "user.username")
 	Module mapDtoToModule(ModuleDto moduleDto, User user);
+	
+	@Mapping(target = "modCreated", expression = "java(java.time.Instant.now())")
+	@Mapping(target = "modCreatedBy", source = "user")
+	Module mapDtoToModule(ModuleDto moduleDto, String user);
 
 }

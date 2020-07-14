@@ -3,6 +3,7 @@ package com.riomed.portal.service;
 import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -35,8 +36,19 @@ public class QuestionService {
 	private QuestionOptionMapper questionOptionMapper;
 	private AuthService authService;
 
+	@Transactional
+	public QuestionDto saveQuestion(QuestionDto questionDto, String user) {
+		if(questionDto.getQueId() == null) {
+		questionDto.setQueStatus("Enable");
+		}
+		Question question = questionRepository.save(questionMapper.dtoToQuestion(questionDto, user));
+		questionDto.setQueId(question.getQueId());
+		return questionDto;
+	}
+	
+	@Transactional
 	public QuestionDto saveQuestion(QuestionDto questionDto) {
-		questionDto.setQueStatus("Approved");
+		questionDto.setQueStatus("Enable");
 		Question question = questionRepository.save(questionMapper.dtoToQuestion(questionDto, authService.getCurrentUser()));
 		questionDto.setQueId(question.getQueId());
 		return questionDto;
@@ -55,7 +67,7 @@ public class QuestionService {
 	@Transactional(readOnly = true)
 	private List<QuestionDto> getAll() {
 		List<QuestionDto> questionDtos =  questionRepository.findAll().stream().map(questionMapper::questionToDto).collect(toList());
-		List<QuestionDto> questionDtoss = updateQuestions(questionDtos);
+		List<QuestionDto> questionDtoss = updateQuestions(questionDtos, false);
 		return questionDtoss;
 	}
 
@@ -63,15 +75,15 @@ public class QuestionService {
 	public List<QuestionDto> getQuestionByQueModId(Module module) {
 		List<Question> questionlist = questionRepository.findQuestionByQueModId(module.getModId());
 		List<QuestionDto> questionDtos =  questionlist.stream().map(questionMapper::questionToDto).collect(toList());
-		List<QuestionDto> questionDtoss = updateQuestions(questionDtos);
+		List<QuestionDto> questionDtoss = updateQuestions(questionDtos, false);
 		return questionDtoss;
 	}
 	
-	public List<QuestionDto>  updateQuestions(List<QuestionDto> questionDtos ) {
+	public List<QuestionDto>  updateQuestions(List<QuestionDto> questionDtos, boolean shuffle ) {
 		List<QuestionDto> questionDtoss = new ArrayList<QuestionDto>();
 		for (int i = 0; i < questionDtos.size(); i++) {
 			QuestionDto questionDto = questionDtos.get(i);
-			questionDto = mapOptionToQuestion(questionDto);
+			questionDto = mapOptionToQuestion(questionDto, shuffle);
 			questionDtoss.add(i, questionDto);
 			
 		}
@@ -79,8 +91,11 @@ public class QuestionService {
 	}
 	
 	@Transactional(readOnly = true)
-	public QuestionDto mapOptionToQuestion(QuestionDto questionDto) {
+	public QuestionDto mapOptionToQuestion(QuestionDto questionDto, boolean shuffle) {
 		List<QuestionOptionDto> questionOptionDtos = questionOptionRepository.findQuestionOptionByoptQueId(questionDto.getQueId()).stream().map(questionOptionMapper::questionOptionToDto).collect(toList());
+		if(shuffle) {
+		Collections.shuffle(questionOptionDtos);
+		}
 		 questionDto.setQuestionOptionDtos( questionOptionDtos);
 		 return questionDto;
 	}

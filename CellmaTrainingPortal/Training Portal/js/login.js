@@ -1,5 +1,4 @@
 
-var token = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJyb2hpdCIsImlhdCI6MTU5NDI3NTM3MSwiZXhwIjoxNTk0MzY1MzcxfQ.VcttOzD6Oq3ji-Q_BmWxbMqIUra-4JcAaHwCYFJMUFJSuQt6V_iB9rmvtaWQRMomrXNzEDbr8bcA5FQp6NZPkXghCnkZpV6QompPD_REGQK_noAFZEIQ7vqiU9_zGdAEQUWo9HmggqJ9lQU4GsWx9CVVNaUdNjxtemoI2fXNTEbILGGYdATIlIePP-cLR2ejPBiS_piBfOgosfVhi2bXx3P0UEe9imdWl1pkYX2ZKftXIeOGBdqLlcqFZULwMBjOdLRIch5ekfkL5HZeBnYV08F5kOUD4JTPYWDVwXX7qXAvHDYQ8AIdha5tiwXeHpR10MkfpwkX7xeltZgIszcJ2A";
 
 var clicks = 3;
 function clickCounter() {
@@ -28,18 +27,18 @@ function clickCounter() {
 	}
 };
 
-function jtogel(ele){
+function jtogel(ele, module){
 		
 		var settings = {
 			async: false,
-	  "url": "http://localhost:8080/api/test/",
+	  "url": "http://localhost:8080/api/test/?user=rohitpshelar",
 	  "method": "POST",
 	  "timeout": 0,
 	  "headers": {
-		"Authorization": "Bearer "+token,
+		//"Authorization": "Bearer "+token,
 		"Content-Type": "application/json"
 	  },
-	  "data": JSON.stringify({"ctrModCode":"PAS"}),
+	  "data": JSON.stringify({"ctrModCode":module}),
 	};
 
 $.ajax(settings).done(function (response) {
@@ -55,7 +54,7 @@ $.ajax(settings).done(function (response) {
 		'			 <pre><h5><b> '+icount+')'+response.questionDtos[i].queText+'</b></h5></pre>';
 		for(j = 0; j<response.questionDtos[i].questionOptionDtos.length; j++ ){
 			var jcount = j +1;
-			contect = contect + '<input type = "radio" name = "question1" value = "'+response.questionDtos[i].questionOptionDtos[j].optId+'"> '+jcount+') '+response.questionDtos[i].questionOptionDtos[j].optText+' <br>';	
+			contect = contect + '<input type = "radio" name = "question1" value = "'+response.questionDtos[i].questionOptionDtos[j].optId+'"> '+response.questionDtos[i].questionOptionDtos[j].optText+' <br>';	
 		}
 		var nexti = icount + 1
 		contect = contect + 
@@ -82,12 +81,56 @@ $.ajax(settings).done(function (response) {
 	
 	$("#myModal1").parent().html(contect);
 });
-	console.log("rohit")
-	
 	$(ele).attr("data-toggle", "modal");
 	$(ele).attr("data-target", "#myModal1");
 	
 }
+
+function getScore2(){
+
+	var response = JSON.parse(sessionStorage.question);
+	console.log(response);
+		for(i = 0; i < response.questionDtos.length; i++){
+			var icount = i+1;
+
+			for(j = 0; j<response.questionDtos[i].questionOptionDtos.length; j++ ){
+				var jcount = j +1;
+				if(response.questionDtos[i].questionOptionDtos[j].optId == document.getElementById('form'+icount).question1.value){
+				response.questionDtos[i].questionOptionDtos[j].selected = true;
+				}			
+			}	
+		}
+
+	console.log(response);
+	sessionStorage.questionAnswred = JSON.stringify(response);
+
+
+	var settings = {
+	async: false,
+	  "url": "http://localhost:8080/api/test/submit?user=rohitpshelar",
+	  "method": "POST",
+	  "timeout": 0,
+	  "headers": {
+	  //  "Authorization": "Bearer "+token,
+	    "Content-Type": "application/json",
+	    "Cookie": "JSESSIONID=69DB6C3D40AFCB14E84641A49E5C7175"
+	  },
+	  "data": JSON.stringify(response),
+	};
+
+	$.ajax(settings).done(function (response1) {
+
+	if(response1.ctrResult == "PASSED"){
+	alert("Congratulations !!! You have passed the test with "+response1.ctrPercentageScore+"%");
+	$("#test").addClass('disableModule');
+	}else{
+	alert("You have failed the test with "+response1.ctrPercentageScore+"%");
+	}
+
+	});
+
+
+	}
 
 function loginToCellma(ele, url, un, pw) {
 	

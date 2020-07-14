@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-07-05T20:23:30+0530",
+    date = "2020-07-14T15:25:36+0530",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
 )
 @Component
@@ -52,6 +52,31 @@ public class ModuleMapperImpl implements ModuleMapper {
         }
         if ( user != null ) {
             module.setModCreatedBy( user.getUsername() );
+        }
+        module.setModCreated( java.time.Instant.now() );
+
+        return module;
+    }
+
+    @Override
+    public Module mapDtoToModule(ModuleDto moduleDto, String user) {
+        if ( moduleDto == null && user == null ) {
+            return null;
+        }
+
+        Module module = new Module();
+
+        if ( moduleDto != null ) {
+            module.setModId( moduleDto.getModId() );
+            module.setModName( moduleDto.getModName() );
+            module.setModCode( moduleDto.getModCode() );
+            module.setModStatus( moduleDto.getModStatus() );
+            module.setModQuestionLimit( moduleDto.getModQuestionLimit() );
+            module.setModWeightingPassPercent( moduleDto.getModWeightingPassPercent() );
+            module.setModRandomQuestions( moduleDto.isModRandomQuestions() );
+        }
+        if ( user != null ) {
+            module.setModCreatedBy( user );
         }
         module.setModCreated( java.time.Instant.now() );
 
