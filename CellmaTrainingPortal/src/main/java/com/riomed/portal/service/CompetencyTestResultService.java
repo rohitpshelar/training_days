@@ -3,8 +3,8 @@ package com.riomed.portal.service;
 import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -71,16 +71,37 @@ public class CompetencyTestResultService {
 		
 		Iterable<Long> queLterable = longs;
 		List<Question> questions =   questionRepository.findAllById(queLterable);
-		if(module.isModRandomQuestions()) {
-			Collections.shuffle(questions);
-		}
 		List<QuestionDto> questionDtos =  questions.stream().map(questionMapper::questionToDto).collect(toList());
+		if(module.isModRandomQuestions()) {
+			shuffleObject(questionDtos);
+		}
 		List<QuestionDto> questionDtoss = questionService.updateQuestions(questionDtos, module.isModRandomQuestions());
 		competencyTestResultDto.setQuestionDtos(questionDtoss);
 		
 		return competencyTestResultDto;
 	
 	}
+	
+	public static<T> List<T> shuffleObject(List<T> list)
+	{
+		Random random = new Random();
+		int n = list.size();
+
+		// start from beginning of the list
+		for (int i = 0; i < n - 1; i++)
+		{
+			// get a random index j such that i <= j <= n
+			int j = i + random.nextInt(n - i);
+
+			// swap element at i'th position in the list with element at
+			// randomly generated index j
+			T obj = list.get(i);
+			list.set(i, list.get(j));
+			list.set(j, obj);
+		}
+		return list;
+	}
+
 	
 	@Transactional
 	public CompetencyTestResultDto saveCompetencyTestResult(CompetencyTestResultDto competencyTestResultDto) {
@@ -111,7 +132,7 @@ public class CompetencyTestResultService {
 		Iterable<Long> queLterable = longs;
 		List<Question> questions =   questionRepository.findAllById(queLterable);
 		if(module.isModRandomQuestions()) {
-			Collections.shuffle(questions);
+			shuffleObject(questions);
 		}
 		List<QuestionDto> questionDtos =  questions.stream().map(questionMapper::questionToDto).collect(toList());
 		List<QuestionDto> questionDtoss = questionService.updateQuestions(questionDtos, module.isModRandomQuestions());
@@ -188,7 +209,8 @@ public class CompetencyTestResultService {
 			modQuestionLimit = totalQue.size();
 		}
 		
-		for (int i = mendatoryList.size()+1; i <= modQuestionLimit; i++) {
+		for (int i = modQuestionLimit; 0 <= i; i--) {
+			System.out.println(i);
 			Integer No = totalQue.get(0).getQueId().intValue();
 			if (mendatoryList.contains(No)) {
 				totalQue.remove(0);
@@ -198,6 +220,7 @@ public class CompetencyTestResultService {
 				totalQue.remove(0);
 				}else {
 					totalQue.remove(0);
+					i--;
 				}
 			}
 			

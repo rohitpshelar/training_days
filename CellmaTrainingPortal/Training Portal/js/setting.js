@@ -213,8 +213,9 @@ function getQuestionByModule(id, modQuestionLimit){
 			  modalDiv = modalDiv +   '  </select>'+
 		          '<button type="submit" class="btn btn-primary" >Update Question</button>'+
 		        '</div>'+
-		        '<button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" data-toggle="modal" data-target="#addOption">Add new Option</button>'+
-				 '   <div class="modal-body">      '+   
+		      
+				 '   <div class="modal-body">      '+  
+				  '<button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" data-toggle="modal" data-target="#addOption">Add New Option</button><br>'+
 					
 					' <form id = "form'+icount+'">'+
 					'			 <h5><b>OPTIONS :</b>'+
