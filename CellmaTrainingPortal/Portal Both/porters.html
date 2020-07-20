@@ -330,11 +330,11 @@ video {
              <div id="questions_container">
              <div class="alert-box alert-default">
        <ul class="titlename instructions-list">
-       <li>The test has <strong>10</strong> multiple type questions </li>
+       
        <li>The test doesn’t have a time limit and should be done in one sitting</li>
        <li>You are not allowed to go back and change answers</li>
        <li>There is no negative marking for the test</li>
-       <li>The pass percentage for the test is minimum <strong>80%</strong></li>
+       
        </ul>
        </div>
        <div class="clearheight"></div>
@@ -346,7 +346,7 @@ video {
 			<div style="cursor: not-allowed;">
 				<p id="test_POR" class="disableModule" >
 					<!-- Trigger the modal with a button -->
-					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+					<button type="button" id="toggle_test_popup" class="btn btn-info btn-lg" onClick="getQuestionFromBackend(this,'POR');" >
 						Start Test
 					</button>
 				</p>

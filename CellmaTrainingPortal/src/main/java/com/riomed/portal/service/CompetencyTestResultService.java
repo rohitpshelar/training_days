@@ -209,7 +209,7 @@ public class CompetencyTestResultService {
 			modQuestionLimit = totalQue.size();
 		}
 		
-		for (int i = modQuestionLimit; 0 <= i; i--) {
+		for (int i = modQuestionLimit; 0 < i; i--) {
 			System.out.println(i);
 			Integer No = totalQue.get(0).getQueId().intValue();
 			if (mendatoryList.contains(No)) {
