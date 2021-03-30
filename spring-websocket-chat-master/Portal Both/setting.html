@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cellma Training Portal</title>
+<link rel="shortcut icon" href="images\cellma_icon.jpg">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/presentation.css">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<script src="js/myjquery.js"></script>
+<script src="x-config.js"></script>
+<script src="js/login.js"></script>
+<script src="js/setting.js"></script>
+<script type="text/javascript">
+	
+</script>
+
+</head>
+
+<body>
+ <nav class="navbar navbar-default navbar-fixed-top" >
+  <div class="container-fluid">
+   <!-- Brand and toggle get grouped for better mobile display -->
+   <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+    </button>
+    <a href="index.html" class="navbar-brand" style="cursor: pointer; padding: 4px;"><img src="images/riomed 230 x 100 size.png" alt="img" class="img-responsive" width="90px"></a>
+   </div>
+
+   <!-- Collect the nav links, forms, and other content for toggling -->
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right" style="cursor: pointer;">
+     <li><a href="index.html">Home</a></li>
+
+     <li id="loginFun" style="padding-top: 9px; padding-right: 8px;"></li>
+     <li id="LogoutFun" style="padding-top: 9px; padding-right: 8px;"></li>
+    </ul>
+   </div>
+   <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+ </nav>
+
+ <!-- / HEADER -->
+
+ <div class="container">
+  <br>
+ </div>
+
+ <div id="contactForm" class="container">
+  <div class="row">
+   <div class="col-md-20 col-sm-20 col-lg-20">
+
+    <div class="row" style="color: #000;">
+     <div class="col-lg-12 page-header text-center">
+      <h2 style="font-weight: bold; color: #006699;">Configuration Page</h2>
+     </div>
+
+     <div class="col-md-10">
+      <div class="form-group">
+       <label for="name">Module <span style="color: red;">*</span></label>
+       <div class="input-group">
+        <Select id="module" class="form-control" name="module" onchange="getModuleById(this)">
+         <option selected>Please select</option>
+        </select>
+       </div>
+      </div>
+     </div>
+
+     <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addModule">Add New Module</button>
+     <div class="col-md-12" style="
+    border: 1px solid #333;
+">
+       <form id="updateModuleForm" onsubmit="updateModule(this)" hidden="true">
+       <div hidden="true">
+        <label for="updatemodId">Module Id</label> <input type="text" class="form-control" name="updatemodId" id="updatemodId" placeholder="Enter modName">
+       </div>
+       <div class="col-md-2">
+        <div class="form-group">
+         <label for="updatemodName">Module Name</label> <input type="text" class="form-control" name="updatemodName" id="updatemodName" placeholder="Enter modName" required="required">
+        </div>
+       </div>
+       
+       <div class="col-md-2">
+        <div class="form-group">
+         <label for="updatemodCode">Module Code</label> <input type="text" class="form-control" name="updatemodCode" id="updatemodCode" placeholder="Enter Module Code" required="required">
+        </div>
+       </div>
+
+       <div class="col-md-2">
+        <div class="form-group">
+         <label for="updatemodStatus"> Status</label> <Select id="updatemodStatus" class="form-control" name="updatemodStatus">
+          <option selected value="Approved">Show</option>
+          <option value="hide">Hide</option>
+         </select>
+        </div>
+       </div>
+
+       <div class="col-md-2">
+        <div class="form-group">
+         <label for="updatemodQuestionLimit">Question Limit</label> 
+          <Select id="updatemodQuestionLimit" class="form-control" name="updatemodQuestionLimit" >
+
+         </select>
+
+        </div>
+       </div>
+
+       <div class="col-md-2">
+        <div class="form-group">
+         <label for="updatemodWeightingPassPercent">PASS %</label> 
+         <Select id="updatemodWeightingPassPercent" class="form-control" name="updatemodWeightingPassPercent" >
+          <option value="30">30%</option>
+          <option value="40">40%</option>
+          <option value="50">50%</option>
+          <option value="60">60%</option>
+          <option value="70">70%</option>
+          <option value="80">80%</option>
+         </select>
+        </div>
+       </div>
+
+       <div class="col-md-2">
+        <div class="form-group">
+         <label for="updatemodRandomQuestions">Random Question</label> <Select id="updatemodRandomQuestions" class="form-control" name="updatemodRandomQuestions">
+          <option value="true">enable</option>
+          <option value="false">disable</option>
+         </select>
+        </div>
+       </div>
+       <div class="col-md-2">
+         <button type="submit" class="btn btn-primary pull-right" >Update Module</button>
+         </div>
+      </form> 
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ 
+<!--  ------------------------- OPTION MODAL ------------------------------------ -->
+  <div class="container-fluid">
+  <div class="container">
+   <div class="modal fade" id="addOption" role="dialog">
+    <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-body">
+       <form id="addOptionForm"> <!-- onsubmit="addOption(this)"> -->
+        <div hidden="true">
+         <label for="addoptId">Option Id</label> <input type="text" class="form-control" name="addoptId" id="addoptId" placeholder="Enter modName">
+        </div>
+
+        <div class="form-group">
+         <label for="addoptStatus"> Status</label> <Select id="addoptStatus" class="form-control" name="addoptStatus">
+          <option selected value="Approved">Show</option>
+          <option value="hide">Hide</option>
+         </select>
+        </div>
+        
+                <div class="form-group">
+         <label for="addoptWeighting">Is Correct</label> <Select id="addoptWeighting" class="form-control" name="addoptWeighting">
+          <option selected value="0">No</option>
+          <option value="1">Yes</option>
+         </select>
+        </div>
+
+        <div class="form-group">
+         <label for="addoptText">Option text</label> 
+         <textarea rows="9" cols="25" class="form-control" name="addoptText" id="addoptText" placeholder="Enter Option text" required="required"></textarea>
+        </div>
+
+      
+       </form>
+       <div class="form-group">
+         <br>
+         <button type="submit" class="btn btn-primary" onclick="addOption()">Add Option</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<!-- ----------------------QUESTION Modal -------------------- -->
+ <div class="container-fluid">
+  <div class="container">
+   <div class="modal fade" id="addQuestion" role="dialog">
+    <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-body">
+       <form id="addQuestionForm"><!--  onsubmit="addQuestion(this)"> -->
+        <div hidden="true">
+         <label for="addqueId">Question Id</label> 
+         <input type="text" class="form-control" name="addqueId" id="addqueId" placeholder="Enter modName">
+        </div>
+         <div class="form-group">
+         <label for="addqueMandatory">Is Question Mandatory</label> 
+         <Select id="addqueMandatory" class="form-control" name="addqueMandatory">
+          <option value="true">Yes</option>
+          <option selected value="false">No</option>
+         </select>
+        </div>
+        
+        <div class="form-group">
+         <label for="addqueStatus"> Status</label> <Select id="addqueStatus" class="form-control" name="addqueStatus">
+          <option selected value="Enable">Enable</option>
+          <option value="Disable">Disable</option>
+         </select>
+        </div>
+
+        <div class="form-group">
+         <label for="addqueText">Question text</label> 
+         <textarea rows="9" cols="25" class="form-control" name="addqueText" id="addqueText" placeholder="Enter Question text" required="required"></textarea>
+        </div>
+
+
+       </form>
+        <div class="form-group">
+         <br>
+         <button type="submit" class="btn btn-primary" onclick="addQuestion()">Update Question</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+<!--  ------------------------- Module MODAL ------------------------------------ -->
+ <div class="container-fluid">
+  <div class="container">
+   <div class="modal fade" id="addModule" role="dialog">
+    <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-body">
+       <form id="addmoduleForm" ><!-- onsubmit="addModule(this)"> -->
+        <div hidden="true">
+         <label for="addmodId">Module Id</label> <input type="text" class="form-control" name="addmodId" id="addmodId" placeholder="Enter modName">
+        </div>
+         <div class="form-group">
+         <label for="addmodCode">Module Code</label> <input type="text" class="form-control" name="addmodCode" id="addmodCode" placeholder="Enter module code" required="required">
+        </div>
+        <div class="form-group">
+         <label for="addmodName">Module Name</label> <input type="text" class="form-control" name="addmodName" id="addmodName" placeholder="Enter modName" required="required">
+        </div>
+
+        <div class="form-group">
+         <label for="addmodStatus"> Status</label> <Select id="addmodStatus" class="form-control" name="addmodStatus" onchange="getModuleById(this)">
+          <option selected value="Approved">Show</option>
+          <option value="hide">Hide</option>
+         </select>
+        </div>
+
+<!--         <div class="form-group">
+         <label for="addmodQuestionLimit">Question Limit</label> <input type="text" class="form-control" name="addmodQuestionLimit" id="addmodQuestionLimit" placeholder="Enter Question Limit" required="required">
+
+        </div> -->
+
+        <div class="form-group">
+         <label for="addmodWeightingPassPercent">PASS %</label> <Select id="addmodWeightingPassPercent" class="form-control" name="addmodWeightingPassPercent">
+          <option value="30">30%</option>
+          <option value="40">40%</option>
+          <option value="50">50%</option>
+          <option value="60">60%</option>
+          <option value="70">70%</option>
+          <option value="80">80%</option>
+         </select>
+        </div>
+
+        <div class="form-group">
+         <label for="addmodRandomQuestions">Random Question</label> <Select id="addmodRandomQuestions" class="form-control" name="addmodRandomQuestions">
+          <option value="true">enable</option>
+          <option value="false">disable</option>
+         </select>
+        </div>
+       
+       </form>
+ <div class="form-group">
+         <br>
+         <button type="submit" class="btn btn-primary"  onclick="addModule()">Add Module</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<!--  ------------------------- custorm modal popup ------------------------------------ -->
+ <div class="container">
+  <div class="modal fade" id="showCustormModel" >
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+
+        <div class="login-form">
+  <center><h5 style=" color: green;" ><b id="modelMessage">Please contact your Cellma administrators</b></h5></center>
+</div>
+</div><!-- modal body -->
+
+</div>
+</div>
+</div>
+</div>
+
+<!--  ------------------------- List of questions ------------------------------------ -->
+ <div class="container-fluid">
+  <div class="container">
+  
+   <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-body">
+      <form id="form1">
+        <ol>
+         <li>
+          <h5>
+           <b>Question text</b>
+          </h5> <input type="text" name="question0" value="A">Fill out all Patient Demographic details on Patient List page. Click the Search button shows details of patient searched <br>
+         </li>
+         <li>
+          <h5>
+           <b>Question Weight</b>
+          </h5> <input type="text" name="question0" value="A">1<br>
+         </li>
+        </ol>
+       </form>
+       <center>
+        <button type="button" id="subid" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalf">SUBMIT</button>
+       </center>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+    
+ <div id="queContainer" class="container" hidden="true">
+   
+  <div class="row">
+     <label for="name">Questions In this Module </label>
+    <div style="border: 1px solid #f60b0b;background-color: #f2dede;">
+    Note :<br><button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addQuestion" >Add new Question</button>
+ 
+    1) <b>BOLD</b> questions are Mandatory Questions<br>
+    2) <span style='text-decoration: line-through;'>Line-through </span>question are Disabled Questions<br>
+    3) Click on Question to edit question or to add or update its options
+    </div>
+    
+    <div id="queList">
+     
+   </div>
+ 
+ 
+    <!-- modal popup -->
+    <div class="container-fluid">
+     <div class="container">
+      <div class="modal fade" id="myModal1" role="dialog">
+       <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+         <div class="modal-body">
+         
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  
+ <div class="container-fluid">
+  <div class="container">
+   <div class="modal fade" id="myOptModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-body">
+       <form id="form1">
+        <ol>
+         <li>
+          <h5>
+           <b>Question text</b>
+          </h5> <input type="text" name="question0" value="A">Fill out all Patient Demographic details on Patient List page. Click the Search button shows details of patient searched <br>
+         </li>
+         <li>
+          <h5>
+           <b>Question Weight</b>
+          </h5> <input type="text" name="question0" value="A">1<br>
+         </li>
+        </ol>
+       </form>
+       <center>
+        <button type="button" id="subid" class="btn btn-sm btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalf">SUBMIT</button>
+       </center>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+   
+   
+</body>
+</html>

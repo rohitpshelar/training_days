@@ -78,7 +78,7 @@ body {
 }
 
 .chat .chat-header {
-    padding: 20px;
+    padding: 10px;
     border-bottom: 2px solid white;
 }
 
@@ -99,6 +99,7 @@ body {
 
 .chat .chat-header .chat-num-messages {
     color: #92959E;
+    
 }
 
 .chat .chat-header .fa-star {
@@ -113,14 +114,13 @@ ul {
 }
 
 .chat .chat-history {
-    padding: 30px 30px 20px;
     border-bottom: 2px solid white;
     overflow-y: scroll;
-    height: 575px;
+    height: 375px;
 }
 
 .chat .chat-history .message-data {
-    margin-bottom: 15px;
+   /*  margin-bottom: 15px; */
 }
 
 .chat .chat-history .message-data-time {
@@ -130,13 +130,18 @@ ul {
 
 .chat .chat-history .message {
     color: white;
-    padding: 18px 20px;
-    line-height: 26px;
+    padding: 0px 7px;
+  /*   line-height: 26px; */
     font-size: 16px;
     border-radius: 7px;
     margin-bottom: 30px;
-    width: 90%;
-    position: relative;
+     width: 90%; 
+   /*  position: relative; */
+    
+}
+
+.message{
+	white-space: pre-line;
 }
 
 .chat .chat-history .message:after {
@@ -167,7 +172,7 @@ ul {
 }
 
 .chat .chat-message {
-    padding: 30px;
+    padding: 10px;
 }
 
 .chat .chat-message textarea {
